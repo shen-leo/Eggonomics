@@ -6,8 +6,7 @@
 
 ## General Info
 This browser based web application to ...
-* Hi my name is Fonse. I'm ecstatic about this projec
-* Fonse is not excited
+* This is Fonse and excited
 	
 ## Technologies
 Technologies used for this project:
