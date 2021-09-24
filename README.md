@@ -6,12 +6,9 @@
 
 ## General Info
 This browser based web application to ...
-<<<<<<< HEAD
 * This is Fonse and excited
-=======
 * Hello friends, my name is Leo...
 * Hi! My name is Jimmy and I am excited.
->>>>>>> 011d63e2ee545cf18b3b65d5e7dbc6f3cfa5ab78
 	
 ## Technologies
 Technologies used for this project:
