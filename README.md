@@ -6,7 +6,7 @@
 
 ## General Info
 This browser based web application to ...
-* Hello friends, my name is Leo.
+* Hi! My name is Jimmy and I am excited.
 	
 ## Technologies
 Technologies used for this project:
