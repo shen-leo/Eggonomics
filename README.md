@@ -6,9 +6,11 @@
 
 ## General Info
 This browser based web application to ...
-* This is Fonse and excited
+* This is Fonse and excited TEST LINE
+* TEST
 * Hello friends, my name is Leo...
-* Hi! My name is Jimmy and I am excited.
+* Hi! My name is Jimmy and I am very excited.
+* Jimmy added another line.
 	
 ## Technologies
 Technologies used for this project:
