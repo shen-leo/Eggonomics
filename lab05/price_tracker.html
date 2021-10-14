@@ -34,7 +34,22 @@
     }
 
     #search-btn{
-      margin-right: 0;
+      float: right;
+    }
+    #navbar-search{
+      border: none;
+      display: inline;
+      font-family: inherit;
+      font-size: inherit;
+      padding: none;
+      width: auto;
+      background-color: transparent;
+    }
+    #navbar-search::placeholder{
+      color:black;
+    }
+    #pt-navbar{
+      width: 100%;
     }
   </style>
 
@@ -44,54 +59,19 @@
 <body>
   <nav class="navbar navbar-light bg-warning">
     <div class="container">
-      <div class="navbar-brand">
+      <div class="navbar-brand" id="pt-navbar">
         <span class="material-icons md-18">
           arrow_back_ios
         </span>
-        <span>Results for ...</span>
+        <input class="mr-sm-2" id="navbar-search" type="text" placeholder="Results for some item" aria-label="Search">
         <span class="material-icons align-items-end" id="search-btn">search</span>
       </div>
     </div>
   </nav>
 
   <div class="content">
-    <table class="table table-borderless">
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      </tbody>
-    </table>
 
-    <button class="btn btn-warning" type="submit">Add</button>
-    <button class="btn btn-warning" type="submit">Cancel</button>
-
+    
     <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 3.5em;">
       <i class="material-icons">shopping_cart</i>
       <i class="material-icons">kitchen</i>
