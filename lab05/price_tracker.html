@@ -32,7 +32,23 @@
     .material-icons.md-18 {
       font-size: 18px;
     }
-
+    .col{
+      width: 50%
+    }
+    .price-item{
+      display: inline-block;
+    }
+    .price-name{
+      float: left;
+    }
+    .price-tag{
+      float: right;
+    }
+    .sort-btn{
+      width: 7%;
+      bottom: 10%;
+      left: 2vw;
+    }
     #search-btn{
       float: right;
     }
@@ -63,15 +79,95 @@
         <span class="material-icons md-18">
           arrow_back_ios
         </span>
-        <input class="mr-sm-2" id="navbar-search" type="text" placeholder="Results for some item" aria-label="Search">
+        <input class="mr-sm-2" id="navbar-search" type="text" placeholder="Results for some item..." aria-label="Search">
         <span class="material-icons align-items-end" id="search-btn">search</span>
       </div>
     </div>
   </nav>
 
   <div class="content">
+    <br>
 
-    
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 1</h5>
+            <h5 class="card-title price-item price-tag">$0.50</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 2</h5>
+            <h5 class="card-title price-item price-tag">$12.21</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 3</h5>
+            <h5 class="card-title price-item price-tag">$2.30</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 4</h5>
+            <h5 class="card-title price-item price-tag">$1.11</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 5</h5>
+            <h5 class="card-title price-item price-tag">$5.90</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 6</h5>
+            <h5 class="card-title price-item price-tag">$5.50</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 7</h5>
+            <h5 class="card-title price-item price-tag">$1.23</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <img src="https://dummyimage.com/600x400/f0ad4e/f7f7f7&text=item" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title price-item price-name">Item 8</h5>
+            <h5 class="card-title price-item price-tag">$0.99</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="material-icons btn btn-warning sort-btn fixed-bottom" type="button">double_arrow</button>
+
+    <div class="text-center py-5">
+    </div>
+
     <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 3.5em;">
       <i class="material-icons">shopping_cart</i>
       <i class="material-icons">kitchen</i>
