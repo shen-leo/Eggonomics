@@ -17,3 +17,11 @@ button {
 .material-icons.md-18 {
     font-size: 18px;
 }
+
+a {
+    color: inherit;
+}
+
+a:hover {
+    color: white;
+}

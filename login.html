@@ -30,9 +30,9 @@
     <nav class="navbar navbar-light bg-warning">
         <div class="container">
             <div class="navbar-brand">
-                <span class="material-icons md-18">
+                <a href="index.html"><span class="material-icons md-18">
                     arrow_back_ios
-                </span>
+                </span></a>
                 <span>Log In</span>
             </div>
         </div>
@@ -40,20 +40,18 @@
 
 
     <!-- Firebase Container -->
-    <div class="container">
-        <h1 class="display-4">Welcome to Eggonomics!</h1>
-        <h1 class="display-4">Let's Login!</h1>
+    <div style="text-align: center;" class="container">
     </div>
-    <div id="firebaseui-auth-container"></div>
+    <div style="margin-top: 3em;" id="firebaseui-auth-container"></div>
     <div id="loader">Loading...</div>
 
-
-
+    
+    <!-- Bottom Nav Bar -->
     <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 3.5em;">
-        <i class="material-icons">shopping_cart</i>
-        <i class="material-icons">kitchen</i>
-        <i class="material-icons">playlist_add_check</i>
-        <i class="material-icons">bar_chart</i>
+        <a href="lab05/price_tracker.html"><i class="material-icons">shopping_cart</i></a>
+        <a href="lab05/inventory.html"><i class="material-icons">kitchen</i></a>
+        <a href="lab05/shopping_list.html"><i class="material-icons">playlist_add_check</i></a>
+        <a href=""><i class="material-icons">bar_chart</i></a>
     </footer>
 
     </div>
@@ -66,7 +64,7 @@
 
 
     <!-- Firebase -->
-    <script src="scripts/firebaseAPI.js"></script>   
+    <script src="scripts/firebaseAPI.js"></script>
 </body>
 
 </html>
