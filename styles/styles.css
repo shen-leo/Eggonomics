@@ -10,9 +10,9 @@
     width: 100%;
 }
 
-button {
+/* button {
     margin: 10% 10% 0 10%;
-}
+} */
 
 .material-icons.md-18 {
     font-size: 18px;
@@ -24,4 +24,22 @@ a {
 
 a:hover {
     color: white;
+}
+
+.my-nav{
+    grid-gap: 0.5rem;
+    align-items: center;
+}
+
+.text-field{
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+
+.search-field{
+    border: none;
+}
+
+.search-field::placeholder{
+    color: black;
 }
