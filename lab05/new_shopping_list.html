@@ -1,16 +1,16 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <title>Log In</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <title>New Shopping List</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="DTC08" content="Eggonomics Shopping List">
+    
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">    
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
 
@@ -24,47 +24,55 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
+    <style>
+        input, textarea{
+            display: block;
+            margin: 2em auto;
+            background-color: rgb(224, 224, 224);
+            border: 0px;
+        }
+
+        #list-name{
+            text-align: center;
+            background-color: transparent;
+        }
+        
+    </style>
+
+
 </head>
 
+
 <body>
-    <nav class="navbar navbar-light bg-warning">
-        <div class="container">
+
+<div>
+    <body>
+        <nav class="navbar navbar-light bg-warning">
+          <div class="container">
             <div class="navbar-brand">
-                <a class="icon-btn" href="index.html"><span class="material-icons md-18">
+                <a class="icon-btn" href="shopping_list.html"><span class="material-icons md-18">
                     arrow_back_ios
                 </span></a>
-                <span>Log In</span>
+              <span>Shopping List</span>
             </div>
-        </div>
-    </nav>
+          </div>
+        </nav>
+
+    <input id="list-name" type="text" placeholder="List name">
+    <textarea name="list description" id="list-description" cols="50" rows="3" placeholder="Shopping list description"></textarea>
+    <input type="text" placeholder="New item">
 
 
-    <!-- Firebase Container -->
-    <div style="text-align: center;" class="container">
-    </div>
-    <div style="margin-top: 3em;" id="firebaseui-auth-container"></div>
-    <div id="loader">Loading...</div>
-
-    
     <!-- Bottom Nav Bar -->
     <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 3.5em;">
-        <a class="icon-btn" href="lab05/price_tracker.html"><i class="material-icons">shopping_cart</i></a>
-        <a class="icon-btn" href="lab05/inventory.html"><i class="material-icons">kitchen</i></a>
-        <a class="icon-btn" href="lab05/shopping_list.html"><i class="material-icons">playlist_add_check</i></a>
+        <a class="icon-btn" href="price_tracker.html"><i class="material-icons">shopping_cart</i></a>
+        <a class="icon-btn" href="inventory.html"><i class="material-icons">kitchen</i></a>
+        <a class="icon-btn" href="shopping_list.html"><i class="material-icons">playlist_add_check</i></a>
         <a class="icon-btn" href=""><i class="material-icons">bar_chart</i></a>
     </footer>
+  
+</div>
 
-    </div>
-
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
-
-
-    <!-- Firebase -->
-    <script src="scripts/firebaseAPI.js"></script>
 </body>
 
 </html>
