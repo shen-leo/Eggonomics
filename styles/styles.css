@@ -11,13 +11,14 @@
     width: 100%;
 }
 
-/* button {
-    margin: 10% 10% 0 10%;
-} */
-
 .material-icons.md-18 {
     font-size: 18px;
 }
+
+.btm-btn-text {
+    font-size: small;
+}
+
 
 a {
     color: inherit;
@@ -49,10 +50,4 @@ a {
 
 #new-list-btn{
     width: fit-content;
-}
-
-#btn-container{
-    margin-top: 2em;
-    width: 100%;
-    text-align: center;
 }
