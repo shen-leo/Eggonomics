@@ -29,7 +29,11 @@
 <body>
   <nav class="navbar navbar-light bg-warning">
     <div class="container-fluid navbar-container my-nav">
-      <a class="navbar-brand material-icons md-18" href="../index.html">arrow_back_ios</a>
+      <div class="navbar-brand">
+        <a class="icon-btn" href="index.html"><span class="material-icons md-18">
+          arrow_back_ios
+        </span></a>
+      </div>
       <form class="d-flex text-field">
         <input class="form-control me-2 search-field bg-warning" type="search" placeholder="Results for..."
           aria-label="Search">
@@ -50,7 +54,7 @@
   </nav>
 
   <!-- THIS SHOULD PROBABLY BE DYNAMICALLY ADDED USING JS -->
-  <div id="content">
+  <div id="content" style="width: 100%;">
     <div class="row row-cols-2 row-cols-md-4 g-4">
       <!-- one card -->
       <div class="col">
