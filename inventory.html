@@ -1,15 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project">
+  <meta name="DTC08" content="Eggonomics Shopping List">
 
   <!-- CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
 
@@ -23,34 +24,13 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
-  <title>Inventory</title>
+</head>
 
-  <style>
-    .content {
-      width: 80%;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .table {
-      margin-top: 5%;
-      text-align: center;
-      width: 100%;
-    }
-
-    button {
-      margin: 10% 10% 0 10%;
-    }
-
-    .material-icons.md-18 {
-      font-size: 18px;
-    }
-  </style>
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
+  <!-- Top Nav Bar -->
   <nav class="navbar navbar-light bg-warning">
     <div class="container">
       <div class="navbar-brand">
@@ -62,7 +42,8 @@
     </div>
   </nav>
 
-  <div class="content">
+  <!-- Table -->
+  <div id="content">
     <table class="table table-borderless">
       <tr>
         <td class="material-icons">icecream</td>

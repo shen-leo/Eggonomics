@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Login</title>
+  <title>New Shopping List</title>
   <meta name="comp1800 boilerplate code" content="my bcit project">
   <meta name="DTC08" content="Eggonomics Shopping List">
 
@@ -26,23 +26,30 @@
 
 </head>
 
+
 <body>
+  <!-- Top Nav Bar -->
   <nav class="navbar navbar-light bg-warning">
     <div class="container">
       <div class="navbar-brand">
-        <a class="icon-btn" href="index.html"><span class="material-icons md-18">
-            arrow_back_ios
-          </span></a>
-        <span>Login</span>
+        <span class="material-icons md-18">
+          arrow_back_ios
+        </span>
+        <span>New Shopping List</span>
       </div>
     </div>
   </nav>
 
-  <!-- Firebase Container -->
-  <div style="text-align: center;" class="container">
+  <div id="content">
+    <!-- Text Area -->
+    <input id="list-name" type="text" placeholder="List name">
+    <textarea name="list description" id="list-description" cols="50" rows="3"
+      placeholder="Shopping list description"></textarea>
+    <input type="text" placeholder="New item">
+    <div id="btn-container">
+      <button>More Item</button>
+    </div>
   </div>
-  <div style="margin-top: 3em;" id="firebaseui-auth-container"></div>
-  <div id="loader">Loading...</div>
 
   <!-- Bottom Nav Bar -->
   <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em;">
@@ -64,17 +71,8 @@
     </a>
   </footer>
 
-  </div>
 
 
-  <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-
-
-  <!-- Firebase -->
-  <script src="scripts/firebaseAPI.js"></script>
 </body>
 
 </html>
