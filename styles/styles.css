@@ -10,19 +10,15 @@ body {
 }
 
 #content {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   text-align: center;
+  padding-top: 1em;
+  padding-bottom: 6em;
 }
 
 footer {
   text-align: center;
-}
-
-.table {
-  margin-top: 5%;
-  text-align: center;
-  width: 100%;
 }
 
 .material-icons.md-18 {
