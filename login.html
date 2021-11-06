@@ -26,52 +26,16 @@
 
 </head>
 
-<body>
-  <nav class="navbar navbar-light bg-warning">
-    <div class="container">
-      <div class="navbar-brand">
-        <a class="icon-btn" href="index.html"><span class="material-icons md-18">
-            arrow_back_ios
-          </span></a>
-        <span>Login</span>
-      </div>
-    </div>
-  </nav>
+<body style="background-color: rgb(255, 193, 7); text-align: center; height: 100vh;">
+
+  <!-- Logo -->
+  <div style="height: 45%;">
+    <img style="height: 100%;" src="img/transparent.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
+  </div>
 
   <!-- Firebase Container -->
-  <div style="text-align: center;" class="container">
-  </div>
-  <div style="margin-top: 3em;" id="firebaseui-auth-container"></div>
+  <div style="margin-top: 1em; padding-bottom: 3em;" id="firebaseui-auth-container"></div>
   <div id="loader">Loading...</div>
-
-  <!-- Bottom Nav Bar -->
-  <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em;">
-    <a class="icon-btn" href="price_tracker.html">
-      <i class="material-icons">shopping_cart</i>
-      <p class="btm-btn-text">Price Track</p>
-    </a>
-    <a class="icon-btn" href="inventory.html">
-      <i class="material-icons">kitchen</i>
-      <p class="btm-btn-text">Pantry</p>
-    </a>
-    <a class="icon-btn" href="shopping_list.html">
-      <i class="material-icons">playlist_add_check</i>
-      <p class="btm-btn-text">Shopping List</p>
-    </a>
-    <a class="icon-btn" href="">
-      <i class="material-icons">bar_chart</i>
-      <p class="btm-btn-text">Analytics</p>
-    </a>
-  </footer>
-
-  </div>
-
-
-  <!-- Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-
 
   <!-- Firebase -->
   <script src="scripts/firebaseAPI.js"></script>
