@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Landing</title>
+  <title>Shopping List</title>
   <meta name="comp1800 boilerplate code" content="my bcit project">
   <meta name="DTC08" content="Eggonomics Shopping List">
 
@@ -26,53 +26,52 @@
 
 </head>
 
+
 <body>
+
   <!-- Top Nav Bar -->
   <nav class="navbar navbar-light bg-warning">
     <div class="container">
       <div class="navbar-brand">
-        <span>Eggonomics</span>
+        <a class="icon-btn" href="index.html"><span class="material-icons md-18">
+          arrow_back_ios
+        </span></a>
+        <span>Shopping List</span>
       </div>
     </div>
   </nav>
-  
-  <div id="content">
-  <!-- Logo and Search -->
-  <div>
-    <img style="height: 25vh;" src="img/logo.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
-  </div>
-  <div>
-    <form class="form-inline my-2 my-lg-0" action="price_tracker.html">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <br />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>
-  </div>
 
-  <!-- Carousel -->
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/apple_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/banana_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/broccoli_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
+  <div id="content">
+    <div class="list-group">
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Shopping List 1</h5>
+          <small>Now</small>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+        <p class="mb-1">Shopping List Description</p>
+        <small>10-12-21</small>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Shopping List 2</h5>
+          <small class="text-muted">2 hours ago</small>
+        </div>
+        <p class="mb-1">Shopping List Description</p>
+        <small class="text-muted">10-12-21</small>
+      </a>
+      <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1">Shopping List 3</h5>
+          <small class="text-muted">3 days ago</small>
+        </div>
+        <p class="mb-1">Shopping List Description</p>
+        <small class="text-muted">10-09-21</small>
+      </a>
+    </div>
+    <div id="btn-container">
+      <a href="new_shopping_list.html"><button id="new-list-btn" type="button" class="btn btn-outline-secondary">Create
+          New List</button></a>
+    </div>
   </div>
 
   <!-- Bottom Nav Bar -->

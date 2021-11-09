@@ -1,15 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inventory</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project">
+  <meta name="DTC08" content="Eggonomics Shopping List">
 
   <!-- CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="../styles/styles.css">
+  <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
 
@@ -23,46 +24,26 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
-  <title>Inventory</title>
+</head>
 
-  <style>
-    .content {
-      width: 80%;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .table {
-      margin-top: 5%;
-      text-align: center;
-      width: 100%;
-    }
-
-    button {
-      margin: 10% 10% 0 10%;
-    }
-
-    .material-icons.md-18 {
-      font-size: 18px;
-    }
-  </style>
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
+  <!-- Top Nav Bar -->
   <nav class="navbar navbar-light bg-warning">
     <div class="container">
       <div class="navbar-brand">
-        <span class="material-icons md-18">
+        <a class="icon-btn" href="index.html"><span class="material-icons md-18">
           arrow_back_ios
-        </span>
+        </span></a>
         <span>Inventory</span>
       </div>
     </div>
   </nav>
 
-  <div class="content">
+  <!-- Table -->
+  <div id="content">
     <table class="table table-borderless">
       <tr>
         <td class="material-icons">icecream</td>
@@ -97,12 +78,12 @@
       </tbody>
     </table>
 
-    <button class="btn btn-warning" type="submit">Add</button>
-    <button class="btn btn-warning" type="submit">Edit</button>
+    <button class="btn btn-warning" type="submit" style="margin: 1em 5%; width: 4em;">Add</button>
+    <button class="btn btn-warning" type="submit"style="margin: 1em 5%; width: 4em;">Edit</button>
 
     <!-- Bottom Nav Bar -->
     <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em;">
-      <a class="icon-btn" href="price_tracker.html">
+      <a class="icon-btn" href="index.html">
         <i class="material-icons">shopping_cart</i>
         <p class="btm-btn-text">Price Track</p>
       </a>
@@ -121,20 +102,6 @@
     </footer>
 
   </div>
-
-
-  <!-- Optional JavaScript; choose one of the two! -->
-
-  <!-- Option 1: Bootstrap Bundle with Popper -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-    crossorigin="anonymous"></script>
-
-  <!-- Option 2: Separate Popper and Bootstrap JS -->
-  <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
 </body>
 
 </html>

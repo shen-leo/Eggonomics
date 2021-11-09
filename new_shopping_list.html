@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Landing</title>
+  <title>New Shopping List</title>
   <meta name="comp1800 boilerplate code" content="my bcit project">
   <meta name="DTC08" content="Eggonomics Shopping List">
 
@@ -26,53 +26,29 @@
 
 </head>
 
+
 <body>
   <!-- Top Nav Bar -->
   <nav class="navbar navbar-light bg-warning">
     <div class="container">
       <div class="navbar-brand">
-        <span>Eggonomics</span>
+        <a class="icon-btn" href="shopping_list.html"><span class="material-icons md-18">
+          arrow_back_ios
+        </span></a>
+        <span>New Shopping List</span>
       </div>
     </div>
   </nav>
-  
-  <div id="content">
-  <!-- Logo and Search -->
-  <div>
-    <img style="height: 25vh;" src="img/logo.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
-  </div>
-  <div>
-    <form class="form-inline my-2 my-lg-0" action="price_tracker.html">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <br />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>
-  </div>
 
-  <!-- Carousel -->
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/apple_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/banana_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/broccoli_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
+  <div id="content" style="flex-direction: column; display: flex;">
+    <!-- Text Area -->
+    <input id="list-name" type="text" placeholder="List name">
+    <textarea name="list description" id="list-description" cols="50" rows="3"
+      placeholder="Shopping list description"></textarea>
+    <input type="text" placeholder="New item">
+    <div id="btn-container">
+      <button>More Item</button>
+    </div>
   </div>
 
   <!-- Bottom Nav Bar -->
