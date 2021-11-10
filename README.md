@@ -1,16 +1,13 @@
-## My Web Application (Title)
+## Eggonomics
 
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
-* This is Fonse and excited TEST LINE
-* TEST
-* Hello friends, my name is Leo...
-* Hi! My name is Jimmy and I am very excited.
-* Jimmy added another line.
+Eggonomics is a web-based mobile application looking to help users shop smarter, cheaper, and reduce waste. 
+Our team is designing an app to help users track the prices of everyday household goods and aid them in reducing food waste.
+Eggonomics will provide users with a price tracker, shopping list, food pantry list, and data analytics on spending and food waste.
 	
 ## Technologies
 Technologies used for this project:
