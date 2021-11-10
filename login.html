@@ -24,23 +24,85 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Abel&family=Mochiy+Pop+P+One&display=swap');
+
+    body {
+      background-image: linear-gradient(45deg, rgb(250, 223, 7), rgb(255, 193, 7), rgb(255, 153, 7));
+      background-size: 200%;
+      background-position: left;
+      background-repeat: no-repeat;
+      text-align: center;
+      height: 100vh;
+      font-family: 'Mochiy Pop P One', sans-serif;
+    }
+    
+    #logo-container {
+      margin-top: 2em;
+      height: 45%;
+    }
+
+    #logo-container img {
+      height: 100%;
+    }
+
+    #auth-container {
+      margin: auto;
+      width: fit-content;
+      border: 5px solid white;
+      padding: 2em;
+      border-radius: 10%;
+    }
+
+    #email, #password {
+      width: 11em;
+      float: right;
+      border: none;
+    }
+
+    #signIn, #signUp {
+      margin: 1em 1em 0 1em;
+      background-color: white;
+      padding: 0.5em;
+      border-radius: 15%;
+      border: none;
+      border: 2px solid transparent;
+    }
+
+    #signIn:hover, #signUp:hover {
+      border: 2px solid black;
+    }
+
+    p {
+      display: block;
+      text-align: left;
+    }
+
+    span {
+      margin-right: 2em;
+    }
+    
+  </style>
 </head>
 
-<body style="background-color: rgb(255, 193, 7); text-align: center; height: 100vh;">
+<body>
 
   <!-- Logo -->
-  <div style="height: 45%;">
-    <img style="height: 100%;" src="img/transparent.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
+  <div id="logo-container">
+    <img src="img/transparent.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
   </div>
 
-  <!-- Firebase Container -->
+  <!-- Firebase Container
   <div style="margin-top: 1em; padding-bottom: 3em;" id="firebaseui-auth-container"></div>
-  <div id="loader">Loading...</div>
+  <div id="loader">Loading...</div> -->
 
-  <input id="email" type="email"><br>
-  <input id="password" type="password"><br>
-  <button onclick="signIn()" id="signIn">Sign In</button>
-  <button onclick="signUp()" id="signUp">Sign Up</button>
+  <!-- Customized Login Container -->
+  <div id="auth-container">
+    <p><span>Email</span><input id="email" type="email"></p>
+    <p><span>Password</span><input id="password" type="password"></p>
+    <button onclick="signIn()" id="signIn">Sign In</button>
+    <button onclick="signUp()" id="signUp">Sign Up</button>
+  </div>
 
   <!-- Firebase -->
   <script src="scripts/firebaseAPI.js"></script>
