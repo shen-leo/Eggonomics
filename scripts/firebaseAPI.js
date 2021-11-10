@@ -64,16 +64,19 @@ var uiConfig = {
 ui.start('#firebaseui-auth-container', uiConfig);
 
 function signIn() {
+    var password = document.getElementById("password").value
+    var email = document.getElementById("email").value
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Signed in
             var user = userCredential.user;
             // console.log(user.uid)
-            location.href = "main.html"
+            location.href = "index.html"
         })
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
+            console.log(errorMessage)
         });
 }
 
@@ -90,11 +93,12 @@ function signUp() {
                 email: user.email                          //with authenticated user's ID (user.uid)
             }).then(function () {
                 console.log("New user added to firestore");
-                window.location.assign("main.html");       //re-direct to main.html after signup
+                window.location.assign("index.html");       //re-direct to main.html after signup
             })
         })
         .catch((error) => {
             var errorCode = error.code;
             var errorMessage = error.message;
+            console.log(errorMessage)
         });
 }
