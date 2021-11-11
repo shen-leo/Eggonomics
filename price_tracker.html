@@ -54,82 +54,19 @@
   </nav>
 
   <!-- THIS SHOULD PROBABLY BE DYNAMICALLY ADDED USING JS -->
+  <template id="product_card">
+    <div class="col">
+      <div class="card h-100 border-warning bg-warning">
+        <img src="img/logo.png" class="card-img-top" alt="egg" id="item_img">
+        <div class="card-body">
+          <h5 class="card-title" id="item_name">ITEM</h5>
+          <p class="card-text" id="item_price">DESCRIPTION</p>
+        </div>
+      </div>
+    </div>
+  </template>
   <div id="content">
-    <div class="row row-cols-2 row-cols-md-4 g-4">
-      <!-- one card -->
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
-      <!-- end of card -->
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card h-100 border-warning bg-warning">
-          <img src="img/logo.png" class="card-img-top" alt="egg">
-          <div class="card-body">
-            <h5 class="card-title">ITEM</h5>
-            <p class="card-text">DESCRIPTION</p>
-          </div>
-        </div>
-      </div>
+    <div class="row row-cols-2 row-cols-md-4 g-4" id="products_here">
     </div>
   </div>
 
@@ -152,6 +89,9 @@
       <p class="btm-btn-text">Analytics</p>
     </a>
   </footer>
+  <!-- Firebase -->
+  <script src="scripts/firebaseAPI.js"></script>
+  <script src="scripts/price_tracker.js"></script>
 </body>
 
 </html>
