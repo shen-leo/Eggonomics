@@ -29,8 +29,9 @@ function displayQuery(){
 function waitForSearchQuery(){
     document.getElementById("search-btn-pt").addEventListener("click", function(event){
         let new_query = document.getElementById("search-bar").value;
-        localStorage.setItem("query", new_query);
-
+        if (new_query != ''){
+            localStorage.setItem("query", new_query);
+        }
         window.location.assign("price_tracker.html")
     })
 }
