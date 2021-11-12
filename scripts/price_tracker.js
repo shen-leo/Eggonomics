@@ -20,5 +20,25 @@ function displayProducts(){
         })
 }
 
-displayProducts();
+function displayQuery(){
+    let query = localStorage.getItem('query');
+    document.getElementById("search-bar").getAttributeNode("placeholder").value = "Results for " + query;
+    console.log("Displayed query " + query);
+}
 
+function waitForSearchQuery(){
+    document.getElementById("search-btn-pt").addEventListener("click", function(event){
+        let new_query = document.getElementById("search-bar").value;
+        if (new_query != ''){
+            localStorage.setItem("query", new_query);
+        }
+        window.location.assign("price_tracker.html")
+    })
+}
+
+document.addEventListener("DOMContentLoaded", function(event){
+    console.log("Page loaded!")
+    displayProducts();
+    displayQuery();
+    waitForSearchQuery();
+})
