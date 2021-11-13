@@ -42,16 +42,16 @@
       .shopping-list-container {
         display: flex;
         flex-direction: column;
-        margin-top: 1rem;
+        margin-top: 2rem;
         margin-bottom: 2rem;
         width: 80vw;
         margin-left: auto;
         margin-right: auto;
-        /* background-color: lightgrey; */
+        /* background-color: #f6f1d9; */
         border-radius: 5px;
         padding-left: 30px;
         padding-right: 30px;
-        padding-top: 20px;
+        padding-top: 30px;
         padding-bottom: 20px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       }
@@ -69,6 +69,11 @@
         padding-right: 30px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
       }
+
+      .list-group {
+        margin-top: 2em;
+        margin-bottom: 4em;
+      }
     </style>
   </head>
 
@@ -77,7 +82,7 @@
     <nav class="navbar navbar-light bg-warning">
       <div class="container">
         <div class="navbar-brand">
-          <a class="icon-btn" href="shopping_list.html"
+          <a class="icon-btn" href="index.html"
             ><span class="material-icons md-18"> arrow_back_ios </span></a
           >
           <span>Shopping List</span>
@@ -88,9 +93,9 @@
     <!-- Text Fields -->
     <div class="shopping-list-container bg-light shadow">
       <form>
-        <fieldset class="mb-3" id="personalInfoFields">
+        <fieldset class="mb-3" id="itemFields">
           <div class="form-group">
-            <label>Item</label>
+            <!-- <label>Item</label> -->
             <input
               type="text"
               id="itemInput"
@@ -99,13 +104,13 @@
             />
           </div>
         </fieldset>
-        <div class="d-flex justify-content-end mt-5">
+        <div class="d-flex justify-content-end">
           <span style="width: 10px"></span>
           <button
             type="button"
             class="btn btn-warning"
             id="btn"
-            onclick="saveItem()"
+            onclick="saveItem();clearTextBox()";
           >
             Add
           </button>
@@ -114,11 +119,11 @@
     </div>
 
     <!-- Shopping List Items -->
-    <ul class="list-group list-items" id="shopping_list_container">
-    </ul>
+    <ul class="list-group list-items" id="shopping_list_container"></ul>
+
 
     <!-- Bottom Nav Bar -->
-    <footer
+    <!-- <footer
       class="navbar justify-content-evenly bg-warning fixed-bottom"
       style="height: 4em"
     >
@@ -138,8 +143,9 @@
         <i class="material-icons">bar_chart</i>
         <p class="btm-btn-text">Analytics</p>
       </a>
-    </footer>
+    </footer> -->
 
+    
     <!--------------------------------------------------------------------->
     <!-- JS files: Your own JavaScript functions included here    -->
     <!--------------------------------------------------------------------->
@@ -173,12 +179,12 @@
                   .update({
                     Item: firebase.firestore.FieldValue.arrayUnion(Item),
                   });
-                  var ul = document.getElementById("shopping_list_container");
-                  var li = document.createElement("li");
-                  li.classList.add('list-group-item');
-                  li.innerText = Item;
-                  ul.append(li);
-
+                var ul = document.getElementById("shopping_list_container");
+                var li = document.createElement("li");
+                li.classList.add("list-group-item");
+                li.classList.add("list-group-item-warning");
+                li.innerText = Item;
+                ul.append(li);
               });
             });
           } else {
@@ -189,37 +195,47 @@
       }
 
       function populateItem() {
-            firebase.auth().onAuthStateChanged(user => {
-                // Check if user is signed in:
-                if (user) {
-                    // Do something for the current logged-in user here: 
-                    console.log(user.uid);
-                    //go to the correct user document by referencing to the user uid
-                    currentUser = db.collection("users").doc(user.uid);
-                    itemList = db.collection("shoppinglist").doc(user.uid)
-                    //get the document for current user.
-                    itemList.get()
-                        .then(listDoc => {
-                            var itemArray = listDoc.data().Item;
-                            var ul = document.getElementById("shopping_list_container");
-                            var btn = document.getElementById("btn");
+        firebase.auth().onAuthStateChanged((user) => {
+          // Check if user is signed in:
+          if (user) {
+            // Do something for the current logged-in user here:
+            console.log(user.uid);
+            //go to the correct user document by referencing to the user uid
+            currentUser = db.collection("users").doc(user.uid);
+            itemList = db.collection("shoppinglist").doc(user.uid);
+            //get the document for current user.
+            itemList.get().then((listDoc) => {
+              var itemArray = listDoc.data().Item;
+              var ul = document.getElementById("shopping_list_container");
+              var btn = document.getElementById("btn");
 
-                            itemArray.forEach(function (e) {
-                              var li = document.createElement("li");
-                              li.classList.add('list-group-item');
-                              li.innerText = e;
-                              ul.append(li);
-                          
-                            });
-                        })
-                } else {
-                    // No user is signed in.
-                    console.log("no user");
-                }
+              itemArray.forEach(function (e) {
+                var li = document.createElement("li");
+                li.classList.add("list-group-item");
+                li.classList.add("list-group-item-warning");
+                li.innerText = e;
+                ul.append(li);
+              });
             });
-        }
-        populateItem()
+          } else {
+            // No user is signed in.
+            console.log("no user");
+          }
+        });
+      }
+      populateItem();
 
+      // Clears Text Box on Save
+      function clearTextBox() {
+        document.getElementById("itemInput").value = "";
+      }
+
+      // Submit Form on Enter Key Press
+      document.onkeydown = function () {
+        if (window.event.keyCode == "13") {
+          saveItem();
+        }
+      };
     </script>
   </body>
 </html>
