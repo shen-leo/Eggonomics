@@ -38,6 +38,36 @@
 
     <!-- Link to the api keys for your firebase project -->
     <script src="/scripts/firebaseAPI.js"></script>
+  <style>
+    .shopping-list-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      width: 80vw;
+      margin-left: auto;
+      margin-right: auto;
+      /* background-color: lightgrey; */
+      border-radius: 5px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+
+    .btn {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .list-items {
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+  </style>
   </head>
 
   <body>
@@ -48,33 +78,15 @@
           <a class="icon-btn" href="shopping_list.html"
             ><span class="material-icons md-18"> arrow_back_ios </span></a
           >
-          <span>New Shopping List</span>
+          <span>Shopping List</span>
         </div>
       </div>
     </nav>
 
     <!-- Text Fields -->
-    <div class="container">
+    <div class="shopping-list-container bg-light shadow" >
       <form>
         <fieldset class="mb-3" id="personalInfoFields">
-          <div class="form-group">
-            <label>List Name</label>
-            <input
-              type="text"
-              id="nameInput"
-              class="form-control"
-              placeholder="Enter list name"
-            />
-          </div>
-          <!-- <div class="form-group">
-          <label>Description</label>
-          <input
-            type="text"
-            id="schoolInput"
-            class="form-control"
-            placeholder="Enter a description"
-          />
-        </div> -->
           <div class="form-group">
             <label>Item</label>
             <input
@@ -86,14 +98,22 @@
           </div>
         </fieldset>
         <div class="d-flex justify-content-end mt-5">
-          <!-- <button type="button" class="btn btn-secondary" onclick="editUserInfo()">Edit</button> -->
           <span style="width: 10px"></span>
-          <button type="button" class="btn btn-info" onclick="saveItem()">
-            Save
+          <button type="button" class="btn btn-warning" onclick="saveItem()">
+            Add
           </button>
         </div>
       </form>
     </div>
+
+    <!-- Shopping List Items -->
+    <ul class="list-group list-items">
+      <li class="list-group-item">Item 1</li>
+      <li class="list-group-item">Item 2</li>
+      <li class="list-group-item">Item 3</li>
+      <li class="list-group-item">Item 4</li>
+      <li class="list-group-item">Item 5</li>
+    </ul>
 
     <!-- Bottom Nav Bar -->
     <footer
