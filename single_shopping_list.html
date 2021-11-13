@@ -115,11 +115,6 @@
 
     <!-- Shopping List Items -->
     <ul class="list-group list-items" id="shopping_list_container">
-      <!-- <li class="list-group-item">Item 1</li>
-      <li class="list-group-item">Item 2</li>
-      <li class="list-group-item">Item 3</li>
-      <li class="list-group-item">Item 4</li>
-      <li class="list-group-item">Item 5</li> -->
     </ul>
 
     <!-- Bottom Nav Bar -->
@@ -162,10 +157,10 @@
               //get user Email
               var userEmail = userDoc.data().email;
               // Start a new collection and add all data in it.
-              var docref = db.collection("shopping list").doc(userID);
+              var docref = db.collection("shoppinglist").doc(userID);
               var doc = docref.get().then((res) => {
                 if (!res.exists) {
-                  db.collection("shopping list")
+                  db.collection("shoppinglist")
                     .doc(userID)
                     .set({
                       UserID: userID,
@@ -173,7 +168,7 @@
                       Item: firebase.firestore.FieldValue.arrayUnion(Item),
                     });
                 }
-                db.collection("shopping list")
+                db.collection("shoppinglist")
                   .doc(userID)
                   .update({
                     Item: firebase.firestore.FieldValue.arrayUnion(Item),
@@ -201,7 +196,7 @@
                     console.log(user.uid);
                     //go to the correct user document by referencing to the user uid
                     currentUser = db.collection("users").doc(user.uid);
-                    itemList = db.collection("shopping list").doc(user.uid)
+                    itemList = db.collection("shoppinglist").doc(user.uid)
                     //get the document for current user.
                     itemList.get()
                         .then(listDoc => {
