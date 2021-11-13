@@ -111,6 +111,7 @@
               id="itemInput"
               class="form-control"
               placeholder="Enter an item"
+              onkeydown="search()"
             />
           </div>
         </fieldset>
@@ -162,6 +163,7 @@
     <script>
       function saveItem() {
         let Item = document.getElementById("itemInput").value;
+        console.log("hello");
 
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
@@ -240,12 +242,18 @@
         document.getElementById("itemInput").value = "";
       }
 
-      // Submit Form on Enter Key Press
-      document.onkeydown = function () {
-        if (window.event.keyCode == "13") {
+      function search() {
+        if (event.key === "Enter") {
           saveItem();
+          clearTextBox();
         }
-      };
+      }
+
+      $("#itemInput").bind("keypress keydown keyup", function (e) {
+        if (e.key == 'Enter') {
+          e.preventDefault();
+        }
+      });
     </script>
   </body>
 </html>
