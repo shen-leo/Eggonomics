@@ -76,6 +76,17 @@
         padding-bottom: 2.5em;
       }
 
+      .item-delete-button {
+
+        float: right;
+        transition-duration: 0.4s;
+      }
+
+      .item-delete-button:hover {
+        background-color: #4CAF50; /* Green */
+        color: white;
+}
+
       /* footer {
       transform: translateY(85%);
       transition: 1s;
@@ -223,10 +234,16 @@
 
               itemArray.forEach(function (e) {
                 var li = document.createElement("li");
+                var button = document.createElement("button")
+                button.innerHTML = "Delete";
                 li.classList.add("list-group-item");
                 li.classList.add("list-group-item-warning");
+                button.classList.add("item-delete-button")
+                button.onclick = Delete(e)
                 li.innerText = e;
+                li.append(button);
                 ul.append(li);
+          
               });
             });
           } else {
@@ -236,6 +253,11 @@
         });
       }
       populateItem();
+
+      function Delete(item){
+        // delete item from firestore
+        // refresh the shopping list
+      }
 
       // Clears Text Box on Save
       function clearTextBox() {
