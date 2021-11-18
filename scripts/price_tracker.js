@@ -42,3 +42,30 @@ document.addEventListener("DOMContentLoaded", function(event){
     displayQuery();
     waitForSearchQuery();
 })
+
+async function getCSVdata(){
+    const response = await fetch('../sampleAPIdata.csv');
+    const data = await response.text();
+    const list = data.split('\n').slice(1);
+    list.forEach(row => {
+        const columns = row.split(',');
+
+        let name = columns[0];
+        let price = parseFloat(columns[1]);
+        let in_stock = parseInt(columns[2]);
+        let retailer = columns[3];
+        let manufacturer = columns[4];
+
+        // for error handling
+        // console.log(name, price, in_stock, retailer, manufacturer);
+
+        db.collection("sampleAPI").add({
+            name: name,
+            price: price,
+            in_stock: in_stock,
+            retailer: retailer,
+            manufacturer: manufacturer
+        })
+    })
+    console.log("CSV added to firestore!");
+}
