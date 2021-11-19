@@ -24,6 +24,54 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
+  <style>
+    #content {
+      /* border: 1px solid black; */
+      height: fit-content;
+    }
+
+    #carousel, #carousel2 {
+      /* border: 1px solid black; */
+      height: 230px;
+      white-space: nowrap;
+      margin-top: 0;
+      overflow: auto;
+      cursor: grab;
+
+    }
+
+    #carousel::-webkit-scrollbar, #carousel2::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      display: inline-block;
+      width: 200px;
+      margin-right: 4%;
+      height: 100%;
+      border: 0px;
+    }
+
+    .carousel-img {
+      display: block;
+      margin: 0 auto;
+      height: 80%;
+      pointer-events: none;
+    }
+
+    .carousel-details {
+      height: 20%;
+      margin: 0 auto;
+    }
+
+    .carousel-header {
+      /* border: 1px solid black; */
+      font-weight: bold;
+      text-align: left;
+      margin-bottom: 1em;
+      margin-top: 2em;
+    }
+  </style>
 </head>
 
 <body>
@@ -35,24 +83,24 @@
       </div>
     </div>
   </nav>
-  
-  <div id="content">
-  <!-- Logo and Search -->
-  <div>
-    <img style="height: 25vh;" src="img/logo.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
-  </div>
-  <div>
-    <form class="form-inline my-2 my-lg-0">
-      <input id="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-      <br />
-      <button id="submit-query" class="btn btn-outline-success my-2 my-sm-0" type="button">
-        Search
-      </button>
-    </form>
-  </div>
 
-  <!-- Carousel -->
-      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div id="content">
+    <!-- Logo and Search -->
+    <div>
+      <img style="height: 25vh;" src="img/logo.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
+    </div>
+    <div>
+      <form class="form-inline my-2 my-lg-0">
+        <input id="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+        <br />
+        <button id="submit-query" class="btn btn-outline-success my-2 my-sm-0" type="button">
+          Search
+        </button>
+      </form>
+    </div>
+
+    <!-- Carousel -->
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="img/apple_homepage.jpeg" class="d-block w-100" alt="...">
@@ -72,7 +120,127 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
+      </div> -->
+
+    <div class="carousel-header">Favorites</div>
+    <div id="carousel">
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
       </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-header">Deals</div>
+    <div id="carousel2">
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="carousel-img" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item-name">Nutella</div>
+          <div class="item-price">$4.99</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Bottom Nav Bar -->
@@ -96,6 +264,49 @@
   </footer>
   <script src="scripts/firebaseAPI.js"></script>
   <script src="scripts/index.js"></script>
+  <script>
+    const ele = document.getElementById('carousel');
+    ele.style.cursor = 'grab';
+
+    let pos = { top: 0, left: 0, x: 0, y: 0 };
+
+    const mouseDownHandler = function (e) {
+      ele.style.cursor = 'grabbing';
+      ele.style.userSelect = 'none';
+
+      pos = {
+        left: ele.scrollLeft,
+        top: ele.scrollTop,
+        // Get the current mouse position
+        x: e.clientX,
+        y: e.clientY,
+      };
+
+      document.addEventListener('mousemove', mouseMoveHandler);
+      document.addEventListener('mouseup', mouseUpHandler);
+    };
+
+    const mouseMoveHandler = function (e) {
+      // How far the mouse has been moved
+      const dx = e.clientX - pos.x;
+      const dy = e.clientY - pos.y;
+
+      // Scroll the element
+      // ele.scrollTop = pos.top - dy;
+      ele.scrollLeft = pos.left - dx;
+    };
+
+    const mouseUpHandler = function () {
+      ele.style.cursor = 'grab';
+      ele.style.removeProperty('user-select');
+
+      document.removeEventListener('mousemove', mouseMoveHandler);
+      document.removeEventListener('mouseup', mouseUpHandler);
+    };
+
+    // Attach the handler
+    ele.addEventListener('mousedown', mouseDownHandler);
+  </script>
 </body>
 
 </html>
