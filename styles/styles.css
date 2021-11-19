@@ -62,3 +62,11 @@ a {
 .search-field {
   border: none;
 }
+
+#search-bar{
+  background-color: rgb(238, 238, 238) !important;
+}
+
+#item_img{
+  aspect-ratio: 28 / 19;
+}

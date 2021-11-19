@@ -9,7 +9,7 @@ function displayProducts(){
             products.forEach(doc => {
                 let name = doc.data().name;
                 let price = doc.data().price;
-                let image = 'null';
+                let image = './img/sampleAPIimgs/' + doc.data().image;
 
                 let query = localStorage.getItem('query').toLowerCase();
                 let filter = name.toLowerCase();
@@ -17,6 +17,7 @@ function displayProducts(){
                     let product_card = template.content.cloneNode(true);
                     product_card.querySelector("#item_name").innerHTML = name;
                     product_card.querySelector("#item_price").innerHTML = price;
+                    product_card.querySelector("#item_img").src = image;
                     target_div.appendChild(product_card);
                 }
                 
@@ -60,16 +61,18 @@ async function getCSVdata(){
         let in_stock = parseInt(columns[2]);
         let retailer = columns[3];
         let manufacturer = columns[4];
+        let image = columns[5]
 
         // for error handling
-        // console.log(name, price, in_stock, retailer, manufacturer);
+        // console.log(name, price, in_stock, retailer, manufacturer, image);
 
         db.collection("sampleAPI").add({
             name: name,
             price: price,
             in_stock: in_stock,
             retailer: retailer,
-            manufacturer: manufacturer
+            manufacturer: manufacturer,
+            image: image
         })
     })
     console.log("CSV added to firestore!");

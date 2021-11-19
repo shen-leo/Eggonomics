@@ -83,14 +83,16 @@
 
       .item-delete-button {
         float: right;
-        transition-duration: 0.4s;
+        border-radius: 5px;
+        font-size: 0.9em;
       }
 
-      .item-delete-button:hover {
-        background-color: #4caf50; /* Green */
+      /* .item-delete-button:hover {
+        background-color: red;
         color: white;
-      }
+      } */
 
+      
       /* footer {
       transform: translateY(85%);
       transition: 1s;
@@ -178,6 +180,7 @@
     <script>
       function saveItem() {
         let Item = document.getElementById("itemInput").value;
+        // if text input not is null or not an empty string proceed with saveItem()
         if (Item !== null && Item !== "") {
           firebase.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -205,6 +208,7 @@
                     .update({
                       Item: firebase.firestore.FieldValue.arrayUnion(Item),
                     });
+                  // create list element for the newly added shopping list item
                   var ul = document.getElementById("shopping_list_container");
                   var li = document.createElement("li");
                   var button = document.createElement("button");
@@ -212,7 +216,12 @@
                   li.classList.add("list-group-item");
                   li.classList.add("list-group-item-warning");
                   button.classList.add("item-delete-button");
-                  // button.onclick = Delete(e);
+                  button.classList.add("btn-warning");
+                  // wait for arrayUnion before calling arrayRemove
+                  button.addEventListener("click", () => {
+                    Delete(Item);
+                  });
+                  // removes the front-end UI list items
                   button.addEventListener("click", function () {
                     this.parentNode.remove();
                   });
@@ -242,16 +251,22 @@
             itemList.get().then((listDoc) => {
               var itemArray = listDoc.data().Item;
               var ul = document.getElementById("shopping_list_container");
-              var btn = document.getElementById("btn");
-
+              
+              // auto-populates shopping list items UI with forEach loop
               itemArray.forEach(function (e) {
+                var arrayItem = e;
                 var li = document.createElement("li");
                 var button = document.createElement("button");
                 button.innerHTML = "Delete";
                 li.classList.add("list-group-item");
                 li.classList.add("list-group-item-warning");
                 button.classList.add("item-delete-button");
-                button.onclick = Delete(e);
+                button.classList.add("btn-warning");
+                // wait for arrayUnion before calling arrayRemove
+                button.addEventListener("click", () => {
+                  Delete(arrayItem);
+                });
+                // deletes the front-end UI list items
                 button.addEventListener("click", function () {
                   this.parentNode.remove();
                 });
@@ -266,18 +281,40 @@
           }
         });
       }
+      // calls populateItem() function on page load
       populateItem();
 
-      function Delete(item) {
-        // delete item from firestore
+      function Delete(arrayItem) {
+        console.log(arrayItem);
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            var currentUser = db.collection("users").doc(user.uid);
+            var userID = user.uid;
+
+            currentUser.get().then((userDoc) => {
+              var docref = db.collection("shoppinglist").doc(userID);
+              var doc = docref.get().then((res) => {
+                db.collection("shoppinglist")
+                  .doc(userID)
+                  .update({
+                    Item: firebase.firestore.FieldValue.arrayRemove(arrayItem),
+                  });
+              });
+            });
+          } else {
+            // No user is signed in.
+            console.log("no user signed in");
+          }
+        });
         // refresh the shopping list
       }
 
-      // Clears Text Box on Save
+      // clears textbox
       function clearTextBox() {
         document.getElementById("itemInput").value = "";
       }
 
+      // calls clearTextBox function on enter keypress
       function search() {
         if (event.key === "Enter") {
           saveItem();
@@ -285,6 +322,7 @@
         }
       }
 
+      // prevents the page from submitting the "form" on enter keypress
       $("#itemInput").bind("keypress keydown keyup", function (e) {
         if (e.key == "Enter") {
           e.preventDefault();
