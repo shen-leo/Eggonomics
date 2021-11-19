@@ -23,10 +23,54 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+  <script src="scripts/firebaseAPI.js"></script>
 
-</head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <style>
+    body {
+      height: 100vh;
+    }
+
+    #items-container {
+      width: 100%;
+      height: fit-content;
+      margin-top: 2em;
+      text-align: center;
+    }
+
+    #items-container button {
+      width: 20px;
+      height: 20px;
+    }
+
+    input {
+      text-align: center;
+      border: 1px solid orange;
+      margin: 1em 1em 0 1em;
+      width: 10em;
+    }
+
+    #btn-gp {
+      width: 100%;
+      text-align: center;
+    }
+
+    #btn-gp button {
+      margin: 2em 1em 0 1em;
+      width: 6em;
+    }
+
+    #header div {
+      text-align: center;
+      width: 10em;
+      margin: 1em 1em 0 1em;
+      display: inline-block;
+      /* border: 1px solid orange; */
+      transform: translateX(-11px);
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -35,73 +79,140 @@
     <div class="container">
       <div class="navbar-brand">
         <a class="icon-btn" href="index.html"><span class="material-icons md-18">
-          arrow_back_ios
-        </span></a>
+            arrow_back_ios
+          </span></a>
         <span>Inventory</span>
       </div>
     </div>
   </nav>
 
-  <!-- Table -->
-  <div id="content">
-    <table class="table table-borderless">
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      <tr>
-        <td class="material-icons">icecream</td>
-        <td>Item name</td>
-        <td>Quantity</td>
-      </tr>
-      </tbody>
-    </table>
+  <div id="items-container">
+    <div id="header">
+      <div>Item</div>
+      <div>Quantity</div>
+    </div>
+  </div>
+  <div id="btn-gp">
+    <button type="button" class="btn btn-warning" id="btn" onclick="addItem()">Add Item</button>
+    <button type="button" class="btn btn-warning" id="btn" onclick="saveList()">Save</button>
+  </div>
 
-    <button class="btn btn-warning" type="submit" style="margin: 1em 5%; width: 4em;">Add</button>
-    <button class="btn btn-warning" type="submit"style="margin: 1em 5%; width: 4em;">Edit</button>
-
-    <!-- Bottom Nav Bar -->
-    <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em;">
-      <a class="icon-btn" href="index.html">
-        <i class="material-icons">shopping_cart</i>
-        <p class="btm-btn-text">Price Track</p>
-      </a>
-      <a class="icon-btn" href="inventory.html">
-        <i class="material-icons">kitchen</i>
-        <p class="btm-btn-text">Pantry</p>
-      </a>
-      <a class="icon-btn" href="shopping_list.html">
-        <i class="material-icons">playlist_add_check</i>
-        <p class="btm-btn-text">Shopping List</p>
-      </a>
-      <a class="icon-btn" href="">
-        <i class="material-icons">bar_chart</i>
-        <p class="btm-btn-text">Analytics</p>
-      </a>
-    </footer>
+  <!-- Bottom Nav Bar -->
+  <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em;">
+    <a class="icon-btn" href="index.html">
+      <i class="material-icons">shopping_cart</i>
+      <p class="btm-btn-text">Price Track</p>
+    </a>
+    <a class="icon-btn" href="inventory.html">
+      <i class="material-icons">kitchen</i>
+      <p class="btm-btn-text">Pantry</p>
+    </a>
+    <a class="icon-btn" href="shopping_list.html">
+      <i class="material-icons">playlist_add_check</i>
+      <p class="btm-btn-text">Shopping List</p>
+    </a>
+    <a class="icon-btn" href="">
+      <i class="material-icons">bar_chart</i>
+      <p class="btm-btn-text">Analytics</p>
+    </a>
+  </footer>
 
   </div>
+
+  <script>
+    var itemCount = 0
+    var itemsContainer = document.getElementById("items-container")
+
+    function deleteItem(parentID) {
+      itemCount -= 1
+      document.getElementById(parentID).remove()
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          db.collection("pantry").doc(user.uid).collection("items").doc(parentID).delete().then(() => {
+            console.log("Document successfully deleted!");
+          }).catch((error) => {
+            console.error("Error removing document: ", error);
+          });
+        }
+      })
+    }
+
+    function addItem() {
+      itemCount += 1
+      let item = document.createElement("div")
+      item.setAttribute('class', "items")
+      item.setAttribute('id', `item-${itemCount}`)
+      let itemName = document.createElement("input")
+      itemName.setAttribute('id', `item-name-${itemCount}`)
+      let itemQuantity = document.createElement("input")
+      itemQuantity.setAttribute('id', `item-quantity-${itemCount}`)
+      deleteButton = document.createElement("button")
+      deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
+      item.appendChild(itemName)
+      item.appendChild(itemQuantity)
+      item.appendChild(deleteButton)
+      itemsContainer.appendChild(item)
+    }
+
+    function saveList() {
+      itemCount = 0
+      items = document.querySelectorAll(".items")
+      items.forEach(element => {
+        if (element.children[0].value == "") {
+          itemsContainer.removeChild(element)
+          itemCount -= 1
+        }
+
+        itemCount += 1
+        element.setAttribute('id', `item-${itemCount}`)
+        element.children[2].setAttribute('onclick', `deleteItem("${element.id}")`)
+
+        firebase.auth().onAuthStateChanged(user => {
+          if (user) {
+            let itemNumber = element.id;
+            let itemName = element.children[0].value;
+            let itemQuantity = element.children[1].value;
+            if (itemName != "") {
+              db.collection("pantry").doc(user.uid).collection("items").doc(itemNumber).set({
+                name: itemName,
+                quantity: itemQuantity
+              });
+            }
+          }
+        })
+      });
+    }
+
+    function populate() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          db.collection("pantry").doc(user.uid).collection("items").get().then(snap => {
+            snap.forEach(doc => {
+              itemCount += 1
+              let itemName = doc.data().name;
+              let itemQuantity = doc.data().quantity;
+              let item = document.createElement("div")
+              item.setAttribute('id', `item-${itemCount}`)
+              item.setAttribute('class', "items")
+              let itemNameField = document.createElement("input")
+              itemNameField.setAttribute('id', `item-name-${itemCount}`)
+              let itemQuantityField = document.createElement("input")
+              itemQuantityField.setAttribute('id', `item-quantity-${itemCount}`)
+              deleteButton = document.createElement("button")
+              deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
+              item.appendChild(itemNameField)
+              item.appendChild(itemQuantityField)
+              item.appendChild(deleteButton)
+              itemsContainer.appendChild(item)
+              itemNameField.value = itemName
+              itemQuantityField.value = itemQuantity
+            })
+          })
+        }
+      })
+    }
+    populate()
+  </script>
 </body>
 
 </html>
