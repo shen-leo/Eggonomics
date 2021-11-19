@@ -174,9 +174,8 @@
     <script>
       function saveItem() {
         let Item = document.getElementById("itemInput").value;
-        console.log("hello");
-
-        firebase.auth().onAuthStateChanged((user) => {
+        if (Item !== null && Item !== "") {
+          firebase.auth().onAuthStateChanged((user) => {
           if (user) {
             var currentUser = db.collection("users").doc(user.uid);
             console.log(user);
@@ -215,6 +214,8 @@
             console.log("no user signed in");
           }
         });
+        }
+        
       }
 
       function populateItem() {
