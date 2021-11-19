@@ -83,14 +83,16 @@
 
       .item-delete-button {
         float: right;
-        transition-duration: 0.4s;
+        border-radius: 5px;
+        font-size: 0.9em;
       }
 
-      .item-delete-button:hover {
-        background-color: #4caf50; /* Green */
+      /* .item-delete-button:hover {
+        background-color: red;
         color: white;
-      }
+      } */
 
+      
       /* footer {
       transform: translateY(85%);
       transition: 1s;
@@ -214,6 +216,7 @@
                   li.classList.add("list-group-item");
                   li.classList.add("list-group-item-warning");
                   button.classList.add("item-delete-button");
+                  button.classList.add("btn-warning");
                   // wait for arrayUnion before calling arrayRemove
                   button.addEventListener("click", () => {
                     Delete(Item);
@@ -258,6 +261,7 @@
                 li.classList.add("list-group-item");
                 li.classList.add("list-group-item-warning");
                 button.classList.add("item-delete-button");
+                button.classList.add("btn-warning");
                 // wait for arrayUnion before calling arrayRemove
                 button.addEventListener("click", () => {
                   Delete(arrayItem);
