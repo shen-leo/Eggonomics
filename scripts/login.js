@@ -20,13 +20,14 @@ function signIn() {
 function signUp() {
     var password = document.getElementById("password2").value
     var email = document.getElementById("email2").value
+    var name = document.getElementById("name").value
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Signed in 
             var user = userCredential.user;
             console.log("created")
             db.collection("users").doc(user.uid).set({     //write to firestore. We are using the UID for the ID in users collection
-                name: user.displayName,                    //"users" collection
+                name: name,                                //"users" collection
                 email: user.email                          //with authenticated user's ID (user.uid)
             }).then(function () {
                 console.log("New user added to firestore");
@@ -51,4 +52,14 @@ document.getElementById("old-user").addEventListener("click", function() {
 document.getElementById("new-user").addEventListener("click", function() {
     authOption.style.display = "none";
     signUpContainer.style.display = "block";
+})
+
+document.getElementById("back1").addEventListener("click", function() {
+    authOption.style.display = "flex";
+    authContainer.style.display = "none";
+})
+
+document.getElementById("back2").addEventListener("click", function() {
+    authOption.style.display = "flex";
+    signUpContainer.style.display = "none";
 })

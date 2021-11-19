@@ -71,7 +71,7 @@
       border: none;
     }
 
-    #signIn, #signUp, #old-user, #new-user {
+    #signIn, #signUp, #old-user, #new-user, #back1, #back2 {
       margin: 1em 1em 0 1em;
       background-color: white;
       padding: 0.5em;
@@ -119,6 +119,7 @@
   <div id="auth-container">
     <p><span>Email</span><input id="email1" type="email"></p>
     <p><span>Password</span><input id="password1" type="password"></p>
+    <button id="back1">Back</button>
     <button onclick="signIn()" id="signIn">Sign In</button>
   </div>
 
@@ -126,6 +127,7 @@
     <p><span>Name</span><input id="name" type="text"></p>
     <p><span>Email</span><input id="email2" type="email"></p>
     <p><span>Password</span><input id="password2" type="password"></p>
+    <button id="back2">Back</button>
     <button onclick="signUp()" id="signUp">Sign Up</button>
   </div>
 
