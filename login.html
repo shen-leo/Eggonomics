@@ -47,32 +47,46 @@
       height: 100%;
     }
 
-    #auth-container {
+    #auth-container, #signup-container {
+      display: none;
       margin: auto;
       width: fit-content;
       border: 10px solid white;
       background-color: #ffbf69;
       padding: 2em;
       border-radius: 10px;
-      
     }
 
-    #email, #password {
+    #auth-option {
+      border: 10px solid transparent;
+      padding: 2em;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #email, #password, #name {
       width: 11em;
       float: right;
       border: none;
     }
 
-    #signIn, #signUp {
+    #signIn, #signUp, #old-user, #new-user {
       margin: 1em 1em 0 1em;
       background-color: white;
       padding: 0.5em;
-      border-radius: 15%;
+      border-radius: 5px;
       border: none;
       border: 2px solid transparent;
     }
 
-    #signIn:hover, #signUp:hover {
+    #old-user, #new-user {
+      margin: auto auto 1em auto;
+      width: 50%;
+      max-width: 13em;
+    }
+
+    #signIn:hover, #signUp:hover, #old-user:hover, #new-user:hover {
       border: 2px solid black;
     }
 
@@ -97,10 +111,21 @@
   </div>
 
   <!-- Customized Login Container -->
+  <div id="auth-option">
+    <button onclick="" id="old-user">Sign In</button>
+    <button onclick="" id="new-user">Create Account</button>
+  </div>
+
   <div id="auth-container">
     <p><span>Email</span><input id="email" type="email"></p>
     <p><span>Password</span><input id="password" type="password"></p>
     <button onclick="signIn()" id="signIn">Sign In</button>
+  </div>
+
+  <div id="signup-container">
+    <p><span>Name</span><input id="name" type="text"></p>
+    <p><span>Email</span><input id="email" type="email"></p>
+    <p><span>Password</span><input id="password" type="password"></p>
     <button onclick="signUp()" id="signUp">Sign Up</button>
   </div>
 

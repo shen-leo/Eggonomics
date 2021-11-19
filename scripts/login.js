@@ -39,3 +39,16 @@ function signUp() {
             console.log(errorMessage)
         });
 }
+
+var authContainer = document.getElementById("auth-container")
+var signUpContainer = document.getElementById("signup-container")
+var authOption = document.getElementById("auth-option")
+
+document.getElementById("old-user").addEventListener("click", function() {
+    authOption.style.display = "none";
+    authContainer.style.display = "block";
+})
+document.getElementById("new-user").addEventListener("click", function() {
+    authOption.style.display = "none";
+    signUpContainer.style.display = "block";
+})
