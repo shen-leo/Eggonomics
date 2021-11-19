@@ -18,6 +18,7 @@ function displayProducts(){
                     product_card.querySelector("#item_name").innerHTML = name;
                     product_card.querySelector("#item_price").innerHTML = price;
                     product_card.querySelector("#item_img").src = image;
+
                     target_div.appendChild(product_card);
                 }
                 
@@ -25,6 +26,13 @@ function displayProducts(){
             })
         })
 }
+
+// function describeProductInfo(){
+//     console.log("Redirecting...");
+//     let product_name = 
+
+//     // window.location.assign("https://www.google.com/search?q=" + product_name);
+// }
 
 function displayQuery(){
     let query = localStorage.getItem('query');
