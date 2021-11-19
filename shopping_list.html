@@ -61,6 +61,11 @@
         margin-right: auto;
       }
 
+      .btn:focus {
+        outline: none;
+        box-shadow: none;
+      }
+      
       li {
         width: 60vw;
         margin-left: auto;
@@ -77,15 +82,14 @@
       }
 
       .item-delete-button {
-
         float: right;
         transition-duration: 0.4s;
       }
 
       .item-delete-button:hover {
-        background-color: #4CAF50; /* Green */
+        background-color: #4caf50; /* Green */
         color: white;
-}
+      }
 
       /* footer {
       transform: translateY(85%);
@@ -176,46 +180,45 @@
         let Item = document.getElementById("itemInput").value;
         if (Item !== null && Item !== "") {
           firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            var currentUser = db.collection("users").doc(user.uid);
-            console.log(user);
-            var userID = user.uid;
+            if (user) {
+              var currentUser = db.collection("users").doc(user.uid);
+              console.log(user);
+              var userID = user.uid;
 
-            currentUser.get().then((userDoc) => {
-              //get user Email
-              var userEmail = userDoc.data().email;
-              // Start a new collection and add all data in it.
-              var docref = db.collection("shoppinglist").doc(userID);
-              var doc = docref.get().then((res) => {
-                if (!res.exists) {
+              currentUser.get().then((userDoc) => {
+                //get user Email
+                var userEmail = userDoc.data().email;
+                // Start a new collection and add all data in it.
+                var docref = db.collection("shoppinglist").doc(userID);
+                var doc = docref.get().then((res) => {
+                  if (!res.exists) {
+                    db.collection("shoppinglist")
+                      .doc(userID)
+                      .set({
+                        UserID: userID,
+                        UserEmail: userEmail,
+                        Item: firebase.firestore.FieldValue.arrayUnion(Item),
+                      });
+                  }
                   db.collection("shoppinglist")
                     .doc(userID)
-                    .set({
-                      UserID: userID,
-                      UserEmail: userEmail,
+                    .update({
                       Item: firebase.firestore.FieldValue.arrayUnion(Item),
                     });
-                }
-                db.collection("shoppinglist")
-                  .doc(userID)
-                  .update({
-                    Item: firebase.firestore.FieldValue.arrayUnion(Item),
-                  });
-                var ul = document.getElementById("shopping_list_container");
-                var li = document.createElement("li");
-                li.classList.add("list-group-item");
-                li.classList.add("list-group-item-warning");
-                li.innerText = Item;
-                ul.append(li);
+                  var ul = document.getElementById("shopping_list_container");
+                  var li = document.createElement("li");
+                  li.classList.add("list-group-item");
+                  li.classList.add("list-group-item-warning");
+                  li.innerText = Item;
+                  ul.append(li);
+                });
               });
-            });
-          } else {
-            // No user is signed in.
-            console.log("no user signed in");
-          }
-        });
+            } else {
+              // No user is signed in.
+              console.log("no user signed in");
+            }
+          });
         }
-        
       }
 
       function populateItem() {
@@ -235,16 +238,15 @@
 
               itemArray.forEach(function (e) {
                 var li = document.createElement("li");
-                var button = document.createElement("button")
+                var button = document.createElement("button");
                 button.innerHTML = "Delete";
                 li.classList.add("list-group-item");
                 li.classList.add("list-group-item-warning");
-                button.classList.add("item-delete-button")
-                button.onclick = Delete(e)
+                button.classList.add("item-delete-button");
+                button.onclick = Delete(e);
                 li.innerText = e;
                 li.append(button);
                 ul.append(li);
-          
               });
             });
           } else {
@@ -255,7 +257,7 @@
       }
       populateItem();
 
-      function Delete(item){
+      function Delete(item) {
         // delete item from firestore
         // refresh the shopping list
       }
@@ -273,7 +275,7 @@
       }
 
       $("#itemInput").bind("keypress keydown keyup", function (e) {
-        if (e.key == 'Enter') {
+        if (e.key == "Enter") {
           e.preventDefault();
         }
       });
