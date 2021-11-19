@@ -178,6 +178,7 @@
     <script>
       function saveItem() {
         let Item = document.getElementById("itemInput").value;
+        // if text input not is null or not an empty string proceed with saveItem()
         if (Item !== null && Item !== "") {
           firebase.auth().onAuthStateChanged((user) => {
             if (user) {
@@ -205,21 +206,19 @@
                     .update({
                       Item: firebase.firestore.FieldValue.arrayUnion(Item),
                     });
+                  // create list element for the newly added shopping list item
                   var ul = document.getElementById("shopping_list_container");
                   var li = document.createElement("li");
                   var button = document.createElement("button");
-                  var arrayItemId = Item.replace(/\s/g, "");
                   button.innerHTML = "Delete";
                   li.classList.add("list-group-item");
                   li.classList.add("list-group-item-warning");
                   button.classList.add("item-delete-button");
-                  button.classList.add(arrayItemId);
+                  // wait for arrayUnion before calling arrayRemove
                   button.addEventListener("click", () => {
-                    Delete(arrayItem);
+                    Delete(Item);
                   });
-                  // button.onclick = Delete(Item);
-                  // button.addEventListener("click", Delete(Item));
-                  console.log(Item);
+                  // removes the front-end UI list items
                   button.addEventListener("click", function () {
                     this.parentNode.remove();
                   });
@@ -241,7 +240,7 @@
           // Check if user is signed in:
           if (user) {
             // Do something for the current logged-in user here:
-            // console.log(user.uid);
+            console.log(user.uid);
             //go to the correct user document by referencing to the user uid
             currentUser = db.collection("users").doc(user.uid);
             itemList = db.collection("shoppinglist").doc(user.uid);
@@ -249,23 +248,21 @@
             itemList.get().then((listDoc) => {
               var itemArray = listDoc.data().Item;
               var ul = document.getElementById("shopping_list_container");
-              // var btn = document.getElementById("btn");
-
+              
+              // auto-populates shopping list items UI with forEach loop
               itemArray.forEach(function (e) {
                 var arrayItem = e;
                 var li = document.createElement("li");
                 var button = document.createElement("button");
-                var arrayItemId = arrayItem.replace(/\s/g, "");
                 button.innerHTML = "Delete";
                 li.classList.add("list-group-item");
                 li.classList.add("list-group-item-warning");
                 button.classList.add("item-delete-button");
-                button.classList.add(arrayItemId);
-                // button.id = arrayItemId
-                // button.addEventListener("click", Delete(e));
+                // wait for arrayUnion before calling arrayRemove
                 button.addEventListener("click", () => {
                   Delete(arrayItem);
                 });
+                // deletes the front-end UI list items
                 button.addEventListener("click", function () {
                   this.parentNode.remove();
                 });
@@ -280,6 +277,7 @@
           }
         });
       }
+      // calls populateItem() function on page load
       populateItem();
 
       function Delete(arrayItem) {
@@ -307,11 +305,12 @@
         // refresh the shopping list
       }
 
-      // Clears Text Box on Save
+      // clears textbox
       function clearTextBox() {
         document.getElementById("itemInput").value = "";
       }
 
+      // calls clearTextBox function on enter keypress
       function search() {
         if (event.key === "Enter") {
           saveItem();
@@ -319,6 +318,7 @@
         }
       }
 
+      // prevents the page from submitting the "form" on enter keypress
       $("#itemInput").bind("keypress keydown keyup", function (e) {
         if (e.key == "Enter") {
           e.preventDefault();
