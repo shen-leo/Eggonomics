@@ -1,8 +1,8 @@
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
 function signIn() {
-    var password = document.getElementById("password").value
-    var email = document.getElementById("email").value
+    var password = document.getElementById("password1").value
+    var email = document.getElementById("email1").value
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Signed in
@@ -18,8 +18,8 @@ function signIn() {
 }
 
 function signUp() {
-    var password = document.getElementById("password").value
-    var email = document.getElementById("email").value
+    var password = document.getElementById("password2").value
+    var email = document.getElementById("email2").value
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
             // Signed in 
