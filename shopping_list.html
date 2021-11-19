@@ -65,7 +65,7 @@
         outline: none;
         box-shadow: none;
       }
-      
+
       li {
         width: 60vw;
         margin-left: auto;
@@ -207,9 +207,14 @@
                     });
                   var ul = document.getElementById("shopping_list_container");
                   var li = document.createElement("li");
+                  var button = document.createElement("button");
+                  button.innerHTML = "Delete";
                   li.classList.add("list-group-item");
                   li.classList.add("list-group-item-warning");
+                  button.classList.add("item-delete-button");
+                  // button.onclick = Delete(e);
                   li.innerText = Item;
+                  li.append(button);
                   ul.append(li);
                 });
               });
