@@ -26,12 +26,11 @@
 
   <style>
     #content {
-      /* border: 1px solid black; */
       height: fit-content;
     }
 
-    #carousel, #carousel2 {
-      /* border: 1px solid black; */
+    #carousel,
+    #carousel2 {
       height: 230px;
       white-space: nowrap;
       margin-top: 0;
@@ -40,7 +39,8 @@
 
     }
 
-    #carousel::-webkit-scrollbar, #carousel2::-webkit-scrollbar {
+    #carousel::-webkit-scrollbar,
+    #carousel2::-webkit-scrollbar {
       display: none;
     }
 
@@ -49,7 +49,8 @@
       width: 200px;
       margin-right: 4%;
       height: 100%;
-      border: 0px;
+      border: 1px solid transparent;
+      padding: 10px;
     }
 
     .carousel-img {
@@ -65,11 +66,16 @@
     }
 
     .carousel-header {
-      /* border: 1px solid black; */
       font-weight: bold;
       text-align: left;
       margin-bottom: 1em;
       margin-top: 2em;
+    }
+
+    .card:hover {
+      transform: scale(1);
+      cursor: pointer;
+      border: 1px solid black;
     }
   </style>
 </head>
@@ -100,31 +106,9 @@
     </div>
 
     <!-- Carousel -->
-    <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="img/apple_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/banana_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="img/broccoli_homepage.jpeg" class="d-block w-100" alt="...">
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div> -->
-
     <div class="carousel-header">Favorites</div>
     <div id="carousel">
-      <div class="card">
+      <div class="card" onclick="location='index.html'">
         <img class="carousel-img" src="img/placeholder.jpg" alt="">
         <div class="carousel-details">
           <div class="item-name">Nutella</div>
@@ -182,7 +166,7 @@
       </div>
     </div>
 
-    <div class="carousel-header">Deals</div>
+    <!-- <div class="carousel-header">Deals</div>
     <div id="carousel2">
       <div class="card">
         <img class="carousel-img" src="img/placeholder.jpg" alt="">
@@ -241,7 +225,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- Bottom Nav Bar -->
   <footer class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em;">
