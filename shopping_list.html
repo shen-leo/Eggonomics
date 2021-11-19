@@ -213,6 +213,9 @@
                   li.classList.add("list-group-item-warning");
                   button.classList.add("item-delete-button");
                   // button.onclick = Delete(e);
+                  button.addEventListener("click", function () {
+                    this.parentNode.remove();
+                  });
                   li.innerText = Item;
                   li.append(button);
                   ul.append(li);
@@ -249,6 +252,9 @@
                 li.classList.add("list-group-item-warning");
                 button.classList.add("item-delete-button");
                 button.onclick = Delete(e);
+                button.addEventListener("click", function () {
+                  this.parentNode.remove();
+                });
                 li.innerText = e;
                 li.append(button);
                 ul.append(li);
