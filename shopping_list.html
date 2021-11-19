@@ -208,11 +208,18 @@
                   var ul = document.getElementById("shopping_list_container");
                   var li = document.createElement("li");
                   var button = document.createElement("button");
+                  var arrayItemId = Item.replace(/\s/g, "");
                   button.innerHTML = "Delete";
                   li.classList.add("list-group-item");
                   li.classList.add("list-group-item-warning");
                   button.classList.add("item-delete-button");
-                  // button.onclick = Delete(e);
+                  button.classList.add(arrayItemId);
+                  button.addEventListener("click", () => {
+                    Delete(arrayItem);
+                  });
+                  // button.onclick = Delete(Item);
+                  // button.addEventListener("click", Delete(Item));
+                  console.log(Item);
                   button.addEventListener("click", function () {
                     this.parentNode.remove();
                   });
@@ -234,7 +241,7 @@
           // Check if user is signed in:
           if (user) {
             // Do something for the current logged-in user here:
-            console.log(user.uid);
+            // console.log(user.uid);
             //go to the correct user document by referencing to the user uid
             currentUser = db.collection("users").doc(user.uid);
             itemList = db.collection("shoppinglist").doc(user.uid);
@@ -242,16 +249,23 @@
             itemList.get().then((listDoc) => {
               var itemArray = listDoc.data().Item;
               var ul = document.getElementById("shopping_list_container");
-              var btn = document.getElementById("btn");
+              // var btn = document.getElementById("btn");
 
               itemArray.forEach(function (e) {
+                var arrayItem = e;
                 var li = document.createElement("li");
                 var button = document.createElement("button");
+                var arrayItemId = arrayItem.replace(/\s/g, "");
                 button.innerHTML = "Delete";
                 li.classList.add("list-group-item");
                 li.classList.add("list-group-item-warning");
                 button.classList.add("item-delete-button");
-                button.onclick = Delete(e);
+                button.classList.add(arrayItemId);
+                // button.id = arrayItemId
+                // button.addEventListener("click", Delete(e));
+                button.addEventListener("click", () => {
+                  Delete(arrayItem);
+                });
                 button.addEventListener("click", function () {
                   this.parentNode.remove();
                 });
@@ -268,8 +282,28 @@
       }
       populateItem();
 
-      function Delete(item) {
-        // delete item from firestore
+      function Delete(arrayItem) {
+        console.log(arrayItem);
+        firebase.auth().onAuthStateChanged((user) => {
+          if (user) {
+            var currentUser = db.collection("users").doc(user.uid);
+            var userID = user.uid;
+
+            currentUser.get().then((userDoc) => {
+              var docref = db.collection("shoppinglist").doc(userID);
+              var doc = docref.get().then((res) => {
+                db.collection("shoppinglist")
+                  .doc(userID)
+                  .update({
+                    Item: firebase.firestore.FieldValue.arrayRemove(arrayItem),
+                  });
+              });
+            });
+          } else {
+            // No user is signed in.
+            console.log("no user signed in");
+          }
+        });
         // refresh the shopping list
       }
 
