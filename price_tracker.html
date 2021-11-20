@@ -24,6 +24,38 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
+  <style>
+    .text-field {
+      flex-shrink: 1;
+      flex-grow: 1;
+    }
+
+    .card:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+
+    .card {
+      transition: 0.5s;
+    }
+
+    .search-field::placeholder {
+      color: black;
+    }
+
+    .search-field {
+      border: none;
+    }
+
+    #search-bar {
+      background-color: rgb(238, 238, 238) !important;
+    }
+
+    #item_img {
+      aspect-ratio: 28 / 19;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -31,8 +63,8 @@
     <div class="container-fluid navbar-container my-nav">
       <div class="navbar-brand">
         <a class="icon-btn" href="index.html"><span class="material-icons md-18">
-          arrow_back_ios
-        </span></a>
+            arrow_back_ios
+          </span></a>
       </div>
       <form class="d-flex text-field" action=".">
         <input id="search-bar" class="form-control me-2 search-field bg-warning" type="search" placeholder="..."
@@ -56,7 +88,8 @@
   <!-- DYNAMICALLY ADDED USING JS -->
   <template id="product_card">
     <div class="col">
-      <div class="card h-100 border-warning bg-warning" id="item_card" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <div class="card h-100 border-warning bg-warning" id="item_card" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
         <img src="img/banana_homepage.jpeg" class="card-img-top" alt="egg" id="item_img">
         <div class="card-body">
           <h5 class="card-title" id="item_name">ITEM</h5>

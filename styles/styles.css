@@ -40,33 +40,3 @@ a {
   color: white;
 }
 
-/* Price Tracker */
-.text-field {
-  flex-shrink: 1;
-  flex-grow: 1;
-}
-
-.card:hover{
-  transform: scale(1.1);
-  cursor: pointer;
-}
-
-.card{
-  transition: 0.5s;
-}
-
-.search-field::placeholder {
-  color: black;
-}
-
-.search-field {
-  border: none;
-}
-
-#search-bar{
-  background-color: rgb(238, 238, 238) !important;
-}
-
-#item_img{
-  aspect-ratio: 28 / 19;
-}

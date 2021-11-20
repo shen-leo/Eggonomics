@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>New Shopping List</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project" />
+  <meta name="DTC08" content="Eggonomics Shopping List" />
+
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+
+  <!-- Firebase 8 CDNs -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+
+  <!-- Link to the api keys for your firebase project -->
+  <script src="/scripts/firebaseAPI.js"></script>
+
+  <style>
+    body {
+      height: 100vh;
+    }
+
+    #content {
+      border: 1px solid black;
+      height: 90%;
+    }
+
+    .card {
+      width: 30%;
+      margin: 0 2em;
+    }
+
+    .card-img {
+      width: 100%;
+    }
+
+    .card button {
+      position: absolute;
+      width: 1.5em;
+      height: 1.5em;
+      bottom: 0px;
+      right: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav Bar -->
+  <nav class="navbar navbar-light bg-warning">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="icon-btn" href="index.html"><span class="material-icons md-18"> arrow_back_ios </span></a>
+        <span>Shopping List</span>
+      </div>
+    </div>
+  </nav>
+
+  <div id="content">
+
+
+
+
+
+
+
+  </div>
+
+  <!-- Bottom Nav Bar -->
+  <footer id="nav" class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em">
+    <a class="icon-btn" href="index.html">
+      <i class="material-icons">shopping_cart</i>
+      <p class="btm-btn-text">Price Track</p>
+    </a>
+    <a class="icon-btn" href="inventory.html">
+      <i class="material-icons">kitchen</i>
+      <p class="btm-btn-text">Pantry</p>
+    </a>
+    <a class="icon-btn" href="shopping_list.html">
+      <i class="material-icons">playlist_add_check</i>
+      <p class="btm-btn-text">Shopping List</p>
+    </a>
+    <a class="icon-btn" href="">
+      <i class="material-icons">bar_chart</i>
+      <p class="btm-btn-text">Analytics</p>
+      <img src="" alt="">
+    </a>
+  </footer>
+
+  <!--------------------------------------------------------------------->
+  <!-- JS files: Your own JavaScript functions included here    -->
+  <!--------------------------------------------------------------------->
+  <script>
+    const cardContainer = document.getElementById("content")
+    function populate() {
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          db.collection("shoppinglist").doc(user.uid).collection("lists").get().then(snap => {
+            snap.forEach(doc => {
+              let listName = doc.data().name;
+              let listImg = doc.data().img;
+
+              let card = document.createElement("div")
+              card.setAttribute('id', `${doc.id}`)
+              card.setAttribute('class', "card")
+              
+              let cardName = document.createElement("div")
+              cardName.innerHTML = `${listName}`
+              cardName.setAttribute('class', "card-name")
+
+              let cardImg = document.createElement("img")
+              cardImg.setAttribute('class', "card-img")
+              cardImg.setAttribute('src', `${listImg}`)
+
+              let deleteButton = document.createElement("button")
+              deleteButton.setAttribute('onclick', `deleteItem("${card.id}")`)
+
+              card.appendChild(cardImg)
+              card.appendChild(cardName)
+              card.appendChild(deleteButton)
+             
+              cardContainer.appendChild(card)
+            })
+          })
+        }
+      })
+    }
+    populate()
+  </script>
+</body>
+
+</html>
