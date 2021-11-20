@@ -192,11 +192,11 @@
                 //get user Email
                 var userEmail = userDoc.data().email;
                 // Start a new collection and add all data in it.
-                var docref = db.collection("shoppinglist").doc(userID);
+                var docref = db.collection("shoppinglist").doc(userID).collection("lists").doc("1");
                 var doc = docref.get().then((res) => {
                   if (!res.exists) {
                     db.collection("shoppinglist")
-                      .doc(userID)
+                      .doc(userID).collection("lists").doc("1")
                       .set({
                         UserID: userID,
                         UserEmail: userEmail,
@@ -205,7 +205,7 @@
                   }
                   db.collection("shoppinglist")
                     .doc(userID)
-                    .update({
+                    .collection("lists").doc("1").update({
                       Item: firebase.firestore.FieldValue.arrayUnion(Item),
                     });
                   // create list element for the newly added shopping list item
@@ -246,7 +246,7 @@
             console.log(user.uid);
             //go to the correct user document by referencing to the user uid
             currentUser = db.collection("users").doc(user.uid);
-            itemList = db.collection("shoppinglist").doc(user.uid);
+            itemList = db.collection("shoppinglist").doc(user.uid).collection("lists").doc("1");
             //get the document for current user.
             itemList.get().then((listDoc) => {
               var itemArray = listDoc.data().Item;
@@ -292,10 +292,10 @@
             var userID = user.uid;
 
             currentUser.get().then((userDoc) => {
-              var docref = db.collection("shoppinglist").doc(userID);
+              var docref = db.collection("shoppinglist").doc(userID).collection("lists").doc("1");
               var doc = docref.get().then((res) => {
                 db.collection("shoppinglist")
-                  .doc(userID)
+                  .doc(userID).collection("lists").doc("1")
                   .update({
                     Item: firebase.firestore.FieldValue.arrayRemove(arrayItem),
                   });

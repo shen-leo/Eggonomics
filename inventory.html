@@ -198,7 +198,6 @@
                   existDoc = true
                 }
               })
-              console.log(existDoc)
               if (!existDoc) {
                 db.collection("pantry").doc(user.uid).collection("items").doc(doc.id).delete().then(() => {
                   console.log("Document successfully deleted!");
