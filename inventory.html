@@ -158,15 +158,19 @@
       itemCount = 0
       items = document.querySelectorAll(".items")
       items.forEach(element => {
+
+        //Remove empty item fields
         if (element.children[0].value == "") {
           itemsContainer.removeChild(element)
           itemCount -= 1
         }
 
+        //Reset all item div id and parameter in the delete button
         itemCount += 1
         element.setAttribute('id', `item-${itemCount}`)
         element.children[2].setAttribute('onclick', `deleteItem("${element.id}")`)
 
+        //Add items to firestore
         firebase.auth().onAuthStateChanged(user => {
           if (user) {
             let itemNumber = element.id;
@@ -180,7 +184,33 @@
             }
           }
         })
-      });
+      })
+
+      // Delete any extra items doc in firestore
+      firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+          db.collection("pantry").doc(user.uid).collection("items").get().then(snap => {
+            snap.forEach(doc => {
+              existDoc = false
+              items = document.querySelectorAll(".items")
+              items.forEach(element => {
+                if (element.id == doc.id) {
+                  existDoc = true
+                }
+              })
+              console.log(existDoc)
+              if (!existDoc) {
+                db.collection("pantry").doc(user.uid).collection("items").doc(doc.id).delete().then(() => {
+                  console.log("Document successfully deleted!");
+                }).catch((error) => {
+                  console.error("Error removing document: ", error);
+                });
+              }
+            })
+          });
+        }
+      })
+
     }
 
     function populate() {
