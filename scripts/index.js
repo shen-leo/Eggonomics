@@ -6,7 +6,7 @@ function submitForm(){
 
         console.log("Added " + query + " to 'query' key in local storage");
 
-        window.location.assign("../price_tracker.html")
+        window.location.assign("price_tracker.html")
     })
 }
 

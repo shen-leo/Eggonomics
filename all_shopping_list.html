@@ -25,7 +25,7 @@
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
   <!-- Link to the api keys for your firebase project -->
-  <script src="/scripts/firebaseAPI.js"></script>
+  <script src="scripts/firebaseAPI.js"></script>
 
   <style>
     body {
@@ -33,25 +33,58 @@
     }
 
     #content {
-      border: 1px solid black;
+      /* border: 1px solid black; */
       height: 90%;
     }
 
+    #card-container {
+      width: 100%;
+      height: 98%;
+      overflow: scroll;
+      padding-top: 1em;
+      padding-bottom: 2em;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    #card-container::-webkit-scrollbar {
+      display: none;
+    }
+
     .card {
-      width: 30%;
-      margin: 0 2em;
+      width: 40%;
+      height: fit-content;
+      margin: 0 5% 2em 5%;
+      cursor: pointer;
+      transition: 0.5s;
+      border: 1px solid transparent;
     }
 
     .card-img {
       width: 100%;
+      height: auto;
+      object-fit: cover;
+      /* filter: drop-shadow(10px 7px rgba(0, 0, 0, 0.05)); */
     }
 
-    .card button {
+    .card:hover {
+      transform: scale(1.1);
+    }
+
+    .delete-btn {
       position: absolute;
       width: 1.5em;
       height: 1.5em;
       bottom: 0px;
       right: 0px;
+    }
+
+    .delete-btn:hover {
+      background-color: red;
+    }
+
+    #add-list-btn {
+      margin: 1em auto 1.5em auto;
     }
   </style>
 </head>
@@ -68,13 +101,10 @@
   </nav>
 
   <div id="content">
-
-
-
-
-
-
-
+    <div id="btn-gp">
+      <button type="button" class="btn btn-warning" id="add-list-btn" onclick="newList()">New List</button>
+    </div>
+    <div id="card-container"></div>
   </div>
 
   <!-- Bottom Nav Bar -->
@@ -87,14 +117,13 @@
       <i class="material-icons">kitchen</i>
       <p class="btm-btn-text">Pantry</p>
     </a>
-    <a class="icon-btn" href="shopping_list.html">
+    <a class="icon-btn" href="all_shopping_list.html">
       <i class="material-icons">playlist_add_check</i>
       <p class="btm-btn-text">Shopping List</p>
     </a>
-    <a class="icon-btn" href="">
-      <i class="material-icons">bar_chart</i>
-      <p class="btm-btn-text">Analytics</p>
-      <img src="" alt="">
+    <a class="icon-btn" href="profile.html">
+      <i class="material-icons">person</i>
+      <p class="btm-btn-text">Profile</p>
     </a>
   </footer>
 
@@ -102,7 +131,28 @@
   <!-- JS files: Your own JavaScript functions included here    -->
   <!--------------------------------------------------------------------->
   <script>
-    const cardContainer = document.getElementById("content")
+    const cardContainer = document.getElementById("card-container")
+
+    // let hikeID = localStorage.getItem("hikeID");
+    //     console.log(hikeID)
+    //     function setHikeData(id) {
+    //         localStorage.setItem('hikeID', id);
+    //     }
+
+    function openList(listId) {
+      localStorage.setItem('listId', listId);
+      localStorage.setItem('newList', false);
+      location.href = "single_shopping_list.html"
+    }
+
+    function newList() {
+      let newId = (parseInt(cardContainer.lastChild.id) + 1).toString();
+      localStorage.setItem('listId', newId);
+      localStorage.setItem('newList', true);
+      location.href = "single_shopping_list.html"
+    }
+
+
     function populate() {
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -114,7 +164,8 @@
               let card = document.createElement("div")
               card.setAttribute('id', `${doc.id}`)
               card.setAttribute('class', "card")
-              
+              card.setAttribute('onclick', `openList("${doc.id}")`)
+
               let cardName = document.createElement("div")
               cardName.innerHTML = `${listName}`
               cardName.setAttribute('class', "card-name")
@@ -123,13 +174,14 @@
               cardImg.setAttribute('class', "card-img")
               cardImg.setAttribute('src', `${listImg}`)
 
-              let deleteButton = document.createElement("button")
-              deleteButton.setAttribute('onclick', `deleteItem("${card.id}")`)
+              // let deleteButton = document.createElement("button")
+              // deleteButton.setAttribute('onclick', `deleteItem("${card.id}")`)
+              // deleteButton.setAttribute('class', "delete-btn")
 
               card.appendChild(cardImg)
               card.appendChild(cardName)
-              card.appendChild(deleteButton)
-             
+              // card.appendChild(deleteButton)
+
               cardContainer.appendChild(card)
             })
           })

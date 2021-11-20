@@ -1,260 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>New Shopping List</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project" />
-    <meta name="DTC08" content="Eggonomics Shopping List" />
 
-    <!-- CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="styles/styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css"
-    />
+<head>
+  <meta charset="utf-8" />
+  <title>New Shopping List</title>
+  <meta name="comp1800 boilerplate code" content="my bcit project" />
+  <meta name="DTC08" content="Eggonomics Shopping List" />
 
-    <!-- Firebase 8 CDNs -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
+  <!-- CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+  <link rel="stylesheet" href="styles/styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
 
-    <!-- Link to the api keys for your firebase project -->
-    <script src="/scripts/firebaseAPI.js"></script>
-    <style>
-      .shopping-list-container {
-        display: flex;
-        flex-direction: column;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        width: 80vw;
-        margin-left: auto;
-        margin-right: auto;
-        /* background-color: #f6f1d9; */
-        border-radius: 5px;
-        padding-left: 30px;
-        padding-right: 30px;
-        padding-top: 30px;
-        padding-bottom: 20px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      }
+  <!-- Firebase 8 CDNs -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
-      .btn {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .btn:focus {
-        outline: none;
-        box-shadow: none;
-      }
-
-      li {
-        width: 60vw;
-        margin-left: auto;
-        margin-right: auto;
-        padding-left: 30px;
-        padding-right: 30px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      }
-
-      .list-group {
-        margin-top: 2em;
-        margin-bottom: 4em;
-        padding-bottom: 2.5em;
-      }
-
-      .item-delete-button {
-        float: right;
-        border-radius: 5px;
-        font-size: 0.9em;
-      }
-
-      /* .item-delete-button:hover {
-        background-color: red;
-        color: white;
-      } */
-
-      
-      /* footer {
-      transform: translateY(85%);
-      transition: 1s;
+  <!-- Link to the api keys for your firebase project -->
+  <script src="scripts/firebaseAPI.js"></script>
+  <style>
+    .shopping-list-container {
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      width: 80vw;
+      margin-left: auto;
+      margin-right: auto;
+      /* background-color: #f6f1d9; */
+      border-radius: 5px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 30px;
+      padding-bottom: 20px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
-    footer:hover {
-      transform: translateY(0%);
-    } */
-    </style>
-  </head>
+    .btn {
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-  <body>
-    <!-- Top Nav Bar -->
-    <nav class="navbar navbar-light bg-warning">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="icon-btn" href="index.html"
-            ><span class="material-icons md-18"> arrow_back_ios </span></a
-          >
-          <span>Shopping List</span>
-        </div>
+    .btn:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    li {
+      width: 60vw;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 30px;
+      padding-right: 30px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .list-group {
+      margin-top: 2em;
+      margin-bottom: 4em;
+      padding-bottom: 2.5em;
+    }
+
+    .item-delete-button {
+      float: right;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+
+    #list-info {
+      width: 100%;
+      margin-top: 1em;
+    }
+
+    #list-name,
+    #list-img-url {
+      display: block;
+      margin: 0 auto 0.5em auto;
+      text-align: center;
+      border: 1px solid transparent;
+    }
+
+    #save-btn {
+      display: block;
+      margin: 1em auto;
+    }
+
+  </style>
+</head>
+
+<body>
+  <!-- Top Nav Bar -->
+  <nav class="navbar navbar-light bg-warning">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="icon-btn" href="all_shopping_list.html"><span class="material-icons md-18"> arrow_back_ios </span></a>
+        <span>Shopping List</span>
       </div>
-    </nav>
-
-    <!-- Text Fields -->
-    <div class="shopping-list-container bg-light shadow">
-      <form>
-        <fieldset class="mb-3" id="itemFields">
-          <div class="form-group">
-            <!-- <label>Item</label> -->
-            <input
-              type="text"
-              id="itemInput"
-              class="form-control"
-              placeholder="Enter an item"
-              onkeydown="search()"
-            />
-          </div>
-        </fieldset>
-        <div class="d-flex justify-content-end">
-          <span style="width: 10px"></span>
-          <button
-            type="button"
-            class="btn btn-warning"
-            id="btn"
-            onclick="saveItem();clearTextBox()"
-            ;
-          >
-            Add
-          </button>
-        </div>
-      </form>
     </div>
+  </nav>
 
-    <!-- Shopping List Items -->
-    <ul class="list-group list-items" id="shopping_list_container"></ul>
+  <div id="list-info">
+    <input type="text" id="list-name" placeholder="Enter list name" />
+    <input type="text" id="list-img-url" placeholder="Enter image url" />
+  </div>
 
-    <!-- Bottom Nav Bar -->
-    <footer
-      id="nav"
-      class="navbar justify-content-evenly bg-warning fixed-bottom"
-      style="height: 4em"
-    >
-      <a class="icon-btn" href="index.html">
-        <i class="material-icons">shopping_cart</i>
-        <p class="btm-btn-text">Price Track</p>
-      </a>
-      <a class="icon-btn" href="inventory.html">
-        <i class="material-icons">kitchen</i>
-        <p class="btm-btn-text">Pantry</p>
-      </a>
-      <a class="icon-btn" href="shopping_list.html">
-        <i class="material-icons">playlist_add_check</i>
-        <p class="btm-btn-text">Shopping List</p>
-      </a>
-      <a class="icon-btn" href="">
-        <i class="material-icons">bar_chart</i>
-        <p class="btm-btn-text">Analytics</p>
-      </a>
-    </footer>
+  <button type="button" class="btn btn-warning" id="save-btn" onclick="saveList()" ;>
+    Save List
+  </button>
+  <button type="button" class="btn btn-warning" id="save-btn" onclick="deleteList()" ;>
+    Delete List
+  </button>
 
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
-    <script>
-      function saveItem() {
-        let Item = document.getElementById("itemInput").value;
-        // if text input not is null or not an empty string proceed with saveItem()
-        if (Item !== null && Item !== "") {
-          firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-              var currentUser = db.collection("users").doc(user.uid);
-              console.log(user);
-              var userID = user.uid;
 
-              currentUser.get().then((userDoc) => {
-                //get user Email
-                var userEmail = userDoc.data().email;
-                // Start a new collection and add all data in it.
-                var docref = db.collection("shoppinglist").doc(userID).collection("lists").doc("1");
-                var doc = docref.get().then((res) => {
-                  if (!res.exists) {
-                    db.collection("shoppinglist")
-                      .doc(userID).collection("lists").doc("1")
-                      .set({
-                        UserID: userID,
-                        UserEmail: userEmail,
-                        Item: firebase.firestore.FieldValue.arrayUnion(Item),
-                      });
-                  }
-                  db.collection("shoppinglist")
-                    .doc(userID)
-                    .collection("lists").doc("1").update({
-                      Item: firebase.firestore.FieldValue.arrayUnion(Item),
-                    });
-                  // create list element for the newly added shopping list item
-                  var ul = document.getElementById("shopping_list_container");
-                  var li = document.createElement("li");
-                  var button = document.createElement("button");
-                  button.innerHTML = "Delete";
-                  li.classList.add("list-group-item");
-                  li.classList.add("list-group-item-warning");
-                  button.classList.add("item-delete-button");
-                  button.classList.add("btn-warning");
-                  // wait for arrayUnion before calling arrayRemove
-                  button.addEventListener("click", () => {
-                    Delete(Item);
-                  });
-                  // removes the front-end UI list items
-                  button.addEventListener("click", function () {
-                    this.parentNode.remove();
-                  });
-                  li.innerText = Item;
-                  li.append(button);
-                  ul.append(li);
-                });
-              });
-            } else {
-              // No user is signed in.
-              console.log("no user signed in");
-            }
+  <!-- Text Fields -->
+  <div class="shopping-list-container bg-light shadow">
+    <form>
+      <fieldset class="mb-3" id="itemFields">
+        <div class="form-group">
+          <!-- <label>Item</label> -->
+          <input type="text" id="itemInput" class="form-control" placeholder="Enter an item" onkeydown="search()" />
+        </div>
+      </fieldset>
+      <div class="d-flex justify-content-end">
+        <span style="width: 10px"></span>
+        <button type="button" class="btn btn-warning" id="btn" onclick="saveItem();clearTextBox()" ;>
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Shopping List Items -->
+  <ul class="list-group list-items" id="shopping_list_container"></ul>
+
+  <!-- Bottom Nav Bar -->
+  <footer id="nav" class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em">
+    <a class="icon-btn" href="index.html">
+      <i class="material-icons">shopping_cart</i>
+      <p class="btm-btn-text">Price Track</p>
+    </a>
+    <a class="icon-btn" href="inventory.html">
+      <i class="material-icons">kitchen</i>
+      <p class="btm-btn-text">Pantry</p>
+    </a>
+    <a class="icon-btn" href="all_shopping_list.html">
+      <i class="material-icons">playlist_add_check</i>
+      <p class="btm-btn-text">Shopping List</p>
+    </a>
+    <a class="icon-btn" href="profile.html">
+      <i class="material-icons">person</i>
+      <p class="btm-btn-text">Profile</p>
+    </a>
+  </footer>
+
+  <!--------------------------------------------------------------------->
+  <!-- JS files: Your own JavaScript functions included here    -->
+  <!--------------------------------------------------------------------->
+  <script>
+    const listId = localStorage.getItem("listId");
+
+    const listNameField = document.getElementById("list-name")
+    const listImgField = document.getElementById("list-img-url")
+
+    function deleteList() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId).delete().then(() => {
+            console.log("Document successfully deleted!");
+            location.href = "all_shopping_list.html"
+          }).catch((error) => {
+            console.error("Error removing document: ", error);
           });
         }
-      }
+      })
+    }
 
-      function populateItem() {
+    function saveList() {
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId).update({
+            name: listNameField.value,
+            img: listImgField.value
+          })
+        }
+      })
+    }
+
+    function saveItem() {
+      let Item = document.getElementById("itemInput").value;
+      // if text input not is null or not an empty string proceed with saveItem()
+      if (Item !== null && Item !== "") {
         firebase.auth().onAuthStateChanged((user) => {
-          // Check if user is signed in:
           if (user) {
-            // Do something for the current logged-in user here:
-            console.log(user.uid);
-            //go to the correct user document by referencing to the user uid
-            currentUser = db.collection("users").doc(user.uid);
-            itemList = db.collection("shoppinglist").doc(user.uid).collection("lists").doc("1");
-            //get the document for current user.
-            itemList.get().then((listDoc) => {
-              var itemArray = listDoc.data().Item;
-              var ul = document.getElementById("shopping_list_container");
-              
-              // auto-populates shopping list items UI with forEach loop
-              itemArray.forEach(function (e) {
-                var arrayItem = e;
+            var currentUser = db.collection("users").doc(user.uid);
+            console.log(user);
+            var userID = user.uid;
+
+            currentUser.get().then((userDoc) => {
+              //get user Email
+              var userEmail = userDoc.data().email;
+              // Start a new collection and add all data in it.
+              var docref = db.collection("shoppinglist").doc(userID).collection("lists").doc(listId);
+              var doc = docref.get().then((res) => {
+                if (!res.exists) {
+                  db.collection("shoppinglist")
+                    .doc(userID).collection("lists").doc(listId)
+                    .set({
+                      UserID: userID,
+                      UserEmail: userEmail,
+                      Item: firebase.firestore.FieldValue.arrayUnion(Item),
+                    });
+                }
+                db.collection("shoppinglist")
+                  .doc(userID)
+                  .collection("lists").doc(listId).update({
+                    Item: firebase.firestore.FieldValue.arrayUnion(Item),
+                  });
+                // create list element for the newly added shopping list item
+                var ul = document.getElementById("shopping_list_container");
                 var li = document.createElement("li");
                 var button = document.createElement("button");
                 button.innerHTML = "Delete";
@@ -264,41 +235,15 @@
                 button.classList.add("btn-warning");
                 // wait for arrayUnion before calling arrayRemove
                 button.addEventListener("click", () => {
-                  Delete(arrayItem);
+                  Delete(Item);
                 });
-                // deletes the front-end UI list items
+                // removes the front-end UI list items
                 button.addEventListener("click", function () {
                   this.parentNode.remove();
                 });
-                li.innerText = e;
+                li.innerText = Item;
                 li.append(button);
                 ul.append(li);
-              });
-            });
-          } else {
-            // No user is signed in.
-            console.log("no user");
-          }
-        });
-      }
-      // calls populateItem() function on page load
-      populateItem();
-
-      function Delete(arrayItem) {
-        console.log(arrayItem);
-        firebase.auth().onAuthStateChanged((user) => {
-          if (user) {
-            var currentUser = db.collection("users").doc(user.uid);
-            var userID = user.uid;
-
-            currentUser.get().then((userDoc) => {
-              var docref = db.collection("shoppinglist").doc(userID).collection("lists").doc("1");
-              var doc = docref.get().then((res) => {
-                db.collection("shoppinglist")
-                  .doc(userID).collection("lists").doc("1")
-                  .update({
-                    Item: firebase.firestore.FieldValue.arrayRemove(arrayItem),
-                  });
               });
             });
           } else {
@@ -306,28 +251,105 @@
             console.log("no user signed in");
           }
         });
-        // refresh the shopping list
       }
+    }
 
-      // clears textbox
-      function clearTextBox() {
-        document.getElementById("itemInput").value = "";
-      }
+    function populateItem() {
+      firebase.auth().onAuthStateChanged((user) => {
+        // Check if user is signed in:
+        if (user) {
+          // Do something for the current logged-in user here:
+          console.log(user.uid);
+          //go to the correct user document by referencing to the user uid
+          currentUser = db.collection("users").doc(user.uid);
+          itemList = db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId);
+          //get the document for current user.
+          itemList.get().then((listDoc) => {
+            var listName = listDoc.data().name;
+            var listImgUrl = listDoc.data().img;
+            var itemArray = listDoc.data().Item;
+            var ul = document.getElementById("shopping_list_container");
 
-      // calls clearTextBox function on enter keypress
-      function search() {
-        if (event.key === "Enter") {
-          saveItem();
-          clearTextBox();
-        }
-      }
+            if (listName) { listNameField.value = listName }
+            if (listImgUrl) { listImgField.value = listImgUrl }
 
-      // prevents the page from submitting the "form" on enter keypress
-      $("#itemInput").bind("keypress keydown keyup", function (e) {
-        if (e.key == "Enter") {
-          e.preventDefault();
+            // auto-populates shopping list items UI with forEach loop
+            itemArray.forEach(function (e) {
+              var arrayItem = e;
+              var li = document.createElement("li");
+              var button = document.createElement("button");
+              button.innerHTML = "Delete";
+              li.classList.add("list-group-item");
+              li.classList.add("list-group-item-warning");
+              button.classList.add("item-delete-button");
+              button.classList.add("btn-warning");
+              // wait for arrayUnion before calling arrayRemove
+              button.addEventListener("click", () => {
+                Delete(arrayItem);
+              });
+              // deletes the front-end UI list items
+              button.addEventListener("click", function () {
+                this.parentNode.remove();
+              });
+              li.innerText = e;
+              li.append(button);
+              ul.append(li);
+            });
+          });
+        } else {
+          // No user is signed in.
+          console.log("no user");
         }
       });
-    </script>
-  </body>
+    }
+    // calls populateItem() function on page load
+    populateItem();
+
+    function Delete(arrayItem) {
+      console.log(arrayItem);
+      firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          var currentUser = db.collection("users").doc(user.uid);
+          var userID = user.uid;
+
+          currentUser.get().then((userDoc) => {
+            var docref = db.collection("shoppinglist").doc(userID).collection("lists").doc(listId);
+            var doc = docref.get().then((res) => {
+              db.collection("shoppinglist")
+                .doc(userID).collection("lists").doc(listId)
+                .update({
+                  Item: firebase.firestore.FieldValue.arrayRemove(arrayItem),
+                });
+            });
+          });
+        } else {
+          // No user is signed in.
+          console.log("no user signed in");
+        }
+      });
+      // refresh the shopping list
+    }
+
+    // clears textbox
+    function clearTextBox() {
+      document.getElementById("itemInput").value = "";
+    }
+
+    // calls clearTextBox function on enter keypress
+    function search() {
+      if (event.key === "Enter") {
+        saveItem();
+        clearTextBox();
+      }
+    }
+
+    // prevents the page from submitting the "form" on enter keypress
+    $("#itemInput").bind("keypress keydown keyup", function (e) {
+      if (e.key == "Enter") {
+        e.preventDefault();
+      }
+    });
+  </script>
+</body>
+
 </html>
