@@ -165,7 +165,13 @@
           db.collection("shoppinglist").doc(user.uid).collection("lists").get().then(snap => {
             snap.forEach(doc => {
               let listName = doc.data().name;
+              if (!doc.data().name){
+                listName = "unnamed list"
+              }
               let listImg = doc.data().img;
+              if (!doc.data().img){
+                listImg = "https://www.gannett-cdn.com/media/2021/07/09/USATODAY/usatsports/fresh-grocery-assortment.jpg"
+              }
 
               let card = document.createElement("div")
               card.setAttribute('id', `${doc.id}`)

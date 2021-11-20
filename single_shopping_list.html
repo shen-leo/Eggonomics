@@ -92,7 +92,6 @@
       display: block;
       margin: 1em auto;
     }
-
   </style>
 </head>
 
@@ -186,9 +185,21 @@
     function saveList() {
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
-          db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId).update({
-            name: listNameField.value,
-            img: listImgField.value
+          let ref = db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId);
+          ref.get().then((res) => {
+            if (!res.exists) {
+              db.collection("shoppinglist")
+                .doc(user.uid).collection("lists").doc(listId)
+                .set({
+                  name: listNameField.value,
+                  img: listImgField.value
+                });
+            }
+
+            db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId).update({
+              name: listNameField.value,
+              img: listImgField.value
+            })
           })
         }
       })
@@ -296,8 +307,8 @@
               ul.append(li);
             });
           }).catch((error) => {
-                  console.log("new user");
-                });
+            console.log("new user");
+          });
         } else {
           // No user is signed in.
           console.log("no user");
