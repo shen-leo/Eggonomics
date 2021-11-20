@@ -295,7 +295,9 @@
               li.append(button);
               ul.append(li);
             });
-          });
+          }).catch((error) => {
+                  console.log("new user");
+                });
         } else {
           // No user is signed in.
           console.log("no user");
