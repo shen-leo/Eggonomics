@@ -21,9 +21,27 @@ function displayProducts(){
 
                     target_div.appendChild(product_card);
                 }
-                
-
             })
+            // console.log("Length", target_div.childElementCount);
+            if (target_div.childElementCount == 0){
+                console.log("Search query found no data.");
+
+                let error_div = document.createElement("figure");
+                error_div.setAttribute("id", "error-message");
+
+                let img = document.createElement("img");
+                img.setAttribute("src", "./img/logo.png");
+                // img.setAttribute("")
+                img.setAttribute("id", "error-img");
+
+                let message = document.createElement("figcaption");
+                message.setAttribute("id", "error-message-text")
+                message.innerText = localStorage.getItem('query') + " not found in database";
+
+                error_div.appendChild(img);
+                error_div.appendChild(message);
+                document.getElementById("content").appendChild(error_div);
+            }
         })
 }
 

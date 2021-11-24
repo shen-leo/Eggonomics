@@ -40,3 +40,17 @@ a {
   color: white;
 }
 
+#error-message{
+  margin: auto;
+  margin-top: 1rem;
+}
+
+#error-img{
+  display: block;
+  width: 30%;
+  margin: auto;
+}
+
+/* #error-message-text{
+
+} */
