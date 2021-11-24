@@ -1,18 +1,21 @@
-function submitForm(){
-    document.getElementById("submit-query").addEventListener("click", function(event){
-        console.log("Hello!")
-        let query = document.getElementById("query").value;
-        localStorage.setItem('query', query)
-
-        console.log("Added " + query + " to 'query' key in local storage");
-
+function submitQuery(){
+    let new_query = document.getElementById("query").value;
+    if (new_query != ''){
+        localStorage.setItem("query", new_query);
         window.location.assign("price_tracker.html")
-    })
+        console.log("Added " + query + " to 'query' key in local storage");
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
     console.log("Page Loaded!")
-    submitForm();
+    document.getElementById("query").addEventListener("keydown", (event) => {
+        if (event.key == "Enter"){
+            event.preventDefault();
+            submitQuery();
+        }
+    });
+    document.getElementById("submit-query").addEventListener("click", submitQuery);
 })
 
 firebase.auth().onAuthStateChanged(user => {

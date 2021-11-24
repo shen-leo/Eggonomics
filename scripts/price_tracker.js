@@ -40,21 +40,27 @@ function displayQuery(){
     console.log("Displayed query " + query);
 }
 
-function waitForSearchQuery(){
-    document.getElementById("search-btn-pt").addEventListener("click", function(event){
-        let new_query = document.getElementById("search-bar").value;
-        if (new_query != ''){
-            localStorage.setItem("query", new_query);
-        }
+function submitQuery(){
+    let new_query = document.getElementById("search-bar").value;
+    if (new_query != ''){
+        localStorage.setItem("query", new_query);
         window.location.assign("price_tracker.html")
-    })
+        console.log("Added " + new_query + " to 'query' key in local storage");
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
     console.log("Page loaded!")
     displayProducts();
     displayQuery();
-    waitForSearchQuery();
+    // Search query event listeners
+    document.getElementById("search-bar").addEventListener("keydown", (event) => {
+        if (event.key == "Enter"){
+            event.preventDefault();
+            submitQuery();
+        }
+    });
+    document.getElementById("search-btn-pt").addEventListener("click", submitQuery);
 })
 
 async function getCSVdata(){
