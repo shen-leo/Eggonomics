@@ -36,7 +36,7 @@ function displayProducts(){
 
                 let message = document.createElement("figcaption");
                 message.setAttribute("id", "error-message-text")
-                message.innerText = localStorage.getItem('query') + " not found in database";
+                message.innerText = "We're sorry but " + localStorage.getItem('query') + " was not found in our database";
 
                 error_div.appendChild(img);
                 error_div.appendChild(message);
