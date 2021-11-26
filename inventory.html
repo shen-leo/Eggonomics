@@ -52,8 +52,8 @@
 
     
     #items-container button {
-      width: 20px;
-      height: 20px;
+      width: 25px;
+      height: 25px;
     }
 
     input {
@@ -84,7 +84,9 @@
     }
 
     .delete-button{
-      text-align: center;
+      /* text-align: center; */
+      padding: 0px;
+      border-radius: 5px;
     }
 
     .delete-button {
@@ -99,6 +101,7 @@
     input:invalid {
     border: 3px solid red;
 }
+
 
   </style>
 </head>
@@ -186,6 +189,7 @@
       deleteButton = document.createElement("button")
       deleteButton.classList.add("delete-button");
       deleteButton.innerHTML = "X";
+      deleteButton.classList.add("btn-warning");
       deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
       item.appendChild(itemName)
       item.appendChild(itemQuantity)
@@ -270,6 +274,7 @@
               deleteButton = document.createElement("button")
               deleteButton.classList.add("delete-button");
               deleteButton.innerHTML = "X";
+              deleteButton.classList.add("btn-warning");
               deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
               item.appendChild(itemNameField)
               item.appendChild(itemQuantityField)
@@ -300,6 +305,7 @@
         deleteButton = document.createElement("button")
         deleteButton.classList.add("delete-button");
         deleteButton.innerHTML = "X";
+        deleteButton.classList.add("btn-warning");
         deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
         item.appendChild(itemName)
         item.appendChild(itemQuantity)
