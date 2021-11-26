@@ -43,8 +43,8 @@
       border-radius: 5px;
       padding-left: 30px;
       padding-right: 30px;
-      padding-top: 20px;
-      padding-bottom: 20px;
+      padding-top: 30px;
+      padding-bottom: 15px;
       margin-top: 2em;
       text-align: center;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -64,8 +64,8 @@
     }
     
     #items-container button {
-      width: 25px;
-      height: 25px;
+      width: 30px;
+      height: 28px;
     }
 
     input {
@@ -75,13 +75,13 @@
       margin-right: 5%;
       /* max-width: 200px; */
       width: 70%;
-      height: 55%;
+      height: 60%;
       font-size: 80%;
       border-radius: 2px;
     }
 
     .quantity-input {
-      width: 28%
+      width: 35%
     }
 
     #btn-gp {
@@ -95,7 +95,6 @@
       margin: 2em 1em 0 1em;
       font-size: 12px;
       width: 5em;
-
     }
 
     #header div {
@@ -116,6 +115,15 @@
       text-align: center;
       padding-bottom: 20px;
     }
+
+    /* #item-header {
+      width: 80%;
+      float: center;
+    }
+
+    #quantity-header {
+      width: 28%;
+    } */
 
     .delete-button{
       /* text-align: center; */
@@ -151,10 +159,10 @@
 
   <div id="pantry-container">
   <div id="items-container" class="bg-light shadow">
-    <div id="header">
-      <div>Item</div>
-      <div>Quantity</div>
-    </div>
+    <!-- <div id="header">
+      <div id="item-header">Item</div>
+      <div id="quantity-header">Quantity</div>
+    </div> -->
   </div>
   <div id="btn-gp">
     <button type="button" class="btn btn-warning" id="btn" onclick="addItem()">Add</button>
@@ -213,6 +221,8 @@
       itemQuantity.setAttribute('id', `item-quantity-${itemCount}`)
       itemQuantity.setAttribute("type","number")
       itemQuantity.setAttribute("min","1")
+      itemName.setAttribute("placeholder", "Item Name")
+      itemQuantity.setAttribute("placeholder", "Amount")
       itemQuantity.classList.add("quantity-input");
       deleteButton = document.createElement("button")
       deleteButton.classList.add("delete-button");
@@ -301,6 +311,8 @@
               itemQuantityField.classList.add("quantity-input");
               itemQuantityField.setAttribute("type","number")
               itemQuantityField.setAttribute("min","1")
+              itemNameField.setAttribute("placeholder", "Item Name")
+              itemQuantityField.setAttribute("placeholder", "Amount")
               itemQuantityField.setAttribute('id', `item-quantity-${itemCount}`)
               deleteButton = document.createElement("button")
               deleteButton.classList.add("delete-button");
@@ -333,6 +345,8 @@
         itemQuantity.setAttribute('id', `item-quantity-${itemCount}`)
         itemQuantity.setAttribute("type","number")
         itemQuantity.setAttribute("min","1")
+        itemName.setAttribute("placeholder", "Item Name")
+        itemQuantity.setAttribute("placeholder", "Amount")
         itemQuantity.classList.add("quantity-input");
         deleteButton = document.createElement("button")
         deleteButton.classList.add("delete-button");
