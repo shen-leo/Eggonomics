@@ -10,6 +10,10 @@ body {
   background-color: rgba(0, 0, 0, 0);
 }
 
+img{
+  display: block;
+}
+
 #content {
   width: 90%;
   margin: 0 auto;

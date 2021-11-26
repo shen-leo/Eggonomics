@@ -56,13 +56,8 @@
       aspect-ratio: 28 / 19;
     }
 
-    .modal-container{
-      width: 100%;
-      display: flex;
-      justify-content: space-evenly;
-    }
-
-    .img2_caps{
+    .img2{
+      width: 50%;
     }
   </style>
 
@@ -110,17 +105,19 @@
 
     <!-- Modal -->
     <div class="modal fade item_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog modal-xl">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title item_modal-name">IN ITEM</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body item_modal-body">
-            <figure class="modal-container">
-              <img src="..." alt="egg" class="img2 card-img-top">
-              <figcaption class="img2_caps">HELLO!</figcaption>
-            </figure>
+            <div class="container-fluid">
+              <figure class="row">
+                <img src="..." alt="egg" class="img2 card-img-top col-md-4">
+                <figcaption class="col-md-4">HELLO!</figcaption>
+              </figure>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary item_bookmark">Save changes</button>
