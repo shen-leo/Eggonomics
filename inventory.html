@@ -41,9 +41,9 @@
       margin-left: auto;
       margin-right: auto;      
       border-radius: 5px;
-      padding-left: 30px;
-      padding-right: 30px;
-      padding-top: 30px;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 35px;
       padding-bottom: 15px;
       margin-top: 2em;
       text-align: center;
@@ -76,12 +76,12 @@
       /* max-width: 200px; */
       width: 70%;
       height: 60%;
-      font-size: 80%;
+      font-size: 70%;
       border-radius: 2px;
     }
 
     .quantity-input {
-      width: 35%
+      width: 40%
     }
 
     #btn-gp {
@@ -312,7 +312,7 @@
               itemQuantityField.setAttribute("type","number")
               itemQuantityField.setAttribute("min","1")
               itemNameField.setAttribute("placeholder", "Item Name")
-              itemQuantityField.setAttribute("placeholder", "Amount")
+              itemQuantityField.setAttribute("placeholder", "Sum")
               itemQuantityField.setAttribute('id', `item-quantity-${itemCount}`)
               deleteButton = document.createElement("button")
               deleteButton.classList.add("delete-button");
@@ -360,9 +360,6 @@
       }
     }
 
-
-
-    
   </script>
 </body>
 
