@@ -57,7 +57,15 @@
     }
 
     .img2{
-      width: 50%;
+      width: 100%;
+    }
+
+    .pad-none{
+      padding: 0;
+    }
+
+    .modal-header{
+      border-style: none;
     }
   </style>
 
@@ -105,22 +113,29 @@
 
     <!-- Modal -->
     <div class="modal fade item_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-xl">
+      <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title item_modal-name">IN ITEM</h5>
+          <div class="modal-header bg-warning">
+            <!-- <h5 class="modal-title item_modal-name">IN ITEM</h5> -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body item_modal-body">
-            <div class="container-fluid">
+          <div class="modal-body item_modal-body pad-none">
+            <div class="container-fluid pad-none">
               <figure class="row">
                 <img src="..." alt="egg" class="img2 card-img-top col-md-4">
-                <figcaption class="col-md-4">HELLO!</figcaption>
+                <figcaption class="col-md-4">
+                  <h5 class="item_figcap-name">NAME</h5>
+                  <p>
+                    Quantity: <span class="item_quant">Q</span>
+                    Available in: <span class="item_retail">ELSE</span>
+                    Manufacturer: <span class="item_manu">ELSE2</span>
+                  </p>
+                </figcaption>
               </figure>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary item_bookmark">Save changes</button>
+          <div class="modal-footer pad-none">
+            <button type="button" class="btn btn-warning item_bookmark">Bookmark</button>
           </div>
         </div>
       </div>

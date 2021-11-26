@@ -27,9 +27,10 @@ function displayProducts(){
                     product_card.querySelector(".img1").src = image;
                     product_card.querySelector(".img2").src = image;
 
-                    product_card.querySelector(".item_modal-name").innerText = name;
-                    // product_card.querySelector(".item_modal-body").innerText = 
-                    //     manufacturer + retail + stock;
+                    product_card.querySelector(".item_figcap-name").innerText = name;
+                    product_card.querySelector(".item_retail").innerText = retail;
+                    product_card.querySelector(".item_manu").innerText = manufacturer;
+                    product_card.querySelector(".item_quant").innerText = stock;
                     
                     // change all IDs
                     product_card.querySelector(".item_card").id = "item" + index + "_card";
@@ -37,7 +38,7 @@ function displayProducts(){
                     product_card.querySelector(".item_price").id = "item" + index + "_price";
 
                     product_card.querySelector(".item_modal-body").id = "item" + index + "_modal-body";
-                    product_card.querySelector(".item_modal-name").id = "item" + index + "_modal-name";
+                    // product_card.querySelector(".item_modal-name").id = "item" + index + "_modal-name";
                     
                     product_card.querySelector(".item_modal").id = "item" + index + "_modal";
                     product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
