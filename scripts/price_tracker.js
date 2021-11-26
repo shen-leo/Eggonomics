@@ -28,8 +28,8 @@ function displayProducts(){
                     product_card.querySelector(".img2").src = image;
 
                     product_card.querySelector(".item_modal-name").innerText = name;
-                    product_card.querySelector(".item_modal-body").innerText = 
-                        manufacturer + retail + stock;
+                    // product_card.querySelector(".item_modal-body").innerText = 
+                    //     manufacturer + retail + stock;
                     
                     // change all IDs
                     product_card.querySelector(".item_card").id = "item" + index + "_card";
@@ -41,7 +41,6 @@ function displayProducts(){
                     
                     product_card.querySelector(".item_modal").id = "item" + index + "_modal";
                     product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
-                    console.log(index);
 
                     // append to target_div
                     target_div.appendChild(product_card);

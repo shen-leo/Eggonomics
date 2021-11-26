@@ -55,6 +55,15 @@
     .img1, .img2{
       aspect-ratio: 28 / 19;
     }
+
+    .modal-container{
+      width: 100%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    .img2_caps{
+    }
   </style>
 
 </head>
@@ -108,8 +117,9 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body item_modal-body">
-            <figure>
-              <img src="..." alt="egg" class="img2">
+            <figure class="modal-container">
+              <img src="..." alt="egg" class="img2 card-img-top">
+              <figcaption class="img2_caps">HELLO!</figcaption>
             </figure>
           </div>
           <div class="modal-footer">
