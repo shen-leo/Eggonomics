@@ -7,7 +7,7 @@ body::-webkit-scrollbar {
 body {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
 }
 
 #content {
@@ -40,3 +40,17 @@ a {
   color: white;
 }
 
+#error-message{
+  margin: auto;
+  margin-top: 1rem;
+}
+
+#error-img{
+  display: block;
+  width: 30%;
+  margin: auto;
+}
+
+/* #error-message-text{
+
+} */

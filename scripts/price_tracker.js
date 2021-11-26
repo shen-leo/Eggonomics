@@ -6,21 +6,69 @@ function displayProducts(){
 
     API.get()
         .then(products => {
+            let index = 0;
             products.forEach(doc => {
+
                 let name = doc.data().name;
                 let price = doc.data().price;
                 let image = './img/sampleAPIimgs/' + doc.data().image;
+                let manufacturer = doc.data().manufacturer;
+                let retail = doc.data().retailer;
+                let stock = doc.data().in_stock;
 
                 let query = localStorage.getItem('query').toLowerCase();
                 let filter = name.toLowerCase();
                 if(filter.includes(query)){
                     let product_card = template.content.cloneNode(true);
-                    product_card.querySelector("#item_name").innerHTML = name;
-                    product_card.querySelector("#item_price").innerHTML = price;
-                    product_card.querySelector("#item_img").src = image;
+
+                    // change all texts
+                    product_card.querySelector(".item_name").innerText = name;
+                    product_card.querySelector(".item_price").innerText = price;
+                    product_card.querySelector(".img1").src = image;
+                    product_card.querySelector(".img2").src = image;
+
+                    product_card.querySelector(".item_modal-name").innerText = name;
+                    product_card.querySelector(".item_modal-body").innerText = 
+                        manufacturer + retail + stock;
+                    
+                    // change all IDs
+                    product_card.querySelector(".item_card").id = "item" + index + "_card";
+                    product_card.querySelector(".item_name").id = "item" + index + "_name";
+                    product_card.querySelector(".item_price").id = "item" + index + "_price";
+
+                    product_card.querySelector(".item_modal-body").id = "item" + index + "_modal-body";
+                    product_card.querySelector(".item_modal-name").id = "item" + index + "_modal-name";
+                    
+                    product_card.querySelector(".item_modal").id = "item" + index + "_modal";
+                    product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
+                    console.log(index);
+
+                    // append to target_div
                     target_div.appendChild(product_card);
+
+                    index++;
                 }
             })
+            // console.log("Length", target_div.childElementCount);
+            if (target_div.childElementCount == 0){
+                console.log("Search query found no data.");
+
+                let error_div = document.createElement("figure");
+                error_div.setAttribute("id", "error-message");
+
+                let img = document.createElement("img");
+                img.setAttribute("src", "./img/logo.png");
+                // img.setAttribute("")
+                img.setAttribute("id", "error-img");
+
+                let message = document.createElement("figcaption");
+                message.setAttribute("id", "error-message-text")
+                message.innerText = "We're sorry but " + localStorage.getItem('query') + " was not found in our database";
+
+                error_div.appendChild(img);
+                error_div.appendChild(message);
+                document.getElementById("content").appendChild(error_div);
+            }
         })
 }
 
@@ -30,13 +78,13 @@ function sortPriceAsc() {
     let products = document.querySelectorAll(".col")
     products.forEach(function(element){
         i += 1
-        price = element.querySelector("#item_price").innerHTML;
+        price = element.querySelector(".item_price").innerHTML;
         element.setAttribute("id", i)
         itemList.push(i)
     })
     itemList.sort(function(a, b){
-        price_1 = parseFloat(document.getElementById(a).querySelector("#item_price").innerHTML)
-        price_2 = parseFloat(document.getElementById(b).querySelector("#item_price").innerHTML)
+        price_1 = parseFloat(document.getElementById(a).querySelector(".item_price").innerHTML)
+        price_2 = parseFloat(document.getElementById(b).querySelector(".item_price").innerHTML)
         return price_1 - price_2
     })
     let container = document.getElementById("products_here")
@@ -60,13 +108,13 @@ function sortPriceDes() {
     let products = document.querySelectorAll(".col")
     products.forEach(function(element){
         i += 1
-        price = element.querySelector("#item_price").innerHTML;
+        price = element.querySelector(".item_price").innerHTML;
         element.setAttribute("id", i)
         itemList.push(i)
     })
     itemList.sort(function(a, b){
-        price_1 = parseFloat(document.getElementById(a).querySelector("#item_price").innerHTML)
-        price_2 = parseFloat(document.getElementById(b).querySelector("#item_price").innerHTML)
+        price_1 = parseFloat(document.getElementById(a).querySelector(".item_price").innerHTML)
+        price_2 = parseFloat(document.getElementById(b).querySelector(".item_price").innerHTML)
         return price_2 - price_1
     })
     let container = document.getElementById("products_here")
@@ -97,21 +145,27 @@ function displayQuery(){
     console.log("Displayed query " + query);
 }
 
-function waitForSearchQuery(){
-    document.getElementById("search-btn-pt").addEventListener("click", function(event){
-        let new_query = document.getElementById("search-bar").value;
-        if (new_query != ''){
-            localStorage.setItem("query", new_query);
-        }
+function submitQuery(){
+    let new_query = document.getElementById("search-bar").value;
+    if (new_query != ''){
+        localStorage.setItem("query", new_query);
         window.location.assign("price_tracker.html")
-    })
+        console.log("Added " + new_query + " to 'query' key in local storage");
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(event){
     console.log("Page loaded!")
     displayProducts();
     displayQuery();
-    waitForSearchQuery();
+    // Search query event listeners
+    document.getElementById("search-bar").addEventListener("keydown", (event) => {
+        if (event.key == "Enter"){
+            event.preventDefault();
+            submitQuery();
+        }
+    });
+    document.getElementById("search-btn-pt").addEventListener("click", submitQuery);
 })
 
 async function getCSVdata(){

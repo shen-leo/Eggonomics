@@ -6,13 +6,14 @@
   <title>Price Tracker</title>
   <meta name="comp1800 boilerplate code" content="my bcit project">
   <meta name="DTC08" content="Eggonomics Shopping List">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
+  <link rel="stylesheet" href="styles/styles.css">
 
   <!-- Firebase 8 CDNs -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
@@ -51,7 +52,7 @@
       background-color: rgb(238, 238, 238) !important;
     }
 
-    #item_img {
+    .img1, .img2{
       aspect-ratio: 28 / 19;
     }
   </style>
@@ -87,37 +88,39 @@
 
   <!-- DYNAMICALLY ADDED USING JS -->
   <template id="product_card">
+    <!-- Cards -->
     <div class="col">
-      <div class="card h-100 border-warning bg-warning" id="item_card" data-bs-toggle="modal"
-        data-bs-target="#exampleModal">
-        <img src="img/banana_homepage.jpeg" class="card-img-top" alt="egg" id="item_img">
+      <div class="card h-100 border-warning bg-warning item_card" data-bs-toggle="modal" data-bs-target="#item_modal">
+        <img src="..." class="card-img-top img1" alt="egg">
         <div class="card-body">
-          <h5 class="card-title" id="item_name">ITEM</h5>
-          <p class="card-text" id="item_price">DESCRIPTION</p>
+          <h5 class="card-title item_name">ITEM</h5>
+          <p class="card-text item_price">DESCRIPTION</p>
         </div>
       </div>
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade item_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title item_modal-name">IN ITEM</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
-            ...
+          <div class="modal-body item_modal-body">
+            <figure>
+              <img src="..." alt="egg" class="img2">
+            </figure>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary item_bookmark">Save changes</button>
           </div>
         </div>
       </div>
     </div>
   </template>
 
+  <!-- Cards -->
   <div id="content">
     <div class="row row-cols-2 row-cols-md-4 g-4" id="products_here">
     </div>
