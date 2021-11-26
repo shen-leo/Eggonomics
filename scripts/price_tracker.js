@@ -6,20 +6,47 @@ function displayProducts(){
 
     API.get()
         .then(products => {
+            let index = 0;
             products.forEach(doc => {
+
                 let name = doc.data().name;
                 let price = doc.data().price;
                 let image = './img/sampleAPIimgs/' + doc.data().image;
+                let manufacturer = doc.data().manufacturer;
+                let retail = doc.data().retailer;
+                let stock = doc.data().in_stock;
 
                 let query = localStorage.getItem('query').toLowerCase();
                 let filter = name.toLowerCase();
                 if(filter.includes(query)){
                     let product_card = template.content.cloneNode(true);
-                    product_card.querySelector("#item_name").innerHTML = name;
-                    product_card.querySelector("#item_price").innerHTML = price;
-                    product_card.querySelector("#item_img").src = image;
 
+                    // change all texts
+                    product_card.querySelector(".item_name").innerText = name;
+                    product_card.querySelector(".item_price").innerText = price;
+                    product_card.querySelector(".img1").src = image;
+                    product_card.querySelector(".img2").src = image;
+
+                    product_card.querySelector(".item_modal-name").innerText = name;
+                    product_card.querySelector(".item_modal-body").innerText = 
+                        manufacturer + retail + stock;
+                    
+                    // change all IDs
+                    product_card.querySelector(".item_card").id = "item" + index + "_card";
+                    product_card.querySelector(".item_name").id = "item" + index + "_name";
+                    product_card.querySelector(".item_price").id = "item" + index + "_price";
+
+                    product_card.querySelector(".item_modal-body").id = "item" + index + "_modal-body";
+                    product_card.querySelector(".item_modal-name").id = "item" + index + "_modal-name";
+                    
+                    product_card.querySelector(".item_modal").id = "item" + index + "_modal";
+                    product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
+                    console.log(index);
+
+                    // append to target_div
                     target_div.appendChild(product_card);
+
+                    index++;
                 }
             })
             // console.log("Length", target_div.childElementCount);
