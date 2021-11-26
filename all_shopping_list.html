@@ -61,12 +61,10 @@
     }
 
     .card-img {
+      align-items: center;
       width: 100%;
       height: auto;
       object-fit: cover;
-      /* filter: drop-shadow(10px 7px rgba(0, 0, 0, 0.05)); */
-      background-image: url(img/list-placeholder.jpg);
-      min-height: 250px;
     }
 
     .card:hover {
@@ -168,7 +166,7 @@
             snap.forEach(doc => {
               let listName = doc.data().name;
               if (!doc.data().name){
-                listName = "unnamed list"
+                listName = "unnamed shopping list"
               }
               let listImg = doc.data().img;
               if (!doc.data().img){

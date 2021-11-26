@@ -18,13 +18,70 @@ function displayProducts(){
                     product_card.querySelector("#item_name").innerHTML = name;
                     product_card.querySelector("#item_price").innerHTML = price;
                     product_card.querySelector("#item_img").src = image;
-
                     target_div.appendChild(product_card);
                 }
-                
-
             })
         })
+}
+
+function sortPriceAsc() {
+    let i = 0
+    let itemList = []
+    let products = document.querySelectorAll(".col")
+    products.forEach(function(element){
+        i += 1
+        price = element.querySelector("#item_price").innerHTML;
+        element.setAttribute("id", i)
+        itemList.push(i)
+    })
+    itemList.sort(function(a, b){
+        price_1 = parseFloat(document.getElementById(a).querySelector("#item_price").innerHTML)
+        price_2 = parseFloat(document.getElementById(b).querySelector("#item_price").innerHTML)
+        return price_1 - price_2
+    })
+    let container = document.getElementById("products_here")
+    let sortedCards = []
+    for (let i = 0; i < itemList.length; i++) {
+        id = itemList[i]
+        sortedCards.push(document.getElementById(id))
+    }
+    for (let i = 1; i < itemList.length + 1; i++) {
+        document.getElementById(i).remove()
+    }
+    for (let i = 0; i < sortedCards.length; i++) {
+        card = sortedCards[i]
+        container.appendChild(card)
+    }
+}
+
+function sortPriceDes() {
+    let i = 0
+    let itemList = []
+    let products = document.querySelectorAll(".col")
+    products.forEach(function(element){
+        i += 1
+        price = element.querySelector("#item_price").innerHTML;
+        element.setAttribute("id", i)
+        itemList.push(i)
+    })
+    itemList.sort(function(a, b){
+        price_1 = parseFloat(document.getElementById(a).querySelector("#item_price").innerHTML)
+        price_2 = parseFloat(document.getElementById(b).querySelector("#item_price").innerHTML)
+        return price_2 - price_1
+    })
+    let container = document.getElementById("products_here")
+    let sortedCards = []
+    for (let i = 0; i < itemList.length; i++) {
+        id = itemList[i]
+        sortedCards.push(document.getElementById(id))
+    }
+    for (let i = 1; i < itemList.length + 1; i++) {
+        document.getElementById(i).remove()
+    }
+    for (let i = 0; i < sortedCards.length; i++) {
+        card = sortedCards[i]
+        container.appendChild(card)
+    }
 }
 
 // function describeProductInfo(){
