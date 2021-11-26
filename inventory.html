@@ -34,12 +34,23 @@
     }
 
     #items-container {
-      width: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 80vw;
       height: fit-content;
+      margin-left: auto;
+      margin-right: auto;      
+      border-radius: 5px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 20px;
+      padding-bottom: 40px;
       margin-top: 2em;
       text-align: center;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
+    
     #items-container button {
       width: 20px;
       height: 20px;
@@ -71,6 +82,24 @@
       transform: translateX(-11px);
       pointer-events: none;
     }
+
+    .delete-button{
+      text-align: center;
+    }
+
+    .delete-button {
+      margin: 1.2em auto;
+    }
+
+    .delete-button:hover {
+      background-color: rgb(233, 56, 56);
+      border: 1px solid rgb(233, 56, 56);
+    }
+
+    input:invalid {
+    border: 3px solid red;
+}
+
   </style>
 </head>
 
@@ -87,11 +116,16 @@
     </div>
   </nav>
 
-  <div id="items-container">
+  <div id="items-container" class="bg-light shadow">
     <div id="header">
       <div>Item</div>
       <div>Quantity</div>
     </div>
+      <!-- <div class="items" id="item-1">
+        <input id="item-name-1">
+        <input id="item-quantity-1" type="number" min="0">
+        <button class="delete-button" onclick="deleteItem(item-1)">X</button>
+      </div> -->
   </div>
   <div id="btn-gp">
     <button type="button" class="btn btn-warning" id="btn" onclick="addItem()">Add Item</button>
@@ -147,7 +181,11 @@
       itemName.setAttribute('id', `item-name-${itemCount}`)
       let itemQuantity = document.createElement("input")
       itemQuantity.setAttribute('id', `item-quantity-${itemCount}`)
+      itemQuantity.setAttribute("type","number")
+      itemQuantity.setAttribute("min","1")
       deleteButton = document.createElement("button")
+      deleteButton.classList.add("delete-button");
+      deleteButton.innerHTML = "X";
       deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
       item.appendChild(itemName)
       item.appendChild(itemQuantity)
@@ -177,7 +215,7 @@
             let itemNumber = element.id;
             let itemName = element.children[0].value;
             let itemQuantity = element.children[1].value;
-            if (itemName != "") {
+            if (itemName != "" && itemQuantity > 0) {
               db.collection("pantry").doc(user.uid).collection("items").doc(itemNumber).set({
                 name: itemName,
                 quantity: itemQuantity
@@ -214,6 +252,7 @@
     }
 
     function populate() {
+      console.log("function1")
       firebase.auth().onAuthStateChanged(user => {
         if (user) {
           db.collection("pantry").doc(user.uid).collection("items").get().then(snap => {
@@ -229,6 +268,8 @@
               let itemQuantityField = document.createElement("input")
               itemQuantityField.setAttribute('id', `item-quantity-${itemCount}`)
               deleteButton = document.createElement("button")
+              deleteButton.classList.add("delete-button");
+              deleteButton.innerHTML = "X";
               deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
               item.appendChild(itemNameField)
               item.appendChild(itemQuantityField)
@@ -237,11 +278,39 @@
               itemNameField.value = itemName
               itemQuantityField.value = itemQuantity
             })
+          populateEmpty();
           })
         }
       })
     }
-    populate()
+    populate();
+
+    function populateEmpty() {
+      if (itemCount === 0) {
+        itemCount += 1
+        let item = document.createElement("div")
+        item.setAttribute('class', "items")
+        item.setAttribute('id', `item-${itemCount}`)
+        let itemName = document.createElement("input")
+        itemName.setAttribute('id', `item-name-${itemCount}`)
+        let itemQuantity = document.createElement("input")
+        itemQuantity.setAttribute('id', `item-quantity-${itemCount}`)
+        itemQuantity.setAttribute("type","number")
+        itemQuantity.setAttribute("min","1")
+        deleteButton = document.createElement("button")
+        deleteButton.classList.add("delete-button");
+        deleteButton.innerHTML = "X";
+        deleteButton.setAttribute('onclick', `deleteItem("${item.id}")`)
+        item.appendChild(itemName)
+        item.appendChild(itemQuantity)
+        item.appendChild(deleteButton)
+        itemsContainer.appendChild(item)
+      }
+    }
+
+
+
+    
   </script>
 </body>
 
