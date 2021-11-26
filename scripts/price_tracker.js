@@ -28,6 +28,7 @@ function displayProducts(){
                     product_card.querySelector(".img2").src = image;
 
                     product_card.querySelector(".item_figcap-name").innerText = name;
+                    product_card.querySelector(".item_price2").innerText = price;
                     product_card.querySelector(".item_retail").innerText = retail;
                     product_card.querySelector(".item_manu").innerText = manufacturer;
                     product_card.querySelector(".item_quant").innerText = stock;
