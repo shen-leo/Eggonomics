@@ -36,7 +36,7 @@
       display: flex;
       flex-direction: column;
       margin-top: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       width: 80vw;
       margin-left: auto;
       margin-right: auto;
@@ -49,8 +49,8 @@
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     }
 
-
-    #shopping_list_container {
+  
+    /* #shopping_list_container {
       height: 43%;
       overflow: scroll;
       margin-bottom: 0;
@@ -58,7 +58,7 @@
 
     #shopping_list_container::-webkit-scrollbar {
       display: none;
-    }
+    } */
 
     #btn-gp {
       padding-bottom: 4em;
@@ -92,7 +92,8 @@
     .item-delete-button {
       float: right;
       border-radius: 5px;
-      font-size: 0.9em;
+      font-size: 0.7em;
+      width: 23px;
     }
 
     #list-info {
@@ -110,12 +111,13 @@
 
     #delete-btn {
       display: block;
-      margin: 1.2em auto;
+      margin-bottom: 40px;
+      /* margin: 1.2em auto; */
     }
 
-    #delete-btn:hover {
-      background-color: rgb(233, 56, 56);
-      border: 1px solid rgb(233, 56, 56);
+    .item-delete-button:hover {
+      background-color: #32CD32;
+      border: 1px solid #32CD32;
     }
 
     #list-img-url {
@@ -274,7 +276,7 @@
                 var ul = document.getElementById("shopping_list_container");
                 var li = document.createElement("li");
                 var button = document.createElement("button");
-                button.innerHTML = "Delete";
+                button.innerHTML = "✓";
                 li.classList.add("list-group-item");
                 li.classList.add("list-group-item-warning");
                 button.classList.add("item-delete-button");
@@ -324,7 +326,7 @@
               var arrayItem = e;
               var li = document.createElement("li");
               var button = document.createElement("button");
-              button.innerHTML = "Delete";
+              button.innerHTML = "✓";
               li.classList.add("list-group-item");
               li.classList.add("list-group-item-warning");
               button.classList.add("item-delete-button");
