@@ -173,6 +173,7 @@ async function getCSVdata(){
     const response = await fetch('../sampleAPIdata.csv');
     const data = await response.text();
     const list = data.split('\n').slice(1);
+    let index = 0;
     list.forEach(row => {
         const columns = row.split(',');
 
@@ -192,8 +193,10 @@ async function getCSVdata(){
             in_stock: in_stock,
             retailer: retailer,
             manufacturer: manufacturer,
-            image: image
+            image: image,
+            id: "item" + index
         })
+        index++;
     })
     console.log("CSV added to firestore!");
 }
