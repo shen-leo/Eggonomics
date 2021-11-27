@@ -1,0 +1,99 @@
+body {
+    height: 100vh;
+  }
+
+  .shopping-list-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: #f6f1d9; */
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+
+  /* #shopping_list_container {
+    height: 43%;
+    overflow: scroll;
+    margin-bottom: 0;
+  }
+
+  #shopping_list_container::-webkit-scrollbar {
+    display: none;
+  } */
+
+  #btn-gp {
+    padding-bottom: 4em;
+  }
+
+  .btn {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  li {
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .list-group {
+    margin-top: 2em;
+    margin-bottom: 4em;
+    padding-bottom: 2.5em;
+  }
+
+  .item-delete-button {
+    float: right;
+    border-radius: 5px;
+    font-size: 0.7em;
+    width: 23px;
+  }
+
+  #list-info {
+    width: 100%;
+    margin-top: 1em;
+  }
+
+  #list-name,
+  #list-img-url {
+    display: block;
+    margin: 0 auto 0.5em auto;
+    text-align: center;
+    border: 1px solid transparent;
+  }
+
+  #delete-btn {
+    display: block;
+    margin-bottom: 40px;
+    /* margin: 1.2em auto; */
+  }
+
+  .item-delete-button:hover {
+    background-color: #32CD32;
+    border: 1px solid #32CD32;
+  }
+
+  #list-img-url {
+    min-width: 50vw;
+  }
+
+  #list-name {
+    min-width: 50vw;
+  }
