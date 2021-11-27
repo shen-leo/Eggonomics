@@ -106,65 +106,48 @@
       </form>
     </div>
 
+    <template id="favs">
+      <div class="card item_card" data-bs-toggle="modal" data-bs-target="#item_modal">
+        <img class="carousel-img img1" src="img/placeholder.jpg" alt="">
+        <div class="carousel-details">
+          <div class="item_name">Nutella</div>
+          <div class="item_price">$4.99</div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade item_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header bg-warning">
+              <!-- <h5 class="modal-title item_modal-name">IN ITEM</h5> -->
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body item_modal-body pad-none">
+              <div class="container-fluid pad-none">
+                <figure class="row">
+                  <img src="..." alt="egg" class="img2 card-img-top col-md-4">
+                  <figcaption class="col-md-4"><br>
+                    <h5 class="item_figcap-name">NAME</h5>
+                    <p>
+                      $<span class="item_price2">$$$</span><br>
+                      Quantity: <span class="item_quant">Q</span><br>
+                      Available in: <span class="item_retail">ELSE</span><br>
+                      Manufacturer: <span class="item_manu">ELSE2</span><br>
+                    </p>
+                    <button type="button" class="btn btn-warning material-icons favorites">star_outline</button>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+
     <!-- Carousel -->
     <div class="carousel-header">Favorites</div>
     <div id="carousel">
-      <div class="card" onclick="location='index.html'">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
-      <div class="card">
-        <img class="carousel-img" src="img/placeholder.jpg" alt="">
-        <div class="carousel-details">
-          <div class="item-name">Nutella</div>
-          <div class="item-price">$4.99</div>
-        </div>
-      </div>
     </div>
 
     <!-- <div class="carousel-header">Deals</div>

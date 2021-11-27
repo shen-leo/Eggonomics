@@ -8,6 +8,7 @@ function displayProducts(){
         .then(products => {
             let index = 0;
             products.forEach(doc => {
+                let id = doc.data().id;
 
                 let name = doc.data().name;
                 let price = doc.data().price;
@@ -43,6 +44,14 @@ function displayProducts(){
                     
                     product_card.querySelector(".item_modal").id = "item" + index + "_modal";
                     product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
+
+                    // event listener
+                    product_card.querySelector(".favorites").addEventListener("click", () => {
+                        let uid = localStorage.getItem("ID");
+                        db.collection("favorite").doc(uid).update({
+                            favorites: firebase.firestore.FieldValue.arrayUnion(id)
+                        });
+                    });
 
                     // append to target_div
                     target_div.appendChild(product_card);

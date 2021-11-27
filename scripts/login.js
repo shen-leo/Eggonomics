@@ -25,13 +25,20 @@ function signUp() {
         .then((userCredential) => {
             // Signed in 
             var user = userCredential.user;
+            localStorage.setItem("ID", user.uid);
             console.log("created")
             db.collection("users").doc(user.uid).set({     //write to firestore. We are using the UID for the ID in users collection
                 name: name,                                //"users" collection
                 email: user.email                          //with authenticated user's ID (user.uid)
-            }).then(function () {
-                console.log("New user added to firestore");
-                window.location.assign("index.html");       //re-direct to main.html after signup
+            })
+            .then(function () {
+                db.collection("favorite").doc(user.uid).set({
+                    user: user.uid,
+                    favorites: []
+                }).then(function () {
+                    console.log("New user added to firestore");
+                    window.location.assign("index.html");       //re-direct to main.html after signup
+                })
             })
         })
         .catch((error) => {
