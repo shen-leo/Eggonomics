@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="styles/profile.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -42,6 +42,7 @@
                         arrow_back_ios
                     </span></a>
                 <span>Profile</span>
+                <span id="logout-btn" onclick="logout()">Logout</span>
             </div>
         </div>
     </nav>
@@ -55,17 +56,17 @@
         <form>
             <fieldset class="mb-3" id="personalInfoFields" disabled>
                 <div class="form-group">
-                    <label >Name</label>
+                    <label>Name</label>
                     <input type="text" id="nameInput" class="form-control" placeholder="Enter your name">
                 </div>
                 <div class="form-group">
-                    <label >Email</label>
+                    <label>Email</label>
                     <input type="text" id="emailInput" class="form-control" placeholder="Enter your email">
                 </div>
             </fieldset>
         </form>
-    
-    <!-- Edit and Save Buttons -->
+
+        <!-- Edit and Save Buttons -->
 
         <div class="d-flex justify-content-end mt-5">
             <button type="button" id="edit" class="btn btn-secondary" onclick="editUserInfo()">Edit</button>
@@ -76,11 +77,11 @@
         <!-- The Modal -->
         <div id="myModal" class="modal">
 
-    <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p>Changes Saved!</p>
-        </div>
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div style="text-align: center; margin-top: 5%;">Changes Saved!</div>
+            </div>
         </div>
 
         <!-- Bottom Nav Bar -->
