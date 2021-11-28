@@ -155,6 +155,14 @@ function populateItem() {
 // calls populateItem() function on page load
 populateItem();
 
+function deletePopup(){
+  $('#modal').modal('show')
+}
+
+function hidePopup(){
+  $('#modal').modal('hide')
+}
+
 function Delete(arrayItem) {
   console.log(arrayItem);
   firebase.auth().onAuthStateChanged((user) => {

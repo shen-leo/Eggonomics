@@ -70,9 +70,29 @@
   <ul class="list-group list-items" id="shopping_list_container"></ul>
   
   <div id="btn-gp">
-    <button type="button" class="btn btn-warning" id="delete-btn" onclick="deleteList()";>
+    <button type="button" class="btn btn-warning" id="delete-btn" onclick="deletePopup()";>
       Delete List
     </button>
+  </div>
+
+  <div class="modal fade" tabindex="-1" role="dialog" id="modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="modal-dialog">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete shopping list</h5>
+          <button type="  button" class="close" data-dismiss="modal" aria-label="Close" onclick="hidePopup()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to delete this shopping list?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" onclick="deleteList()">Delete</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="hidePopup()">Close</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Bottom Nav Bar -->
