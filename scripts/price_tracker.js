@@ -1,83 +1,25 @@
-var API = db.collection("sampleAPI")
-
 function displayProducts(){
     let template = document.getElementById("product_card");
     let target_div = document.getElementById("products_here");
 
-    API.get()
-        .then(products => {
-            let index = 0;
+    db.collection("sampleAPI")
+        .onSnapshot(products => {
+            let query = localStorage.getItem('query')
+
+            let filteredProducts = [];
             products.forEach(doc => {
-                let id = doc.data().id;
-
-                let name = doc.data().name;
-                let price = doc.data().price;
-                let image = './img/sampleAPIimgs/' + doc.data().image;
-                let manufacturer = doc.data().manufacturer;
-                let retail = doc.data().retailer;
-                let stock = doc.data().in_stock;
-
-                let query = localStorage.getItem('query').toLowerCase();
-                let filter = name.toLowerCase();
-                if(filter.includes(query)){
-                    let product_card = template.content.cloneNode(true);
-
-                    // change all texts
-                    product_card.querySelector(".item_name").innerText = name;
-                    product_card.querySelector(".item_price").innerText = price;
-                    product_card.querySelector(".img1").src = image;
-                    product_card.querySelector(".img2").src = image;
-
-                    product_card.querySelector(".item_figcap-name").innerText = name;
-                    product_card.querySelector(".item_price2").innerText = price;
-                    product_card.querySelector(".item_retail").innerText = retail;
-                    product_card.querySelector(".item_manu").innerText = manufacturer;
-                    product_card.querySelector(".item_quant").innerText = stock;
-                    
-                    // change all IDs
-                    product_card.querySelector(".item_card").id = "item" + index + "_card";
-                    product_card.querySelector(".item_name").id = "item" + index + "_name";
-                    product_card.querySelector(".item_price").id = "item" + index + "_price";
-
-                    product_card.querySelector(".item_modal-body").id = "item" + index + "_modal-body";
-                    // product_card.querySelector(".item_modal-name").id = "item" + index + "_modal-name";
-                    
-                    product_card.querySelector(".item_modal").id = "item" + index + "_modal";
-                    product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
-
-                    // event listener
-                    product_card.querySelector(".favorites").addEventListener("click", () => {
-                        let uid = localStorage.getItem("ID");
-                        db.collection("favorite").doc(uid).update({
-                            favorites: firebase.firestore.FieldValue.arrayUnion(id)
-                        });
-                    });
-
-                    // append to target_div
-                    target_div.appendChild(product_card);
-
-                    index++;
+                if (doc.data().name.toLowerCase().includes(query.toLowerCase())){
+                    filteredProducts.push(doc)
                 }
-            })
-            // console.log("Length", target_div.childElementCount);
-            if (target_div.childElementCount == 0){
-                console.log("Search query found no data.");
+            });
 
-                let error_div = document.createElement("figure");
-                error_div.setAttribute("id", "error-message");
-
-                let img = document.createElement("img");
-                img.setAttribute("src", "./img/logo.png");
-                // img.setAttribute("")
-                img.setAttribute("id", "error-img");
-
-                let message = document.createElement("figcaption");
-                message.setAttribute("id", "error-message-text")
-                message.innerText = "We're sorry but " + localStorage.getItem('query') + " was not found in our database";
-
-                error_div.appendChild(img);
-                error_div.appendChild(message);
-                document.getElementById("content").appendChild(error_div);
+            if (filteredProducts.length <= 0){
+                displayErrorMessage(
+                    document.getElementById("content"), 
+                    "We're sorry but " + query + " was not found in our database"
+                );
+            } else {
+                populatePage (filteredProducts, template, target_div);
             }
         })
 }
