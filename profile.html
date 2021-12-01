@@ -72,20 +72,20 @@
       </div>
 
       <!-- Example single danger button -->
-      <div class="btn-group">
+      <div id="profile-dropdown" class="btn-group">
         <button
           type="button"
           class="btn btn-warning dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Profile Picture
+          Edit Photo
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" id="apple-pic" onclick="setApple()">Apple</a></li>
-          <li><a class="dropdown-item" id="banana-pic" href="#">Bananna</a></li>
-          <li><a class="dropdown-item" id="orange-pic" href="#">Orange</a></li>
-          <li><a class="dropdown-item" id="kiwi-pic" href="#">Kiwi</a></li>
+          <li><a class="dropdown-item" id="apple-pic" onclick="setPicture('/img/apple-icon.jpg')">Apple</a></li>
+          <li><a class="dropdown-item" id="banana-pic" onclick="setPicture('/img/banana-icon.jpg')">Bananna</a></li>
+          <li><a class="dropdown-item" id="orange-pic" onclick="setPicture('/img/orange-icon.jpg')">Orange</a></li>
+          <li><a class="dropdown-item" id="kiwi-pic" onclick="setPicture('/img/kiwi-icon.jpg')">Kiwi</a></li>
         </ul>
       </div>
 
@@ -115,7 +115,7 @@
 
       <!-- Edit and Save Buttons -->
 
-      <div class="d-flex justify-content-end mt-5">
+      <div id="save-edit-buttons" class="justify-content-end mt-5">
         <button
           type="button"
           id="edit"

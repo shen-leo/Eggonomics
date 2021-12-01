@@ -8,20 +8,29 @@ body {
 
 #img-container {
   display: block;
-  height: 50%;
-  margin-bottom: 3em;
+  height: 40%;
+  margin-bottom: 2em;
 }
 
 #profile-img {
   display: block;
   height: 100%;
-  margin: 0 auto;
-  border-radius: 50%;
+  margin: auto;
+  clip-path: circle(50%);
+  overflow: hidden;
 }
 
 .profile-field {
   width: 50%;
   margin: 0 auto 1em auto;
+}
+
+#profile-dropdown {
+  margin-bottom: 2em;
+}
+
+#save-edit-buttons {
+  display: block;
 }
 
 .label {
