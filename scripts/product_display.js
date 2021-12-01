@@ -14,12 +14,12 @@ function populatePage (products, templateElement, targetElement){
         let product_card = templateElement.content.cloneNode(true);
         // change all texts
         product_card.querySelector(".item_name").innerText = name;
-        product_card.querySelector(".item_price").innerText = price;
+        product_card.querySelector(".item_price").innerText = `$${Number(price).toFixed(2)}`;
         product_card.querySelector(".img1").src = image;
         product_card.querySelector(".img2").src = image;
 
         product_card.querySelector(".item_figcap-name").innerText = name;
-        product_card.querySelector(".item_price2").innerText = price;
+        product_card.querySelector(".item_price2").innerText = `$${Number(price).toFixed(2)}`;
         product_card.querySelector(".item_retail").innerText = retail;
         product_card.querySelector(".item_manu").innerText = manufacturer;
         product_card.querySelector(".item_quant").innerText = stock;
@@ -35,13 +35,15 @@ function populatePage (products, templateElement, targetElement){
         product_card.querySelector(".item_modal").id = "item" + index + "_modal";
         product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
 
-        // event listener
-        product_card.querySelector(".favorites").addEventListener("click", () => {
-            let uid = localStorage.getItem("ID");
+        // event listeners
+        product_card.querySelectorAll(".favorites").forEach(button => {
+            button.addEventListener("click", () => {
+                let uid = localStorage.getItem("ID");
+                console.log('CLICK')
 
-
-            db.collection("favorite").doc(uid).update({
-                favorites: firebase.firestore.FieldValue.arrayUnion(id)
+                db.collection("favorite").doc(uid).update({
+                    favorites: firebase.firestore.FieldValue.arrayUnion(id)
+                });
             });
         });
 

@@ -3,15 +3,6 @@
     flex-grow: 1;
 }
 
-.card:hover {
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-.card {
-    transition: 0.5s;
-}
-
 .search-field::placeholder {
     color: black;
 }
@@ -22,20 +13,4 @@
 
 #search-bar {
     background-color: rgb(238, 238, 238) !important;
-}
-
-.img1, .img2{
-    aspect-ratio: 28 / 19;
-}
-
-.img2{
-    width: 100%;
-}
-
-.pad-none{
-    padding: 0;
-}
-
-.modal-header{
-    border-style: none;
 }

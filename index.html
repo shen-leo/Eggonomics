@@ -27,6 +27,7 @@
   <!-- OUR CSS -->
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="styles/index.css">
+  <link rel="stylesheet" href="styles/products.css">
   <link rel="icon" href="img/transparent.png">
 </head>
 
@@ -59,9 +60,10 @@
       <!-- Cards -->
         <div class="card border-warning item_card bg-warning" data-bs-toggle="modal" data-bs-target="#item_modal">
           <img class="carousel-img card-img-top img1" src="img/placeholder.jpg" alt="">
-          <div class="card-body carousel-details">
+          <div class="card-body carousel-details description">
             <h5 class="card-title item_name">Nutella</h5>
             <p class="card-text item_price">$4.99</p>
+            <div class="fav1"><span type="button" class="fav-btn1 material-icons favorites">favorite</span></div>
           </div>
         </div>
 
@@ -74,21 +76,19 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body item_modal-body pad-none">
-              <div class="container-fluid pad-none">
-                <figure class="row">
-                  <img src="..." alt="egg" class="img2 card-img-top col-md-4">
-                  <figcaption class="col-md-4"><br>
-                    <h5 class="item_figcap-name">NAME</h5>
-                    <p>
-                      $<span class="item_price2">$$$</span><br>
-                      Quantity: <span class="item_quant">Q</span><br>
-                      Available in: <span class="item_retail">ELSE</span><br>
-                      Manufacturer: <span class="item_manu">ELSE2</span><br>
-                    </p>
-                    <button type="button" class="btn btn-warning material-icons favorites">star_outline</button>
-                  </figcaption>
-                </figure>
-              </div>
+              <div class="description-m pad-none">
+                <div class="img-c"><img src="..." alt="egg" class="img2 card-img-top col-md-4"></div>
+                <h5 class="item_figcap-name">NAME</h5>
+                <div class="actions">
+                  <span class="item_price2">$$$</span>
+                  <button class="fav2 favorites btn btn-warning" type="button">Add to Favorites<span class="fav-btn2 material-icons">favorite</span></button>
+                </div>
+                <p class="more_desc">
+                  Quantity: <span class="item_quant">Q</span><br>
+                  Available in: <span class="item_retail">ELSE</span><br>
+                  Manufacturer: <span class="item_manu">ELSE2</span><br>
+                </p>
+            </div>
             </div>
           </div>
         </div>

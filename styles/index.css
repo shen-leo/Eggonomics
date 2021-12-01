@@ -69,23 +69,5 @@
 }
 
 .card:hover {
-    transform: scale(1.1);
-    cursor: pointer;
     border: 1px solid black;
-}
-
-.img1, .img2{
-    aspect-ratio: 28 / 19;
-}
-
-.img2{
-    width: 100%;
-}
-
-.pad-none{
-    padding: 0;
-}
-
-.modal-header{
-    border-style: none;
 }

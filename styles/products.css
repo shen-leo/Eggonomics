@@ -1,0 +1,157 @@
+.modal-header{
+    border-style: none;
+}
+
+.pad-none{
+    padding: 0;
+}
+
+.favorites{
+    font-size: 1.2em;
+    color: rgb(133, 91, 0);
+}
+
+.img1, .img2{
+    aspect-ratio: 28 / 19;
+}
+
+.img2{
+    width: 90%;
+    border-style: solid;
+    border-width: 5px;
+    border-color: #FFC107;
+    /* margin-top: 10px; */
+}
+
+.card:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.card {
+    transition: 0.5s;
+}
+
+/* CARD GRID */
+
+.description{
+    display: grid;
+    grid-template-columns: 67% 33%;
+    grid-template-rows: 33% 67%;
+    padding: 0px;
+    margin: 0.2em 0.1em 0.1em 0.1em;
+
+    font-size: 24px;
+}
+.card-title{
+    grid-column: 1 / span 2;
+    grid-row: 2 / span 1;
+    margin-top: 0.3em;
+    
+}
+.card-text{
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    font-size: 0.8em;
+    text-align: left;
+    text-indent: 0.8em;
+    
+}
+.fav1{
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.fav-btn1{
+    float: right;
+    margin-right: 0.2em;
+}
+
+/* MODAL */
+.description-m{
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 15% 15% 70%;
+    font-size: 24px;
+}
+.img-c{
+    margin: 2em auto;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 3
+}
+.item_figcap-name{
+    margin-top: 1em;
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+
+    font-size: 1em;
+    text-align: left;
+}
+.more_desc{
+    grid-column: 2 / span 1;
+    grid-row: 3 / span 1;
+
+    text-align: left;
+}
+.actions{
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.item_price2{
+    float: left;
+    font-size: 1.5em;
+}
+.fav2{
+    float: right;
+    margin-right: 0.5em;
+    font-size: 1em;
+
+    display: flex;
+    align-items: center;
+}
+.fav-btn2{
+    font-size: 1em;
+    margin: auto auto auto 1em;
+}
+
+@media screen and (max-width: 576px){
+    .description-m{
+        grid-template-columns: 100%;
+        grid-template-rows: 40% 10% 10% 30%;
+
+        font-size: 18px;
+    }
+    .img-c{
+        grid-row: 1 / span 1;
+        height: 100%;
+        margin: 0;
+    }
+    .img2{
+        aspect-ratio: unset;
+        height: 100%;
+        width: 100%;
+        border-style: none;
+    }
+    .item_figcap-name{
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+        text-align: center;
+        font-size: 1.2em;
+        margin: 0.5em;
+    }
+    .actions{
+        grid-column: 1 / span 1;
+        grid-row: 3 / span 1;
+        margin: 0.5em;
+        
+    }
+    .more_desc{
+        grid-column: 1 / span 1;
+        grid-row: 4 / span 1;
+        margin: 0.5em;
+    }
+}
