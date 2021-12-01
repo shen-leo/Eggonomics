@@ -105,6 +105,7 @@ body {
 
 #list-name {
   min-width: 50vw;
+  font-size: 4vw;
 }
 
 /* The Modal (background) */
@@ -151,4 +152,7 @@ body {
 
 #add-img-btn {
   display: block;
+  float: right;
+  border-color: black;
+  color: black;
 }
