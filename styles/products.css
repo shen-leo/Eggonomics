@@ -36,7 +36,7 @@
 
 .description{
     display: grid;
-    grid-template-columns: 67% 33%;
+    grid-template-columns: 100%;
     grid-template-rows: 33% 67%;
     padding: 0px;
     margin: 0.2em 0.1em 0.1em 0.1em;
@@ -46,16 +46,13 @@
 .card-title{
     grid-column: 1 / span 2;
     grid-row: 2 / span 1;
-    margin-top: 0.3em;
-    
+    margin-top: 0.3em;    
 }
 .card-text{
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
     font-size: 0.8em;
-    text-align: left;
-    text-indent: 0.8em;
-    
+    text-align: center;
 }
 .fav1{
     grid-column: 2 / span 1;
