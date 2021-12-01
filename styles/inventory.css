@@ -40,14 +40,14 @@ body {
 
   input {
     text-align: center;
-    border: 1px solid orange;
+    border: 1px solid rgba(0, 0, 0, 0.25);
     /* margin: 1em 1em 0em 1em; */
     margin-right: 5%;
     /* max-width: 200px; */
     width: 70%;
     height: 60%;
-    font-size: 70%;
-    border-radius: 2px;
+    font-size: 85%;
+    border-radius: 4px;
   }
 
   .quantity-input {
@@ -63,7 +63,7 @@ body {
 
   #btn-gp button {
     margin: 2em 1em 0 1em;
-    font-size: 12px;
+    font-size: 80%;
     width: 5em;
   }
 
@@ -107,6 +107,8 @@ body {
     border: 1px solid rgb(233, 56, 56);
   }
 
-  input:invalid {
-  border: 3px solid red;
+  .quantity-input:invalid {
+  /* border: 3px solid red; */
+  border-color: #EE4B2B;
+  color: #EE4B2B;
   }

@@ -72,6 +72,9 @@ function saveList() {
           });
         }
       }
+      if(itemCount == 0) {
+        populateEmpty();
+      }
     })
   })
 
@@ -98,7 +101,6 @@ function saveList() {
       });
     }
   })
-
 }
 
 function populate() {
