@@ -1,5 +1,21 @@
+var favos;
+var favosStored;
+
+if (document.readyState != "loading"){
+    ready()
+} else {
+    document.addEventListener("DOMContentLoaded", ready())
+}
+
+function ready(){
+    let uid = localStorage.getItem("ID");
+    favos = db.collection("favorite").doc(uid);
+    favos.get().then(doc => {
+        favosStored = doc.data().favorites;
+    })
+}
+
 function populatePage (products, templateElement, targetElement){
-    let index = 0;
     products.forEach(doc => {
         // get all item data
         let id = doc.data().id;
@@ -23,37 +39,60 @@ function populatePage (products, templateElement, targetElement){
         product_card.querySelector(".item_retail").innerText = retail;
         product_card.querySelector(".item_manu").innerText = manufacturer;
         product_card.querySelector(".item_quant").innerText = stock;
+        let toggle = product_card.querySelector(".fav2");
         
         // change all IDs
-        product_card.querySelector(".item_card").id = "item" + index + "_card";
-        product_card.querySelector(".item_name").id = "item" + index + "_name";
-        product_card.querySelector(".item_price").id = "item" + index + "_price";
+        product_card.querySelector(".item_card").id = id + "_card";
+        product_card.querySelector(".item_name").id = id + "_name";
+        product_card.querySelector(".item_price").id = id + "_price";
 
-        product_card.querySelector(".item_modal-body").id = "item" + index + "_modal-body";
-        // product_card.querySelector(".item_modal-name").id = "item" + index + "_modal-name";
+        product_card.querySelector(".item_modal-body").id = id + "_modal-body";
+        // product_card.querySelector(".item_modal-name").id = "item" + id + "_modal-name";
         
-        product_card.querySelector(".item_modal").id = "item" + index + "_modal";
-        product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
+        product_card.querySelector(".item_modal").id = id + "_modal";
+        product_card.querySelector(".item_card").setAttribute("data-bs-target", "#" + id + "_modal");
+
+        // check for button states
+        if (favosStored.includes(id)){
+            toggle.classList.add("active");
+            toggle.setAttribute("aria-pressed", true);
+        }
 
         // event listeners
         product_card.querySelectorAll(".favorites").forEach(button => {
             button.addEventListener("click", () => {
-                let uid = localStorage.getItem("ID");
-                console.log('CLICK')
-                let favos = db.collection("favorite").doc(uid);
-                console.log(button.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)
-                
+                if (favosStored.includes(id)){
+                    console.log("DELETE: " + id)
 
-                // favos.update({
-                //     favorites: firebase.firestore.FieldValue.arrayUnion(id)
-                // });
+                    favosStored.splice(favosStored.indexOf(id), 1);
+                    console.log(favosStored)
+                    favos.update({
+                        favorites: favosStored
+                    })
+
+                    toggle.classList.remove("active");
+                    toggle.setAttribute("aria-pressed", false);
+
+                    if (document.URL.includes("index.html")){
+                        $(`#${id}_modal`).modal('hide');
+                        document.querySelector(`#${id}_modal`).remove();
+                        document.querySelector(`#${id}_card`).remove();
+                    }
+                } else {
+                    console.log("ADD: " + id)
+                    favos.update({
+                        favorites: firebase.firestore.FieldValue.arrayUnion(id)
+                    })
+
+                    toggle.classList.add("active");
+                    toggle.setAttribute("aria-pressed", true);
+                    favosStored.push(id)
+                }     
             });
         });
 
         // append to target_div
         targetElement.appendChild(product_card);
-
-        index++;
     })
 }
 
@@ -76,4 +115,3 @@ function displayErrorMessage(targetElement, error_message){
     error_div.appendChild(message);
     targetElement.appendChild(error_div);
 }
-
