@@ -35,6 +35,7 @@ function sortPriceAsc() {
         itemList.push(element)
     })
     itemList.sort(function(a, b){
+        // Can get bugs if item_price.innerHTML changes
         price_1 = parseFloat(a.querySelector(".item_price").innerHTML.substr(1))
         price_2 = parseFloat(b.querySelector(".item_price").innerHTML.substr(1))
         return price_1 - price_2
@@ -55,7 +56,6 @@ function sortPriceAsc() {
 }
 
 function sortPriceDes() {
-    console.log("CLICK2")
     let i = 0
     let itemList = []
     let products = document.querySelectorAll(".col")
@@ -66,6 +66,7 @@ function sortPriceDes() {
         itemList.push(element)
     })
     itemList.sort(function(a, b){
+        // Can get bugs if item_price.innerHTML changes
         price_1 = parseFloat(a.querySelector(".item_price").innerHTML.substr(1))
         price_2 = parseFloat(b.querySelector(".item_price").innerHTML.substr(1))
         return price_2 - price_1
