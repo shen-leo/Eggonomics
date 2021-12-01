@@ -19,10 +19,10 @@ function newList() {
   location.href = "single_shopping_list.html"
 }
 
-
-async function populate() {
+function populate() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
+      var userID = user.uid;
       db.collection("shoppinglist").doc(user.uid).collection("lists").get().then(snap => {
         snap.forEach(doc => {
           let listName = doc.data().name;
@@ -47,7 +47,7 @@ async function populate() {
             cardImg.setAttribute('src', `${listImg}`)
           }
           else {
-            cardImg.setAttribute('data-img', `${doc.data().img}`)
+            cardImg.setAttribute('data-img', `${userID+doc.id+".img"}`)
           }
 
           card.appendChild(cardImg)
@@ -62,7 +62,6 @@ async function populate() {
   })
 }
 populate()
-
 
 function getImg() {
   var storageRef = firebase.storage().ref();
@@ -84,7 +83,6 @@ function getImg() {
 
           // Or inserted into an <img> element
           image.setAttribute("src", url)
-          console.log(url)
         })
         .catch((error) => {
           console.log("error")

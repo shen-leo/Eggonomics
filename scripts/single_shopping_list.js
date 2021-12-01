@@ -59,29 +59,6 @@ function saveListImg(imgName) {
   })
 }
 
-function saveList() {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      let ref = db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId);
-      ref.get().then((res) => {
-        if (!res.exists) {
-          db.collection("shoppinglist")
-            .doc(user.uid).collection("lists").doc(listId)
-            .set({
-              name: listNameField.value,
-              img: listImgField.value
-            });
-        }
-
-        db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId).update({
-          name: listNameField.value,
-          img: listImgField.value
-        })
-      })
-    }
-  })
-}
-
 function saveItem() {
   let Item = document.getElementById("itemInput").value;
   // if text input not is null or not an empty string proceed with saveItem()
@@ -145,21 +122,39 @@ function saveItem() {
 //function to save file
 function uploadFile() {
 
-  // Created a Storage Reference with root dir
-  var storageRef = firebase.storage().ref();
-  // Get the file from DOM
-  var file = document.getElementById("files").files[0];
-  console.log(file.name);
+  saveListName()
 
-  //dynamically set reference to the file name
-  var thisRef = storageRef.child(file.name);
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      var currentUser = db.collection("users").doc(user.uid);
+      var userID = user.uid;
 
-  saveListImg(file.name)
+      currentUser.get().then((userDoc) => {
+        // Start a new collection and add all data in it.
+        var docref = db.collection("shoppinglist").doc(userID).collection("lists").doc(listId);
+        var doc = docref.get().then((res) => {
+          console.log(listId)
+          listImgName = userID + listId + ".img"
+          console.log(listImgName)
+          // Created a Storage Reference with root dir
+          var storageRef = firebase.storage().ref();
+          // Get the file from DOM
+          var file = document.getElementById("files").files[0];
+          console.log(file.name);
 
-  //put request upload file to firebase storage
-  thisRef.put(file).then(function (snapshot) {
-    pictureModal();
-  });
+          // Set reference to the file name
+          var thisRef = storageRef.child(listImgName);
+
+          saveListImg(file.name)
+
+          // Put request upload file to firebase storage
+          thisRef.put(file).then(function (snapshot) {
+            pictureModal();
+          });
+        });
+      })
+    }
+  })
 }
 
 imgBtn = document.getElementById("add-img-btn")
@@ -290,11 +285,11 @@ function pictureModal() {
 }
 
 function closeModal() {
-    modal.style.display = "none";
+  modal.style.display = "none";
 }
 
 window.onclick = function (event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
