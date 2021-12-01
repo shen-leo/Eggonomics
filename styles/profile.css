@@ -16,7 +16,9 @@ body {
   display: block;
   height: 100%;
   margin: 0 auto;
-  border-radius: 50%;
+  clip-path: circle(50%);
+  overflow: hidden;
+  /* max-width: 200px; */
 }
 
 .profile-field {

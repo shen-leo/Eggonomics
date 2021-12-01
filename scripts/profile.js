@@ -85,3 +85,39 @@ function logout() {
         // An error happened.
     });
 }
+
+function populate() {
+    firebase.auth().onAuthStateChanged((user) => {
+        // Check if user is signed in:
+        if (user) {
+            //go to the correct user document by referencing to the user uid
+            currentUser = db.collection("users").doc(user.uid);
+            //get the document for current user.
+            currentUser.get().then((userDoc) => {
+                //get the data fields of the user
+                var userPicture = userDoc.data().picture;
+                
+                if (userPicture !=null) {
+                    document.getElementById("profile-img").src = userPicture
+                }     
+            });
+        } else {
+            // No user is signed in.
+            console.log("No user is signed in");
+        }
+    });
+}
+populate();
+
+function setPicture(imgsrc) {
+    document.getElementById("profile-img").src = imgsrc
+
+    let profilePic = imgsrc;
+    
+    currentUser.update({
+       picture: profilePic
+
+    })
+}
+
+
