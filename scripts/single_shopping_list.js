@@ -158,7 +158,7 @@ function uploadFile() {
 
   //put request upload file to firebase storage
   thisRef.put(file).then(function (snapshot) {
-    alert("File Uploaded")
+    pictureModal();
   });
 }
 
@@ -273,3 +273,28 @@ $("#itemInput").bind("keypress keydown keyup", function (e) {
     e.preventDefault();
   }
 });
+
+// Confirmation Modal
+var modal = document.getElementById("myModal");
+
+var btn = document.getElementById("save");
+
+var span = document.getElementsByClassName("close")[0];
+
+// btn.onclick = function () {
+//     modal.style.display = "block";
+// }
+
+function pictureModal() {
+  modal.style.display = "block";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
