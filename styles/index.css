@@ -38,27 +38,27 @@
 
 .card {
     display: inline-block;
-    width: 200px;
-    height: 100%;
-    margin-right: 4%;
+    width: 200px !important;
+    height: 100% !important;
+    margin: 2% 2%;
     border: 1px solid transparent;
 
     transition: 0.5s;
-    /* transform: scale(0.9); */
 }
 
 .carousel-img {
     display: block;
+    width: 100%;
     margin: 0 auto;
-    height: 80%;
+    height: 80% !important;
     pointer-events: none;
 }
 
 .carousel-details {
-    height: 20%;
-    margin: 0 auto;
+    display: block;
+    height: 20% !important;
     white-space: normal;
-    /* height: 500px; */
+    overflow-wrap:break-word;
 }
 
 .carousel-header {
@@ -69,7 +69,7 @@
 }
 
 .card:hover {
-    transform: scale(1);
+    transform: scale(1.1);
     cursor: pointer;
     border: 1px solid black;
 }
@@ -89,57 +89,3 @@
 .modal-header{
     border-style: none;
 }
-
-/* OLD */
-/* #content {
-    height: fit-content;
-  }
-
-  #carousel,
-  #carousel2 {
-    height: 230px;
-    white-space: nowrap;
-    margin-top: 0;
-    overflow: auto;
-    cursor: grab;
-
-  }
-
-  #carousel::-webkit-scrollbar,
-  #carousel2::-webkit-scrollbar {
-    display: none;
-  }
-
-  .card {
-    display: inline-block;
-    width: 200px;
-    margin-right: 4%;
-    height: 100%;
-    border: 1px solid transparent;
-    padding: 10px;
-  }
-
-  .carousel-img {
-    display: block;
-    margin: 0 auto;
-    height: 80%;
-    pointer-events: none;
-  }
-
-  .carousel-details {
-    height: 20%;
-    margin: 0 auto;
-  }
-
-  .carousel-header {
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 1em;
-    margin-top: 2em;
-  }
-
-  .card:hover {
-    transform: scale(1);
-    cursor: pointer;
-    border: 1px solid black;
-  } */
