@@ -12,6 +12,9 @@ function deleteItem(parentID) {
         console.error("Error removing document: ", error);
       });
     }
+    if(itemCount == 0) {
+      populateEmpty();
+    }
   })
 }
 

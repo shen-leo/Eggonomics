@@ -48,6 +48,23 @@
     <input type="text" id="list-img-url" placeholder="Enter image url" />
   </div>
 
+  <div id="profile-dropdown" class="btn-group">
+    <button
+      type="button"
+      class="btn btn-warning dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Edit Photo
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" id="apple-pic" onclick="setPicture('/img/apple-icon.jpg')">Apple</a></li>
+      <li><a class="dropdown-item" id="banana-pic" onclick="setPicture('/img/banana-icon.jpg')">Bananna</a></li>
+      <li><a class="dropdown-item" id="orange-pic" onclick="setPicture('/img/orange-icon.jpg')">Orange</a></li>
+      <li><a class="dropdown-item" id="kiwi-pic" onclick="setPicture('/img/kiwi-icon.jpg')">Kiwi</a></li>
+    </ul>
+  </div>
+
   <!-- Text Fields -->
   <div class="shopping-list-container bg-light shadow">
     <form>
