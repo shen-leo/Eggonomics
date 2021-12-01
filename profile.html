@@ -82,10 +82,10 @@
           Profile Picture
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Apple</a></li>
-          <li><a class="dropdown-item" href="#">Bananna</a></li>
-          <li><a class="dropdown-item" href="#">Orange</a></li>
-          <li><a class="dropdown-item" href="#">Kiwi</a></li>
+          <li><a class="dropdown-item" id="apple-pic" onclick="setApple()">Apple</a></li>
+          <li><a class="dropdown-item" id="banana-pic" href="#">Bananna</a></li>
+          <li><a class="dropdown-item" id="orange-pic" href="#">Orange</a></li>
+          <li><a class="dropdown-item" id="kiwi-pic" href="#">Kiwi</a></li>
         </ul>
       </div>
 
@@ -125,7 +125,11 @@
           Edit
         </button>
         <span style="width: 10px"></span>
-        <button type="button" id="save" class="btn btn-warning" onclick="saveUserInfo()">
+        <button
+          type="button"
+          id="save"
+          class="btn btn-warning"
+        >
           Save
         </button>
       </div>
