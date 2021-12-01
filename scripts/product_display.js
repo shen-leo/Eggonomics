@@ -40,10 +40,13 @@ function populatePage (products, templateElement, targetElement){
             button.addEventListener("click", () => {
                 let uid = localStorage.getItem("ID");
                 console.log('CLICK')
+                let favos = db.collection("favorite").doc(uid);
+                console.log(button.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)
+                
 
-                db.collection("favorite").doc(uid).update({
-                    favorites: firebase.firestore.FieldValue.arrayUnion(id)
-                });
+                // favos.update({
+                //     favorites: firebase.firestore.FieldValue.arrayUnion(id)
+                // });
             });
         });
 
