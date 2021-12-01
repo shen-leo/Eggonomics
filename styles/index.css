@@ -38,14 +38,13 @@
 
 .card {
     display: inline-block;
-    width: 15%;
+    width: 200px;
     height: 100%;
     margin-right: 4%;
     border: 1px solid transparent;
-    white-space: normal;
 
     transition: 0.5s;
-    transform: scale(0.9);
+    /* transform: scale(0.9); */
 }
 
 .carousel-img {
@@ -55,10 +54,12 @@
     pointer-events: none;
 }
 
-/* .carousel-details {
+.carousel-details {
     height: 20%;
     margin: 0 auto;
-} */
+    white-space: normal;
+    /* height: 500px; */
+}
 
 .carousel-header {
     font-weight: bold;
@@ -88,3 +89,57 @@
 .modal-header{
     border-style: none;
 }
+
+/* OLD */
+/* #content {
+    height: fit-content;
+  }
+
+  #carousel,
+  #carousel2 {
+    height: 230px;
+    white-space: nowrap;
+    margin-top: 0;
+    overflow: auto;
+    cursor: grab;
+
+  }
+
+  #carousel::-webkit-scrollbar,
+  #carousel2::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    display: inline-block;
+    width: 200px;
+    margin-right: 4%;
+    height: 100%;
+    border: 1px solid transparent;
+    padding: 10px;
+  }
+
+  .carousel-img {
+    display: block;
+    margin: 0 auto;
+    height: 80%;
+    pointer-events: none;
+  }
+
+  .carousel-details {
+    height: 20%;
+    margin: 0 auto;
+  }
+
+  .carousel-header {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 1em;
+    margin-top: 2em;
+  }
+
+  .card:hover {
+    transform: scale(1);
+    cursor: pointer;
+    border: 1px solid black;
+  } */
