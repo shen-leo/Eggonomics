@@ -43,12 +43,12 @@ function populateFavorites(){
     let target_div = document.getElementById("carousel");
 
     let uid = localStorage.getItem("ID");
-    db.collection("favorite").doc(uid).onSnapshot(function (doc) {
+    db.collection("favorite").doc(uid).get().then(function (doc) {
         let favs = doc.data().favorites
         if (favs.length == 0){
             displayErrorMessage(target_div, "Nothing yet!");
         } else {
-            db.collection("sampleAPI").where("id", "in", favs).get().then((products) => {
+            db.collection("sampleAPI").where("id", "in", favs).onSnapshot((products) => {
                 populatePage(products, template, target_div);
             })
         }

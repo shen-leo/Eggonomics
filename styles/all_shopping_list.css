@@ -56,3 +56,9 @@ body {
   #add-list-btn {
     margin: 1em auto 1.5em auto;
   }
+
+  .card-img {
+    height: 100%;
+    width: 100%;
+    aspect-ratio: 1/1;
+  }
