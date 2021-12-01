@@ -1,5 +1,4 @@
 function populatePage (products, templateElement, targetElement){
-    let index = 0;
     products.forEach(doc => {
         // get all item data
         let id = doc.data().id;
@@ -25,15 +24,15 @@ function populatePage (products, templateElement, targetElement){
         product_card.querySelector(".item_quant").innerText = stock;
         
         // change all IDs
-        product_card.querySelector(".item_card").id = "item" + index + "_card";
-        product_card.querySelector(".item_name").id = "item" + index + "_name";
-        product_card.querySelector(".item_price").id = "item" + index + "_price";
+        product_card.querySelector(".item_card").id = id + "_card";
+        product_card.querySelector(".item_name").id = id + "_name";
+        product_card.querySelector(".item_price").id = id + "_price";
 
-        product_card.querySelector(".item_modal-body").id = "item" + index + "_modal-body";
-        // product_card.querySelector(".item_modal-name").id = "item" + index + "_modal-name";
+        product_card.querySelector(".item_modal-body").id = id + "_modal-body";
+        // product_card.querySelector(".item_modal-name").id = "item" + id + "_modal-name";
         
-        product_card.querySelector(".item_modal").id = "item" + index + "_modal";
-        product_card.querySelector(".item_card").setAttribute("data-bs-target", "#item" + index + "_modal");
+        product_card.querySelector(".item_modal").id = id + "_modal";
+        product_card.querySelector(".item_card").setAttribute("data-bs-target", "#" + id + "_modal");
 
         // event listeners
         product_card.querySelectorAll(".favorites").forEach(button => {
@@ -41,19 +40,36 @@ function populatePage (products, templateElement, targetElement){
                 let uid = localStorage.getItem("ID");
                 console.log('CLICK')
                 let favos = db.collection("favorite").doc(uid);
-                console.log(button.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode)
-                
 
-                // favos.update({
-                //     favorites: firebase.firestore.FieldValue.arrayUnion(id)
-                // });
+                let item_id = button.parentNode.parentNode.parentNode.id.replace("_modal-body", "");
+                console.log(item_id);
+
+                favos.get().then(doc => {
+                    let favosStored = doc.data().favorites;
+                    if (favosStored.includes(item_id)){
+                        console.log("DELETE")
+                        favosStored.splice(favosStored.indexOf(item_id), 1);
+                        console.log(favosStored)
+                        favos.update({
+                            favorites: favosStored
+                        })
+                        if (document.URL.includes("index.html")){
+                            $(`#${item_id}_modal`).modal('hide');
+                            document.querySelector(`#${item_id}_modal`).remove();
+                            document.querySelector(`#${item_id}_card`).remove();
+                        }
+                    } else {
+                        console.log("ADD")
+                        favos.update({
+                            favorites: firebase.firestore.FieldValue.arrayUnion(id)
+                        })
+                    }     
+                })
             });
         });
 
         // append to target_div
         targetElement.appendChild(product_card);
-
-        index++;
     })
 }
 
