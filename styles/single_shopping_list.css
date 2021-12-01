@@ -64,6 +64,10 @@ body {
   padding-bottom: 2.5em;
 }
 
+#files {
+  display: none;
+}
+
 .item-delete-button {
   float: right;
   border-radius: 5px;
