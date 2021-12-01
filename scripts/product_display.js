@@ -73,3 +73,4 @@ function displayErrorMessage(targetElement, error_message){
     error_div.appendChild(message);
     targetElement.appendChild(error_div);
 }
+
