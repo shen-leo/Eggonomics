@@ -3,8 +3,8 @@ const listId = localStorage.getItem("listId");
 const listNameField = document.getElementById("list-name")
 const listImgField = document.getElementById("list-img-url")
 
-listNameField.addEventListener('blur', () => {saveList()})
-listImgField.addEventListener('blur', () => {saveList()})
+listNameField.addEventListener('blur', () => { saveListName() })
+// listImgField.addEventListener('blur', () => { saveList() })
 
 function deleteList() {
   firebase.auth().onAuthStateChanged((user) => {
@@ -15,6 +15,46 @@ function deleteList() {
       }).catch((error) => {
         console.error("Error removing document: ", error);
       });
+    }
+  })
+}
+
+function saveListName() {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      let ref = db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId);
+      ref.get().then((res) => {
+        if (!res.exists) {
+          db.collection("shoppinglist")
+            .doc(user.uid).collection("lists").doc(listId)
+            .set({
+              name: listNameField.value
+            });
+        }
+        db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId).update({
+          name: listNameField.value
+        })
+      })
+    }
+  })
+}
+
+function saveListImg(imgName) {
+  firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+      let ref = db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId);
+      ref.get().then((res) => {
+        if (!res.exists) {
+          db.collection("shoppinglist")
+            .doc(user.uid).collection("lists").doc(listId)
+            .set({
+              img: imgName
+            });
+        }
+        db.collection("shoppinglist").doc(user.uid).collection("lists").doc(listId).update({
+          img: imgName
+        })
+      })
     }
   })
 }
@@ -102,6 +142,32 @@ function saveItem() {
   }
 }
 
+//function to save file
+function uploadFile() {
+
+  // Created a Storage Reference with root dir
+  var storageRef = firebase.storage().ref();
+  // Get the file from DOM
+  var file = document.getElementById("files").files[0];
+  console.log(file.name);
+
+  //dynamically set reference to the file name
+  var thisRef = storageRef.child(file.name);
+
+  saveListImg(file.name)
+
+  //put request upload file to firebase storage
+  thisRef.put(file).then(function (snapshot) {
+    alert("File Uploaded")
+  });
+}
+
+imgBtn = document.getElementById("add-img-btn")
+imgBtn.addEventListener("click", () => {
+  filesBtn = document.getElementById("files")
+  filesBtn.click()
+});
+
 function populateItem() {
   firebase.auth().onAuthStateChanged((user) => {
     // Check if user is signed in:
@@ -155,11 +221,11 @@ function populateItem() {
 // calls populateItem() function on page load
 populateItem();
 
-function deletePopup(){
+function deletePopup() {
   $('#modal').modal('show')
 }
 
-function hidePopup(){
+function hidePopup() {
   $('#modal').modal('hide')
 }
 
