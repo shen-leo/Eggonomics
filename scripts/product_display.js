@@ -1,12 +1,15 @@
 var favos;
 var favosStored;
 
+
+// Check if page is ready! Makes sure that favos initiates when coming in from a different page or directly from link
 if (document.readyState != "loading"){
     ready()
 } else {
     document.addEventListener("DOMContentLoaded", ready())
 }
 
+// async get() gets called on page load so that you don't have to get favorites over and over
 function ready(){
     let uid = localStorage.getItem("ID");
     favos = db.collection("favorite").doc(uid);
@@ -63,13 +66,12 @@ function populatePage (products, templateElement, targetElement){
             button.addEventListener("click", () => {
                 if (favosStored.includes(id)){
                     console.log("DELETE: " + id)
-
                     favosStored.splice(favosStored.indexOf(id), 1);
-                    console.log(favosStored)
                     favos.update({
                         favorites: favosStored
                     })
 
+                    // check for button states
                     toggle.classList.remove("active");
                     toggle.setAttribute("aria-pressed", false);
 
@@ -84,8 +86,10 @@ function populatePage (products, templateElement, targetElement){
                         favorites: firebase.firestore.FieldValue.arrayUnion(id)
                     })
 
+                    // check for button states
                     toggle.classList.add("active");
                     toggle.setAttribute("aria-pressed", true);
+
                     favosStored.push(id)
                 }     
             });
@@ -99,12 +103,12 @@ function populatePage (products, templateElement, targetElement){
 function displayErrorMessage(targetElement, error_message){
     console.log(error_message);
             
+    // make error div message element
     let error_div = document.createElement("figure");
     error_div.setAttribute("id", "error-message");
 
     let img = document.createElement("img");
     img.setAttribute("src", "./img/logo.png");
-    // img.setAttribute("")
     img.setAttribute("id", "error-img");
 
     let message = document.createElement("figcaption");
@@ -113,5 +117,7 @@ function displayErrorMessage(targetElement, error_message){
 
     error_div.appendChild(img);
     error_div.appendChild(message);
+
+    // append to target_div
     targetElement.appendChild(error_div);
 }
