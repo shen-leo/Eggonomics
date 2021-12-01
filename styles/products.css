@@ -1,3 +1,16 @@
+.active{
+    color: red !important;
+}
+
+.fav2:hover{
+    transform: scale(1.05);
+    transition: 0.5s;
+}
+
+.fav2:active{
+    color: red !important;
+}
+
 .modal-header{
     border-style: none;
 }

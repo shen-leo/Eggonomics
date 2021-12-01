@@ -1,3 +1,20 @@
+var favos;
+var favosStored;
+
+if (document.readyState != "loading"){
+    ready()
+} else {
+    document.addEventListener("DOMContentLoaded", ready())
+}
+
+function ready(){
+    let uid = localStorage.getItem("ID");
+    favos = db.collection("favorite").doc(uid);
+    favos.get().then(doc => {
+        favosStored = doc.data().favorites;
+    })
+}
+
 function populatePage (products, templateElement, targetElement){
     products.forEach(doc => {
         // get all item data
@@ -22,6 +39,7 @@ function populatePage (products, templateElement, targetElement){
         product_card.querySelector(".item_retail").innerText = retail;
         product_card.querySelector(".item_manu").innerText = manufacturer;
         product_card.querySelector(".item_quant").innerText = stock;
+        let toggle = product_card.querySelector(".fav2");
         
         // change all IDs
         product_card.querySelector(".item_card").id = id + "_card";
@@ -34,37 +52,42 @@ function populatePage (products, templateElement, targetElement){
         product_card.querySelector(".item_modal").id = id + "_modal";
         product_card.querySelector(".item_card").setAttribute("data-bs-target", "#" + id + "_modal");
 
+        // check for button states
+        if (favosStored.includes(id)){
+            toggle.classList.add("active");
+            toggle.setAttribute("aria-pressed", true);
+        }
+
         // event listeners
         product_card.querySelectorAll(".favorites").forEach(button => {
             button.addEventListener("click", () => {
-                let uid = localStorage.getItem("ID");
-                console.log('CLICK')
-                let favos = db.collection("favorite").doc(uid);
+                if (favosStored.includes(id)){
+                    console.log("DELETE: " + id)
 
-                let item_id = button.parentNode.parentNode.parentNode.id.replace("_modal-body", "");
-                console.log(item_id);
+                    favosStored.splice(favosStored.indexOf(id), 1);
+                    console.log(favosStored)
+                    favos.update({
+                        favorites: favosStored
+                    })
 
-                favos.get().then(doc => {
-                    let favosStored = doc.data().favorites;
-                    if (favosStored.includes(item_id)){
-                        console.log("DELETE")
-                        favosStored.splice(favosStored.indexOf(item_id), 1);
-                        console.log(favosStored)
-                        favos.update({
-                            favorites: favosStored
-                        })
-                        if (document.URL.includes("index.html")){
-                            $(`#${item_id}_modal`).modal('hide');
-                            document.querySelector(`#${item_id}_modal`).remove();
-                            document.querySelector(`#${item_id}_card`).remove();
-                        }
-                    } else {
-                        console.log("ADD")
-                        favos.update({
-                            favorites: firebase.firestore.FieldValue.arrayUnion(id)
-                        })
-                    }     
-                })
+                    toggle.classList.remove("active");
+                    toggle.setAttribute("aria-pressed", false);
+
+                    if (document.URL.includes("index.html")){
+                        $(`#${id}_modal`).modal('hide');
+                        document.querySelector(`#${id}_modal`).remove();
+                        document.querySelector(`#${id}_card`).remove();
+                    }
+                } else {
+                    console.log("ADD: " + id)
+                    favos.update({
+                        favorites: firebase.firestore.FieldValue.arrayUnion(id)
+                    })
+
+                    toggle.classList.add("active");
+                    toggle.setAttribute("aria-pressed", true);
+                    favosStored.push(id)
+                }     
             });
         });
 
@@ -92,4 +115,3 @@ function displayErrorMessage(targetElement, error_message){
     error_div.appendChild(message);
     targetElement.appendChild(error_div);
 }
-
