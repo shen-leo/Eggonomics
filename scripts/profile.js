@@ -31,12 +31,12 @@ function populateInfo() {
 populateInfo();
 
 function editUserInfo() {
-    //console.log("edit is clicked")
+    console.log("edit is clicked")
     document.getElementById("personalInfoFields").disabled = false;
 }
 
 function saveUserInfo() {
-    //console.log("save is clicked")
+    console.log("save is clicked")
 
     //grab values from the form that the user inserted in each field
     username = document.getElementById('nameInput').value;
@@ -45,6 +45,7 @@ function saveUserInfo() {
     //   console.log("values are: ", name, school, city)
 
     // write the values in database
+    console.log(currentUser)
     currentUser.update({
         name: username,
         email: email
@@ -61,9 +62,10 @@ var btn = document.getElementById("save");
 
 var span = document.getElementsByClassName("close")[0];
 
-btn.onclick = function () {
-    modal.style.display = "block";
-}
+// btn.onclick = function () {
+//     modal.style.display = "block";
+//     saveUserInfo();
+// }
 
 span.onclick = function () {
     modal.style.display = "none";
@@ -85,27 +87,27 @@ function logout() {
 }
 
 
-function savePic() {
-    let defaultPic = 
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          let ref = db.collection("users").doc(user.uid);
-          ref.get().then((res) => {
-            if (!res.exists) {
-              db.collection("users")
-                .doc(user.uid).set({
-                  picture: document.getElementById("avatar")
-                });
-            }
+// function savePic() {
+//     let defaultPic = 
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//           let ref = db.collection("users").doc(user.uid);
+//           ref.get().then((res) => {
+//             if (!res.exists) {
+//               db.collection("users")
+//                 .doc(user.uid).set({
+//                   picture: document.getElementById("avatar")
+//                 });
+//             }
     
-            db.collection("users").doc(user.uid).update({
-                picture: document.uploaded_image
+//             db.collection("users").doc(user.uid).update({
+//                 picture: document.uploaded_image
 
-            })
-          })
-        }
-      })
-    }
+//             })
+//           })
+//         }
+//       })
+//     }
 
 // function init() {
 //     document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
