@@ -33,27 +33,27 @@
 <body>
   <nav class="navbar navbar-light bg-warning">
     <div class="container-fluid navbar-container my-nav">
-      <div class="navbar-brand">
-        <a class="icon-btn" href="index.html"><span class="material-icons md-18">
-            arrow_back_ios
-          </span></a>
-      </div>
       <form class="d-flex text-field" action="." autocomplete="off">
+        <div class="navbar-brand">
+          <a class="icon-btn" href="index.html"><span class="material-icons md-18">
+              arrow_back_ios
+            </span></a>
+        </div>
         <input id="search-bar" class="form-control me-2 search-field bg-warning" type="search" placeholder="..."
           aria-label="Search">
         <button id="search-btn-pt" class="btn btn-outline-dark material-icons" type="button">search</button>
+        <div class="dropdown">
+          <button class="btn btn-warning btn-outline-dark dropdown-toggle material-icons" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            sort
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#" onclick="sortPriceAsc()">Price low to high</a></li>
+            <li><a class="dropdown-item" href="#" onclick="sortPriceDes()">Price high to low</a></li>
+            <!-- <li><a class="dropdown-item" href="#">Method 3</a></li> -->
+          </ul>
+        </div>
       </form>
-      <div class="dropdown">
-        <button class="btn btn-warning btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          Sort
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" href="#" onclick="sortPriceAsc()">Price low to high</a></li>
-          <li><a class="dropdown-item" href="#" onclick="sortPriceDes()">Price high to low</a></li>
-          <!-- <li><a class="dropdown-item" href="#">Method 3</a></li> -->
-        </ul>
-      </div>
     </div>
   </nav>
 

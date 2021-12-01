@@ -2,7 +2,11 @@
     flex-shrink: 1;
     flex-grow: 1;
 
-    justify-content: space-between;
+    justify-items: space-between;
+}
+
+.dropdown{
+    margin-left: 0.1em;
 }
 
 .search-field::placeholder {
