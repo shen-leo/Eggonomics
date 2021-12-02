@@ -12,8 +12,8 @@ body {
     border-radius: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 35px;
-    padding-bottom: 10px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     margin-top: 2em;
     text-align: center;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -31,6 +31,8 @@ body {
     flex-direction: row;
     height: 7vh;
     width: auto;
+    align-items: center;
+    justify-content: center;
   }
   
   #items-container button {
@@ -98,7 +100,7 @@ body {
   .delete-button{
     /* text-align: center; */
     /* padding-bottom: 0px; */
-    margin-top: 8.5px;
+    /* margin-top: 8.5px; */
     border-radius: 5px;
   }
 
