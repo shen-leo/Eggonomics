@@ -4,7 +4,6 @@ const listNameField = document.getElementById("list-name")
 const listImgField = document.getElementById("list-img-url")
 
 listNameField.addEventListener('blur', () => { saveListName() })
-// listImgField.addEventListener('blur', () => { saveList() })
 
 function deleteList() {
   firebase.auth().onAuthStateChanged((user) => {
@@ -275,10 +274,6 @@ var modal = document.getElementById("myModal");
 var btn = document.getElementById("save");
 
 var span = document.getElementsByClassName("close")[0];
-
-// btn.onclick = function () {
-//     modal.style.display = "block";
-// }
 
 function pictureModal() {
   modal.style.display = "block";

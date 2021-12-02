@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Landing</title>
+  <title>Main</title>
   <meta name="comp1800 boilerplate code" content="my bcit project">
   <meta name="DTC08" content="Eggonomics Shopping List">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,10 +25,10 @@
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
   <!-- OUR CSS -->
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/index.css">
-  <link rel="stylesheet" href="styles/products.css">
-  <link rel="icon" href="img/transparent.png">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/products.css">
+  <link rel="icon" href="/img/transparent.png">
 </head>
 
 <body>
@@ -44,7 +44,7 @@
   <div id="content">
     <!-- Logo and Search -->
     <div>
-      <img style="height: 25vh;" src="img/logo.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
+      <img style="height: 25vh;" src="/img/logo.png" alt="Eggonomics Logo" class="logo" id="eggonomics_logo" />
     </div>
     <div>
       <form class="form-inline my-2 my-lg-0" autocomplete="off">
@@ -59,7 +59,7 @@
     <template id="favs">
       <!-- Cards -->
         <div class="card border-warning item_card bg-warning" data-bs-toggle="modal" data-bs-target="#item_modal">
-          <img class="carousel-img card-img-top img1" src="img/placeholder.jpg" alt="">
+          <img class="carousel-img card-img-top img1" src="/img/placeholder.jpg" alt="">
           <div class="card-body carousel-details description">
             <h5 class="card-title item_name">Nutella</h5>
             <p class="card-text item_price">$4.99</p>
@@ -103,11 +103,11 @@
 
   <!-- Bottom Nav Bar -->
   <footer id="nav" class="navbar justify-content-evenly bg-warning fixed-bottom" style="height: 4em">
-    <a class="icon-btn" href="index.html">
+    <a class="icon-btn" href="main.html">
       <i class="material-icons">shopping_cart</i>
       <p class="btm-btn-text">Price Track</p>
     </a>
-    <a class="icon-btn" href="inventory.html">
+    <a class="icon-btn" href="pantry.html">
       <i class="material-icons">kitchen</i>
       <p class="btm-btn-text">Pantry</p>
     </a>
@@ -121,52 +121,9 @@
     </a>
   </footer>
   </div>
-  <script src="scripts/firebaseAPI.js"></script>
-  <script src="scripts/index.js"></script>
-  <script src="scripts/product_display.js"></script>
-  <script>
-    const ele = document.getElementById('carousel');
-    ele.style.cursor = 'grab';
-
-    let pos = { top: 0, left: 0, x: 0, y: 0 };
-
-    const mouseDownHandler = function (e) {
-      ele.style.cursor = 'grabbing';
-      ele.style.userSelect = 'none';
-
-      pos = {
-        left: ele.scrollLeft,
-        top: ele.scrollTop,
-        // Get the current mouse position
-        x: e.clientX,
-        y: e.clientY,
-      };
-
-      document.addEventListener('mousemove', mouseMoveHandler);
-      document.addEventListener('mouseup', mouseUpHandler);
-    };
-
-    const mouseMoveHandler = function (e) {
-      // How far the mouse has been moved
-      const dx = e.clientX - pos.x;
-      const dy = e.clientY - pos.y;
-
-      // Scroll the element
-      // ele.scrollTop = pos.top - dy;
-      ele.scrollLeft = pos.left - dx;
-    };
-
-    const mouseUpHandler = function () {
-      ele.style.cursor = 'grab';
-      ele.style.removeProperty('user-select');
-
-      document.removeEventListener('mousemove', mouseMoveHandler);
-      document.removeEventListener('mouseup', mouseUpHandler);
-    };
-
-    // Attach the handler
-    ele.addEventListener('mousedown', mouseDownHandler);
-  </script>
+  <script src="/scripts/firebaseAPI.js"></script>
+  <script src="/scripts/main.js"></script>
+  <script src="/scripts/product_display.js"></script>
 </body>
 
 </html>

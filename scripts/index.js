@@ -1,57 +1,72 @@
-function submitQuery(){
-    let new_query = document.getElementById("query").value;
-    if (new_query != ''){
-        localStorage.setItem("query", new_query);
-        window.location.assign("price_tracker.html")
-        console.log("Added " + query + " to 'query' key in local storage");
-    }
+var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+function signIn() {
+    var password = document.getElementById("password1").value
+    var email = document.getElementById("email1").value
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Signed in
+            var user = userCredential.user;
+            // console.log(user.uid)
+            location.href = "main.html"
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage)
+        });
 }
 
-document.addEventListener("DOMContentLoaded", function(event){
-    console.log("Page Loaded!")
-    document.getElementById("query").addEventListener("keydown", (event) => {
-        if (event.key == "Enter"){
-            event.preventDefault();
-            submitQuery();
-        }
-    });
-    document.getElementById("submit-query").addEventListener("click", submitQuery);
-    populateFavorites();
+function signUp() {
+    var password = document.getElementById("password2").value
+    var email = document.getElementById("email2").value
+    var name = document.getElementById("name").value
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            // Signed in 
+            var user = userCredential.user;
+            localStorage.setItem("ID", user.uid);
+            console.log("created")
+            db.collection("users").doc(user.uid).set({     //write to firestore. We are using the UID for the ID in users collection
+                name: name,                                //"users" collection
+                email: user.email                          //with authenticated user's ID (user.uid)
+            })
+            .then(function () {
+                db.collection("favorite").doc(user.uid).set({
+                    user: user.uid,
+                    favorites: []
+                }).then(function () {
+                    console.log("New user added to firestore");
+                    window.location.assign("main.html");       //re-direct to main.html after signup
+                })
+            })
+        })
+        .catch((error) => {
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            console.log(errorMessage)
+        });
+}
+
+var authContainer = document.getElementById("auth-container")
+var signUpContainer = document.getElementById("signup-container")
+var authOption = document.getElementById("auth-option")
+
+document.getElementById("old-user").addEventListener("click", function() {
+    authOption.style.display = "none";
+    authContainer.style.display = "block";
+})
+document.getElementById("new-user").addEventListener("click", function() {
+    authOption.style.display = "none";
+    signUpContainer.style.display = "block";
 })
 
-firebase.auth().onAuthStateChanged(user => {
-    // Check if user is signed in:
-    if (user) {
-        // Do something for the current logged-in user here: 
-        console.log(user.uid);
-        //go to the correct user document by referencing to the user uid
-        currentUser = db.collection("users").doc(user.uid);
-        //get the document for current user.
-        currentUser.get()
-            .then(userDoc => {
-                localStorage.setItem('name', userDoc.data().name)
-                localStorage.setItem('email', userDoc.data().email)
-            })
-    } else {
-        // No user is signed in.
-        console.log("no user");
-    }
-});
+document.getElementById("back1").addEventListener("click", function() {
+    authOption.style.display = "flex";
+    authContainer.style.display = "none";
+})
 
-function populateFavorites(){
-    let template = document.getElementById("favs");
-    let target_div = document.getElementById("carousel");
-
-    let uid = localStorage.getItem("ID");
-    db.collection("favorite").doc(uid).get().then(function (doc) {
-        let favs = doc.data().favorites
-        if (favs.length == 0){
-            displayErrorMessage(target_div, "Nothing yet!");
-        } else {
-            db.collection("sampleAPI").where("id", "in", favs).onSnapshot((products) => {
-                populatePage(products, template, target_div);
-            })
-        }
-    })
-    
-}
+document.getElementById("back2").addEventListener("click", function() {
+    authOption.style.display = "flex";
+    signUpContainer.style.display = "none";
+})

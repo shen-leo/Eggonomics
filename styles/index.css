@@ -1,79 +1,88 @@
-#content {
-    height: fit-content;
+@import url("https://fonts.googleapis.com/css2?family=Abel&family=Mochiy+Pop+P+One&display=swap");
+
+body {
+  /* background-image: linear-gradient(45deg, rgb(250, 223, 7), rgb(255, 193, 7), rgb(255, 153, 7)); */
+  background-color: #ffe66d;
+  background-size: 200%;
+  background-position: left;
+  background-repeat: no-repeat;
+  text-align: center;
+  height: 100vh;
+  font-family: "Mochiy Pop P One", sans-serif;
 }
 
-#carousel{
-    width: 100%;
-    height: 100%;
-    white-space: nowrap;
-    margin-top: 0;
-    overflow: auto;
-    cursor: grab;
-    overflow-y: hidden;
+#logo-container {
+  margin-top: 2em;
+  height: 45%;
 }
 
-#carousel *{
-    white-space: normal;
+#logo-container img {
+  height: 100%;
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-  
-/* Track */
-::-webkit-scrollbar-track {
-    background: #f1f1f1; 
-}
-
-*:hover::-webkit-scrollbar{
-    background-color: red;
+#auth-container,
+#signup-container {
+  display: none;
+  margin: auto;
+  width: fit-content;
+  border: 10px solid white;
+  background-color: #ffbf69;
+  padding: 2em;
+  border-radius: 10px;
 }
 
-::-webkit-scrollbar{
-    height: 5px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #888; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+#auth-option {
+  border: 10px solid transparent;
+  padding: 2em;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-.card {
-    display: inline-block;
-    width: 200px !important;
-    height: 100% !important;
-    margin: 2% 2%;
-    border: 1px solid transparent;
-
-    transition: 0.5s;
+#email1,
+#email2,
+#password1,
+#password2,
+#name {
+  width: 11em;
+  float: right;
+  border: none;
 }
 
-.carousel-img {
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    height: 80% !important;
-    pointer-events: none;
+#signIn,
+#signUp,
+#old-user,
+#new-user,
+#back1,
+#back2 {
+  margin: 1em 1em 0 1em;
+  background-color: white;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: none;
+  border: 2px solid transparent;
 }
 
-.carousel-details {
-    display: block;
-    height: 20% !important;
+#old-user,
+#new-user {
+  margin: auto auto 1em auto;
+  width: 50%;
+  max-width: 13em;
 }
 
-.carousel-header {
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 1em;
-    margin-top: 2em;
+#signIn:hover,
+#signUp:hover,
+#old-user:hover,
+#new-user:hover {
+  border: 2px solid black;
 }
 
-.card:hover {
-    border: 1px solid black;
+p {
+  display: block;
+  text-align: left;
+}
+
+span {
+  margin-right: 2em;
+  pointer-events: none;
 }

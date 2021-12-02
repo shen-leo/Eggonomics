@@ -25,7 +25,7 @@ function populatePage (products, templateElement, targetElement){
 
         let name = doc.data().name;
         let price = doc.data().price;
-        let image = './img/sampleAPIimgs/' + doc.data().image;
+        let image = '/img/sampleAPIimgs/' + doc.data().image;
         let manufacturer = doc.data().manufacturer;
         let retail = doc.data().retailer;
         let stock = doc.data().in_stock;
@@ -108,7 +108,7 @@ function displayErrorMessage(targetElement, error_message){
     error_div.setAttribute("id", "error-message");
 
     let img = document.createElement("img");
-    img.setAttribute("src", "./img/logo.png");
+    img.setAttribute("src", "/img/logo.png");
     img.setAttribute("id", "error-img");
 
     let message = document.createElement("figcaption");
