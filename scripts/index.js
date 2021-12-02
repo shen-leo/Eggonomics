@@ -37,7 +37,7 @@ function signUp() {
                     favorites: []
                 }).then(function () {
                     console.log("New user added to firestore");
-                    window.location.assign("main.html");       //re-direct to main.html after signup
+                    window.location.assign("./../html/main.html");       //re-direct to main.html after signup
                 })
             })
         })
