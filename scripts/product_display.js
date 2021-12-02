@@ -75,7 +75,7 @@ function populatePage (products, templateElement, targetElement){
                     toggle.classList.remove("active");
                     toggle.setAttribute("aria-pressed", false);
 
-                    if (document.URL.includes("index.html")){
+                    if (document.URL.includes("main.html")){
                         $(`#${id}_modal`).modal('hide');
                         document.querySelector(`#${id}_modal`).remove();
                         document.querySelector(`#${id}_card`).remove();
