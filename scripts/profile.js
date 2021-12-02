@@ -80,7 +80,7 @@ window.onclick = function (event) {
 function logout() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
-        window.location.assign("index.html")
+        window.location.assign("/index.html")
     }).catch((error) => {
         // An error happened.
     });
@@ -119,5 +119,3 @@ function setPicture(imgsrc) {
 
     })
 }
-
-

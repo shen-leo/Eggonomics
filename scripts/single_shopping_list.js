@@ -178,9 +178,6 @@ function populateItem() {
         var itemArray = listDoc.data().Item;
         var ul = document.getElementById("shopping_list_container");
 
-        if (listName) { listNameField.value = listName }
-        if (listImgUrl) { listImgField.value = listImgUrl }
-
         // auto-populates shopping list items UI with forEach loop
         itemArray.forEach(function (e) {
           var arrayItem = e;

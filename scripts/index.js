@@ -8,7 +8,7 @@ function signIn() {
             // Signed in
             var user = userCredential.user;
             // console.log(user.uid)
-            location.href = "main.html"
+            location.href = "html/main.html"
         })
         .catch((error) => {
             var errorCode = error.code;
