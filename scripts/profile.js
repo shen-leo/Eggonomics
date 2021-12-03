@@ -42,15 +42,23 @@ function saveUserInfo() {
     username = document.getElementById('nameInput').value;
     email = document.getElementById('emailInput').value;
 
-    //   console.log("values are: ", name, school, city)
-
     // write the values in database
     console.log(currentUser)
     currentUser.update({
         name: username,
         email: email
-
     })
+
+    firebase.auth().onAuthStateChanged((user) => {
+        // Check if user is signed in:
+        if (user) {
+            user.updateEmail(email)
+        } else {
+            // No user is signed in.
+            console.log("No user is signed in");
+        }
+    });
+
     document.getElementById("personalInfoFields").disabled = true;
 }
 
@@ -96,10 +104,10 @@ function populate() {
             currentUser.get().then((userDoc) => {
                 //get the data fields of the user
                 var userPicture = userDoc.data().picture;
-                
-                if (userPicture !=null) {
+
+                if (userPicture != null) {
                     document.getElementById("profile-img").src = userPicture
-                }     
+                }
             });
         } else {
             // No user is signed in.
@@ -113,9 +121,9 @@ function setPicture(imgsrc) {
     document.getElementById("profile-img").src = imgsrc
 
     let profilePic = imgsrc;
-    
+
     currentUser.update({
-       picture: profilePic
+        picture: profilePic
 
     })
 }
