@@ -3,8 +3,10 @@ const listId = localStorage.getItem("listId");
 const listNameField = document.getElementById("list-name")
 const listImgField = document.getElementById("list-img-url")
 
+//Save list name when input field lose focus
 listNameField.addEventListener('blur', () => { saveListName() })
 
+//Delete list
 function deleteList() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -18,6 +20,7 @@ function deleteList() {
   })
 }
 
+//Save list name
 function saveListName() {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -38,6 +41,7 @@ function saveListName() {
   })
 }
 
+//Save list image name
 function saveListImg(imgName) {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
@@ -58,6 +62,7 @@ function saveListImg(imgName) {
   })
 }
 
+//Save grocery items in list
 function saveItem() {
   let Item = document.getElementById("itemInput").value;
   // if text input not is null or not an empty string proceed with saveItem()
@@ -118,7 +123,7 @@ function saveItem() {
   }
 }
 
-//function to save file
+//Upload image to cloud storage
 function uploadFile() {
 
   saveListName()
@@ -156,12 +161,14 @@ function uploadFile() {
   })
 }
 
+//Upload image button listener
 imgBtn = document.getElementById("add-img-btn")
 imgBtn.addEventListener("click", () => {
   filesBtn = document.getElementById("files")
   filesBtn.click()
 });
 
+//Populate list name and items on list
 function populateItem() {
   firebase.auth().onAuthStateChanged((user) => {
     // Check if user is signed in:
@@ -211,17 +218,21 @@ function populateItem() {
     }
   });
 }
-// calls populateItem() function on page load
+
+//Calls populateItem() function on page load
 populateItem();
 
+//Show delete confirmation popup 
 function deletePopup() {
   $('#modal').modal('show')
 }
 
+//Hide delete confirmation popup 
 function hidePopup() {
   $('#modal').modal('hide')
 }
 
+//Remove list items
 function Delete(arrayItem) {
   console.log(arrayItem);
   firebase.auth().onAuthStateChanged((user) => {
@@ -244,15 +255,14 @@ function Delete(arrayItem) {
       console.log("no user signed in");
     }
   });
-  // refresh the shopping list
 }
 
-// clears textbox
+//Clears items textbox
 function clearTextBox() {
   document.getElementById("itemInput").value = "";
 }
 
-// calls clearTextBox function on enter keypress
+//Calls clearTextBox function on enter keypress
 function search() {
   if (event.key === "Enter") {
     saveItem();
@@ -260,14 +270,14 @@ function search() {
   }
 }
 
-// prevents the page from submitting the "form" on enter keypress
+//Prevents the page from submitting the "form" on enter keypress
 $("#itemInput").bind("keypress keydown keyup", function (e) {
   if (e.key == "Enter") {
     e.preventDefault();
   }
 });
 
-// Confirmation Modal
+//Upload image confirmation Modal
 var modal = document.getElementById("myModal");
 
 var btn = document.getElementById("save");

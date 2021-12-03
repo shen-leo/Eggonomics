@@ -1,5 +1,6 @@
 var currentUser;
 
+//Populate users information
 function populateInfo() {
     firebase.auth().onAuthStateChanged((user) => {
         // Check if user is signed in:
@@ -27,14 +28,15 @@ function populateInfo() {
         }
     });
 }
-
 populateInfo();
 
+//Enable textfield
 function editUserInfo() {
     console.log("edit is clicked")
     document.getElementById("personalInfoFields").disabled = false;
 }
 
+//Update user information
 function saveUserInfo() {
     console.log("save is clicked")
 
@@ -63,7 +65,7 @@ function saveUserInfo() {
 }
 
 
-// Confirmation Modal
+//Confirmation Modal
 var modal = document.getElementById("myModal");
 
 var btn = document.getElementById("save");
@@ -85,6 +87,7 @@ window.onclick = function (event) {
     }
 }
 
+//Logout
 function logout() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
@@ -94,7 +97,8 @@ function logout() {
     });
 }
 
-function populate() {
+//Show profile picture
+function profileImg() {
     firebase.auth().onAuthStateChanged((user) => {
         // Check if user is signed in:
         if (user) {
@@ -115,8 +119,9 @@ function populate() {
         }
     });
 }
-populate();
+profileImg();
 
+//Update profile picture
 function setPicture(imgsrc) {
     document.getElementById("profile-img").src = imgsrc
 

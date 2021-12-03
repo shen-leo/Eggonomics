@@ -56,6 +56,7 @@ function populateFavorites(){
     
 }
 
+// Carousel Scroll Feature
 function carouselScroll(){
     const carousel = document.getElementById('carousel');
     carousel.style.cursor = 'grab';

@@ -1,11 +1,13 @@
 const cardContainer = document.getElementById("card-container")
 
+//Open existing shopping list
 function openList(listId) {
   localStorage.setItem('listId', listId);
   localStorage.setItem('newList', false);
   location.href = "single_shopping_list.html"
 }
 
+//Open new and empty shopping list
 function newList() {
   let newId = "0";
   if (!cardContainer.lastChild) {
@@ -19,6 +21,7 @@ function newList() {
   location.href = "single_shopping_list.html"
 }
 
+//Populate exisisting shopping lists
 function populate() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -63,6 +66,7 @@ function populate() {
 }
 populate()
 
+//Download list images from cloud storage
 function getImg() {
   var storageRef = firebase.storage().ref();
   images = document.querySelectorAll(".card-img")
@@ -70,9 +74,9 @@ function getImg() {
     if (image.dataset.img) {
       storageRef.child(image.dataset.img).getDownloadURL()
         .then((url) => {
-          // `url` is the download URL for 'images.jpg'
+          //`url` is the download URL for 'images.jpg'
 
-          // This can be downloaded directly:
+          //This can be downloaded directly:
           var xhr = new XMLHttpRequest();
           xhr.responseType = 'blob';
           xhr.onload = (event) => {
@@ -81,7 +85,7 @@ function getImg() {
           xhr.open('GET', url);
           xhr.send();
 
-          // Or inserted into an <img> element
+          //Inserted into an <img> element
           image.setAttribute("src", url)
         })
         .catch((error) => {

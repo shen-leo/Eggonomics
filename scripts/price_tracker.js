@@ -24,6 +24,7 @@ function displayProducts(){
         })
 }
 
+//Show cards by price ascending order
 function sortPriceAsc() {
     let i = 0
     let itemList = []
@@ -31,11 +32,9 @@ function sortPriceAsc() {
     products.forEach(function(element){
         i += 1
         price = element.querySelector(".item_price").innerHTML;
-        // element.setAttribute("id", i)
         itemList.push(element)
     })
     itemList.sort(function(a, b){
-        // Can get bugs if item_price.innerHTML changes
         price_1 = parseFloat(a.querySelector(".item_price").innerHTML.substr(1))
         price_2 = parseFloat(b.querySelector(".item_price").innerHTML.substr(1))
         return price_1 - price_2
@@ -55,6 +54,7 @@ function sortPriceAsc() {
     }
 }
 
+//Show cards by price descending order
 function sortPriceDes() {
     let i = 0
     let itemList = []
@@ -62,11 +62,9 @@ function sortPriceDes() {
     products.forEach(function(element){
         i += 1
         price = element.querySelector(".item_price").innerHTML;
-        // element.setAttribute("id", i)
         itemList.push(element)
     })
     itemList.sort(function(a, b){
-        // Can get bugs if item_price.innerHTML changes
         price_1 = parseFloat(a.querySelector(".item_price").innerHTML.substr(1))
         price_2 = parseFloat(b.querySelector(".item_price").innerHTML.substr(1))
         return price_2 - price_1

@@ -1,6 +1,7 @@
 var itemCount = 0
 var itemsContainer = document.getElementById("items-container")
 
+//Delete pantry item
 function deleteItem(parentID) {
   itemCount -= 1
   document.getElementById(parentID).remove()
@@ -18,6 +19,7 @@ function deleteItem(parentID) {
   })
 }
 
+//Add item field to DOM after button click
 function addItem() {
   itemCount += 1
   let item = document.createElement("div")
@@ -43,6 +45,7 @@ function addItem() {
   itemsContainer.appendChild(item)
 }
 
+//Save pantry items to DB
 function saveList() {
   itemCount = 0
   items = document.querySelectorAll(".items")
@@ -78,7 +81,7 @@ function saveList() {
     })
   })
 
-  // Delete any extra items doc in firestore
+  //Delete any extra items doc in firestore
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       db.collection("pantry").doc(user.uid).collection("items").get().then(snap => {
@@ -103,6 +106,7 @@ function saveList() {
   })
 }
 
+//Populate pantry items
 function populate() {
   console.log("function1")
   firebase.auth().onAuthStateChanged(user => {
@@ -143,6 +147,7 @@ function populate() {
 }
 populate();
 
+//Add an empty item field to DOM if no existing pantry item
 function populateEmpty() {
   if (itemCount === 0) {
     itemCount += 1

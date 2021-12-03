@@ -1,5 +1,6 @@
 var ui = new firebaseui.auth.AuthUI(firebase.auth());
 
+//Sign in existing users
 function signIn() {
     var password = document.getElementById("password1").value
     var email = document.getElementById("email1").value
@@ -17,6 +18,7 @@ function signIn() {
         });
 }
 
+//Sign up new account for new users
 function signUp() {
     var password = document.getElementById("password2").value
     var email = document.getElementById("email2").value
@@ -52,6 +54,7 @@ var authContainer = document.getElementById("auth-container")
 var signUpContainer = document.getElementById("signup-container")
 var authOption = document.getElementById("auth-option")
 
+//Show and hide sign up and sign in window based on button clicked
 document.getElementById("old-user").addEventListener("click", function() {
     authOption.style.display = "none";
     authContainer.style.display = "block";
