@@ -7,7 +7,7 @@ function signIn() {
         .then((userCredential) => {
             // Signed in
             var user = userCredential.user;
-            // console.log(user.uid)
+            localStorage.setItem("ID", user.uid);
             location.href = "html/main.html"
         })
         .catch((error) => {
