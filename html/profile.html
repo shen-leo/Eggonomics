@@ -3,10 +3,9 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Inventory</title>
-  <meta name="comp1800 boilerplate code" content="my bcit project" />
-  <meta name="DTC08" content="Eggonomics Shopping List" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile</title>
+  <meta name="COMP1800 Project" content="Eggonomics" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,7 +14,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.css" />
   <link rel="icon" href="/img/transparent.png" />
-
+  <link rel="stylesheet" href="/styles/profile.css" />
   <link href="https://unpkg.com/@popperjs/core@2" />
 
   <!-- Firebase 8 CDNs -->
@@ -27,11 +26,6 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
-
-  <link rel="stylesheet" href="/styles/profile.css" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 </head>
 
 <body>
@@ -46,12 +40,13 @@
     </div>
   </nav>
 
+  <!-- Profile Picture -->
   <div id="content">
     <div id="img-container">
       <img id="profile-img" src="/img/profile.png" alt="profile placeholder" />
     </div>
 
-    <!-- Example single danger button -->
+    <!-- Edit Photo Button -->
     <div id="profile-dropdown" class="btn-group">
       <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
         Edit Photo
@@ -64,6 +59,7 @@
       </ul>
     </div>
 
+    <!-- User Info Form -->
     <form>
       <fieldset class="mb-3" id="personalInfoFields" disabled>
         <div class="form-group">
@@ -89,9 +85,8 @@
       </button>
     </div>
 
-    <!-- The Modal -->
+    <!-- Changes Saved Modal -->
     <div id="myModal" class="modal">
-      <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
         <div style="text-align: center; margin-top: 5%">Changes Saved!</div>
