@@ -1,6 +1,6 @@
+// This is where we'll put our favorites data.
 var favos;
 var favosStored;
-
 
 // Check if page is ready! Makes sure that favos initiates when coming in from a different page or directly from link
 if (document.readyState != "loading"){
@@ -9,7 +9,7 @@ if (document.readyState != "loading"){
     document.addEventListener("DOMContentLoaded", ready())
 }
 
-// async get() gets called on page load so that you don't have to get favorites over and over
+// async get() gets called on page load so that you don't have to get favorites over and over.
 function ready(){
     let uid = localStorage.getItem("ID");
     favos = db.collection("favorite").doc(uid);
@@ -18,6 +18,7 @@ function ready(){
     })
 }
 
+// Populate the page with dynamically added cards.
 function populatePage (products, templateElement, targetElement){
     products.forEach(doc => {
         // get all item data
@@ -44,49 +45,51 @@ function populatePage (products, templateElement, targetElement){
         product_card.querySelector(".item_quant").innerText = stock;
         let toggle = product_card.querySelector(".fav2");
         
-        // change all IDs
+        // change ids
         product_card.querySelector(".item_card").id = id + "_card";
         product_card.querySelector(".item_name").id = id + "_name";
         product_card.querySelector(".item_price").id = id + "_price";
 
         product_card.querySelector(".item_modal-body").id = id + "_modal-body";
-        // product_card.querySelector(".item_modal-name").id = "item" + id + "_modal-name";
         
         product_card.querySelector(".item_modal").id = id + "_modal";
         product_card.querySelector(".item_card").setAttribute("data-bs-target", "#" + id + "_modal");
 
-        // check for button states
+        // check if an item is already in the favorites
         if (favosStored.includes(id)){
             toggle.classList.add("active");
             toggle.setAttribute("aria-pressed", true);
         }
 
-        // event listeners
+        // make event listeners
         product_card.querySelectorAll(".favorites").forEach(button => {
             button.addEventListener("click", () => {
                 if (favosStored.includes(id)){
+                    // update favorites in the db (delete)
                     console.log("DELETE: " + id)
                     favosStored.splice(favosStored.indexOf(id), 1);
                     favos.update({
                         favorites: favosStored
                     })
 
-                    // check for button states
+                    // deactivate favorites button
                     toggle.classList.remove("active");
                     toggle.setAttribute("aria-pressed", false);
 
+                    // delete the card and the modal only if we are on the main page.
                     if (document.URL.includes("main.html")){
                         $(`#${id}_modal`).modal('hide');
                         document.querySelector(`#${id}_modal`).remove();
                         document.querySelector(`#${id}_card`).remove();
                     }
                 } else {
+                    // update favorites in the db (add)
                     console.log("ADD: " + id)
                     favos.update({
                         favorites: firebase.firestore.FieldValue.arrayUnion(id)
                     })
 
-                    // check for button states
+                    // activate favorites button
                     toggle.classList.add("active");
                     toggle.setAttribute("aria-pressed", true);
 
@@ -100,6 +103,7 @@ function populatePage (products, templateElement, targetElement){
     })
 }
 
+// Display a custom error message.
 function displayErrorMessage(targetElement, error_message){
     console.log(error_message);
             

@@ -1,11 +1,14 @@
+// Display search results if any.
 function displayProducts(){
     let template = document.getElementById("product_card");
     let target_div = document.getElementById("products_here");
 
     db.collection("sampleAPI")
         .onSnapshot(products => {
+            // get search query
             let query = localStorage.getItem('query')
 
+            // filter sampleAPI products according to the search query
             let filteredProducts = [];
             products.forEach(doc => {
                 if (doc.data().name.toLowerCase().includes(query.toLowerCase())){
@@ -13,12 +16,14 @@ function displayProducts(){
                 }
             });
 
+            // if there are no results, display an error message
             if (filteredProducts.length <= 0){
                 displayErrorMessage(
                     document.getElementById("content"), 
                     "We're sorry but " + query + " was not found in our database"
                 );
             } else {
+                // if there are results, populate the page
                 populatePage (filteredProducts, template, target_div);
             }
         })
@@ -28,17 +33,20 @@ function displayProducts(){
 function sortPriceAsc() {
     let i = 0
     let itemList = []
+    // find the each products' prices by traversing the DOM
     let products = document.querySelectorAll(".col")
     products.forEach(function(element){
         i += 1
         price = element.querySelector(".item_price").innerHTML;
         itemList.push(element)
     })
+    // sort all the prices from lowest to highest
     itemList.sort(function(a, b){
         price_1 = parseFloat(a.querySelector(".item_price").innerHTML.substr(1))
         price_2 = parseFloat(b.querySelector(".item_price").innerHTML.substr(1))
         return price_1 - price_2
     })
+    // get the div that contains all the products and display them according to the itemList
     let container = document.getElementById("products_here")
     let sortedCards = []
     for (let i = 0; i < itemList.length; i++) {
@@ -58,17 +66,20 @@ function sortPriceAsc() {
 function sortPriceDes() {
     let i = 0
     let itemList = []
+    // find the each products' prices by traversing the DOM
     let products = document.querySelectorAll(".col")
     products.forEach(function(element){
         i += 1
         price = element.querySelector(".item_price").innerHTML;
         itemList.push(element)
     })
+    // sort all the prices from highest to lowest
     itemList.sort(function(a, b){
         price_1 = parseFloat(a.querySelector(".item_price").innerHTML.substr(1))
         price_2 = parseFloat(b.querySelector(".item_price").innerHTML.substr(1))
         return price_2 - price_1
     })
+    // get the div that contains all the products and display them according to the itemList
     let container = document.getElementById("products_here")
     let sortedCards = []
     for (let i = 0; i < itemList.length; i++) {
@@ -84,19 +95,14 @@ function sortPriceDes() {
     }
 }
 
-// function describeProductInfo(){
-//     console.log("Redirecting...");
-//     let product_name = 
-
-//     // window.location.assign("https://www.google.com/search?q=" + product_name);
-// }
-
+// Display the query in the search bar
 function displayQuery(){
     let query = localStorage.getItem('query');
     document.getElementById("search-bar").getAttributeNode("placeholder").value = "Results for " + query;
     console.log("Displayed query " + query);
 }
 
+// Submit another search query
 function submitQuery(){
     let new_query = document.getElementById("search-bar").value;
     if (new_query != ''){
@@ -106,6 +112,7 @@ function submitQuery(){
     }
 }
 
+// Wait for page load
 document.addEventListener("DOMContentLoaded", function(event){
     console.log("Page loaded!")
     displayProducts();
@@ -120,6 +127,7 @@ document.addEventListener("DOMContentLoaded", function(event){
     document.getElementById("search-btn-pt").addEventListener("click", submitQuery);
 })
 
+// Populate the Firestore with the data from sampleAPIdata.csv
 async function getCSVdata(){
     const response = await fetch('../sampleAPIdata.csv');
     const data = await response.text();
@@ -134,9 +142,6 @@ async function getCSVdata(){
         let retailer = columns[3];
         let manufacturer = columns[4];
         let image = columns[5]
-
-        // for error handling
-        // console.log(name, price, in_stock, retailer, manufacturer, image);
 
         db.collection("sampleAPI").add({
             name: name,

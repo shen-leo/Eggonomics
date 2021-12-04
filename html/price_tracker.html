@@ -55,26 +55,23 @@
     </div>
   </nav>
 
-  <!-- DYNAMICALLY ADDED USING JS -->
   <template id="product_card">
-    <!-- Cards -->
+    <!-- Cards Template -->
     <div class="col g-4">
       <div class="card h-100 border-warning bg-warning item_card" data-bs-toggle="modal" data-bs-target="#item_modal">
         <img src="..." class="card-img-top img1" alt="egg">
         <div class="card-body description">
           <h5 class="card-title item_name">ITEM</h5>
           <p class="card-text item_price">$$$</p>
-          <!-- <div class="fav1"><span type="button" class="fav-btn1 material-icons favorites">favorite</span></div> -->
         </div>
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Template -->
     <div class="modal fade item_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header bg-warning">
-            <!-- <h5 class="modal-title item_modal-name">IN ITEM</h5> -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body item_modal-body pad-none">
@@ -97,7 +94,7 @@
     </div>
   </template>
 
-  <!-- Cards -->
+  <!-- Cards Target Div-->
   <div id="content">
     <div class="row row-cols-2 row-cols-md-4" id="products_here">
     </div>

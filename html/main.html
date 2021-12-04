@@ -23,7 +23,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.0/firebase-ui-auth.js"></script>
 
-  <!-- OUR CSS -->
+  <!-- Our CSS -->
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/products.css">
@@ -56,22 +56,20 @@
     </div>
 
     <template id="favs">
-      <!-- Cards -->
+      <!-- Cards Template-->
       <div class="card border-warning item_card bg-warning" data-bs-toggle="modal" data-bs-target="#item_modal">
         <img class="carousel-img card-img-top img1" src="/img/placeholder.jpg" alt="">
         <div class="card-body carousel-details description">
           <h5 class="card-title item_name">Nutella</h5>
           <p class="card-text item_price">$4.99</p>
-          <!-- <div class="fav1"><span type="button" class="fav-btn1 material-icons favorites">favorite</span></div> -->
         </div>
       </div>
 
-      <!-- Modal -->
+      <!-- Modal Template-->
       <div class="modal fade item_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header bg-warning">
-              <!-- <h5 class="modal-title item_modal-name">IN ITEM</h5> -->
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body item_modal-body pad-none">
@@ -95,7 +93,7 @@
       </div>
     </template>
 
-    <!-- Carousel -->
+    <!-- Favorites Tab Carousel -->
     <div class="carousel-header">Favorites</div>
     <div id="carousel">
     </div>

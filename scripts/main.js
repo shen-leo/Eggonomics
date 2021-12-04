@@ -1,3 +1,22 @@
+// Wait for page load
+document.addEventListener("DOMContentLoaded", function(){
+    console.log("Page Loaded!")
+    // Adds event listener for pressing enter key
+    document.getElementById("query").addEventListener("keydown", (event) => {
+        if (event.key == "Enter"){
+            event.preventDefault();
+            submitQuery();
+        }
+    });
+
+    // Adds event listener for search button press
+    document.getElementById("submit-query").addEventListener("click", submitQuery);
+
+    // Populate the favorites tab with products if any is saved in Firestore.
+    populateFavorites();
+})
+
+// Saves search query typed in the search bar to the local storage, to be used later.
 function submitQuery(){
     let new_query = document.getElementById("query").value;
     if (new_query != ''){
@@ -6,18 +25,6 @@ function submitQuery(){
         console.log("Added " + query + " to 'query' key in local storage");
     }
 }
-
-document.addEventListener("DOMContentLoaded", function(event){
-    console.log("Page Loaded!")
-    document.getElementById("query").addEventListener("keydown", (event) => {
-        if (event.key == "Enter"){
-            event.preventDefault();
-            submitQuery();
-        }
-    });
-    document.getElementById("submit-query").addEventListener("click", submitQuery);
-    populateFavorites();
-})
 
 firebase.auth().onAuthStateChanged(user => {
     // Check if user is signed in:
@@ -38,6 +45,8 @@ firebase.auth().onAuthStateChanged(user => {
     }
 });
 
+
+// Populate favorites tab
 function populateFavorites(){
     let template = document.getElementById("favs");
     let target_div = document.getElementById("carousel");
@@ -45,9 +54,12 @@ function populateFavorites(){
     let uid = localStorage.getItem("ID");
     db.collection("favorite").doc(uid).get().then(function (doc) {
         let favs = doc.data().favorites
+        // Check if favorites collection in Firestore is empty or not
         if (favs.length == 0){
+            // Display error message if empty
             displayErrorMessage(target_div, "Nothing yet!");
         } else {
+            // Populate the page if not empty
             db.collection("sampleAPI").where("id", "in", favs).onSnapshot((products) => {
                 populatePage(products, template, target_div);
             })
