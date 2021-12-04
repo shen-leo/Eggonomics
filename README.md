@@ -97,6 +97,12 @@ Fruits image (https://www.boldsky.com/health/nutrition/fruits-that-are-extremely
 Pole image (https://kitchensanctuary.tumblr.com/post/169311613351/chicken-noodle-soup-with-turmeric?is_related_post=1)
 Chicken wings image (https://costum-case-theatrical-costume-supplier.business.site/)
 Burger image (https://www.ubereats.com/za/store/the-burger-shack-panorama/dEad-XZSVRWwdY0hicmd-g)
+Apple icon (https://www.harvie.farm/profile/warner-farm)
+Banana icon (https://www.getwhatyouwant.ca/thinking-of-selling-your-home-in-2021-the-winter-surge-is-here-and-its-bananas)
+kiwi icon (https://www.healthline.com/nutrition/kiwi-fruit-benefits-for-skin)
+orange icon (https://healthyfamilyproject.com/recipes/citrus-sage-roasted-turkey/)
+
+
 
 Sample API Images:
 bigbrain image (https://unsplash.com/photos/A6c4cUoFrHg)
@@ -118,6 +124,7 @@ waffle image (https://unsplash.com/photos/yxZSAjyToP4)
 
 Code:
 Drag to scroll (https://htmldom.dev/drag-to-scroll/)
+Modal (https://www.w3schools.com/howto/howto_css_modals.asp)
 
 APIs:
 

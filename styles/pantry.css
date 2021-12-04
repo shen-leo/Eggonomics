@@ -43,12 +43,9 @@ body {
   input {
     text-align: center;
     border: 1px solid rgba(0, 0, 0, 0.25);
-    /* margin: 1em 1em 0em 1em; */
     margin-right: 5%;
-    /* max-width: 200px; */
     width: 70%;
     height: 60%;
-    /* font-size: 85%; */
     border-radius: 4px;
   }
 
@@ -65,18 +62,13 @@ body {
 
   #btn-gp button {
     margin: 2em 1em 0 1em;
-    /* font-size: 80%; */
     width: 5em;
   }
 
   #header div {
-    /* text-align: center; */
     width: 10em;
-    /* margin: 1em 1em 0 1em; */
     margin: 0;
     display: block;
-
-    /* border: 1px solid orange; */
     transform: translateX(-11px);
     pointer-events: none;
   }
@@ -88,19 +80,7 @@ body {
     padding-bottom: 20px;
   }
 
-  /* #item-header {
-    width: 80%;
-    float: center;
-  }
-
-  #quantity-header {
-    width: 28%;
-  } */
-
   .delete-button{
-    /* text-align: center; */
-    /* padding-bottom: 0px; */
-    /* margin-top: 8.5px; */
     border-radius: 5px;
   }
 
@@ -110,7 +90,6 @@ body {
   }
 
   .quantity-input:invalid {
-  /* border: 3px solid red; */
   border-color: #EE4B2B;
   color: #EE4B2B;
   }
