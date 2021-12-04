@@ -98,6 +98,24 @@ Pole image (https://kitchensanctuary.tumblr.com/post/169311613351/chicken-noodle
 Chicken wings image (https://costum-case-theatrical-costume-supplier.business.site/)
 Burger image (https://www.ubereats.com/za/store/the-burger-shack-panorama/dEad-XZSVRWwdY0hicmd-g)
 
+Sample API Images:
+bigbrain image (https://unsplash.com/photos/A6c4cUoFrHg)
+butter image (https://unsplash.com/photos/LcfdOp72zdE)
+cereal image (https://unsplash.com/photos/vLHzjRNFbEQ)
+chocobar image (https://unsplash.com/photos/IfZ5WNmnSFg)
+cola image (https://unsplash.com/photos/X6aY_j6JD_Y)
+egg image (https://unsplash.com/photos/a5JMF6XyFYI)
+elmo image (https://unsplash.com/photos/pOOX1ER3aiE)
+icedtea image (https://unsplash.com/photos/CCowelQ2pLw)
+ketchup image (https://unsplash.com/photos/qlBVmQrdfMk)
+pizza image (https://unsplash.com/photos/SU1LFoeEUkk)
+pwingles image (https://unsplash.com/photos/YYDeTuqUHAs)
+python image (https://unsplash.com/photos/U_82hv1mKSo)
+sevenc image (https://unsplash.com/photos/296kqnmcgUQ)
+slugma image (https://unsplash.com/photos/qaTolf5xgC4)
+sql image (https://unsplash.com/photos/NfaZjll9-8g)
+waffle image (https://unsplash.com/photos/yxZSAjyToP4)
+
 Code:
 Drag to scroll (https://htmldom.dev/drag-to-scroll/)
 
