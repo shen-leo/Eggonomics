@@ -21,22 +21,68 @@ Content of the project folder:
 
 ```
  Top level of project folder: 
-├── .gitignore               # Git ignore file
-├── index.html               # Landing HTML file, this is the login page users see when they go to the url
-└── README.md                # Overview of our project and repo
+├── .gitignore                  # Git ignore file
+├── index.html                  # Landing HTML file, this is the login page users see when they go to the url
+├── sampleAPIdata.csv           # CSV file containing sample product data 
+└── README.md                   # Overview of our project and repo
+
 
 It has the following subfolders and files:
-├── .git                     # Folder for git repo
-├── html                     # Folder for html files
-├── img                      # Folder for images
-    /blah.jpg                # 
-├── scripts                  # Folder for javascript files
-    /blah.js                 # 
-├── styles                   # Folder for css files
-    /blah.css                # 
+├── .git                        # Folder for git repo
+├── html                        # Folder for html files
+    /404.html                   # HTML file for Firebase's default 404 page
+    /all_shopping_list.html     # HTML file for the shopping list main page
+    /main.html                  # HTML file for the landing page
+    /pantry.html                # HTML file for the pantry page
+    /price_tracker.html         # HTML file for the price tracker page
+    /profile.html               # HTML file for the user profile page
+    /single_shopping_list.html  # HTML file for the individual shopping list page
+├── img                         # Folder for images
+    /apple_homepage.jpg         # 
+    /apple-icon.jpg             # 
+    /banana_homepage.jpeg       # 
+    /banana-icon.jpg            # 
+    /brocoli_homepage.jpeg      # 
+    /kiwi-icon.jpg              # 
+    /list-placeholder.jpg       # 
+    /logo.png                   # 
+    /orange-icon.jpg            # 
+    /placeholder.jpg            # 
+    /profile.png                # 
+    /transparent.png            #
+    /sampleAPIimgs              # Sample images used for the Price Tracker output 
+├── scripts                     # Folder for javascript files
+    /all_shopping_list.js       # Javascript file for the shopping list main page
+    /firebaseAPI.js             # Javascript file for the Firebase API
+    /index.js                   # Javascript file for the login page
+    /main.js                    # Javascript file for the landing page
+    /pantry.js                  # Javascript file for the pantry page
+    /price_tracker.js           # Javascript file for the price tracker page
+    /product_display.js         # Javascript file for main and price tracker pages' product display
+    /profile.js                 # Javascript file for the user profile page
+    /single_shopping_list.js    # Javascript file for the individual shopping list page
+├── styles                      # Folder for css files
+    /404.css                    # CSS file for Firebase's default 404 page 
+    /all_shopping_list.css      # CSS file for the shopping list main page
+    /index.css                  # CSS file for the login page
+    /main.css                   # CSS file for the landing page
+    /pantry.css                 # CSS file for the pantry page
+    /price_tracker.css          # CSS file for the price tracker page
+    /products.css               # CSS file for the price tracker page
+    /profile.css                # CSS file for the user profile page
+    /single_shopping_list.css   # CSS file for the individual shopping list page
+    /styles.css                 # CSS file for our app's skeleton
 
 Firebase hosting files: 
-├── .firebaserc...
+├── storage.rules               # Storage rules for Firebase
+├── firestore.rules             # Rules for Firestore
+├── firestore.indexes.json      # Firestore index definition reference
+├── firebase.json               # Firebase hosting configuration
+├── .firebaserc                 # Settings for deploy targets
+├── 404.html                    # Default Firebase 404 error page
+├── .firebase                   # Folder for hosting cache
+    /hosting..cache             #
+
 
 
 ```
