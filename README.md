@@ -102,8 +102,6 @@ Banana icon (https://www.getwhatyouwant.ca/thinking-of-selling-your-home-in-2021
 kiwi icon (https://www.healthline.com/nutrition/kiwi-fruit-benefits-for-skin)
 orange icon (https://healthyfamilyproject.com/recipes/citrus-sage-roasted-turkey/)
 
-
-
 Sample API Images:
 bigbrain image (https://unsplash.com/photos/A6c4cUoFrHg)
 butter image (https://unsplash.com/photos/LcfdOp72zdE)
@@ -125,8 +123,3 @@ waffle image (https://unsplash.com/photos/yxZSAjyToP4)
 Code:
 Drag to scroll (https://htmldom.dev/drag-to-scroll/)
 Modal (https://www.w3schools.com/howto/howto_css_modals.asp)
-
-APIs:
-
-
-
