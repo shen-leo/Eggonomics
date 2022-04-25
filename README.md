@@ -15,6 +15,19 @@ Technologies used for this project:
 * Bootstrap 
 * Firebase
 * Cloud Storage for Firebase
+
+## App Preview
+<div align="center">
+	<img src=./img/eggonomics_demo/eggonomics_login.png width="300px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_home.png width="300px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_products.png width="300px" height="auto">
+</div>
+
+<div align="center">
+	<img src=./img/eggonomics_demo/eggonomics_shopping_lists.png width="300px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_shopping_list.png width="300px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_pantry.png width="300px" height="auto">
+</div>
 	
 ## Content
 Content of the project folder:
