@@ -20,15 +20,15 @@ Technologies used for this project:
 
 ## App Preview
 <div align="center">
-	<img src=./img/eggonomics_demo/eggonomics_login.png width="200px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_home.png width="200px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_products.png width="200px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_login.png width="240px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_home.png width="240px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_products.png width="240px" height="auto">
 </div>
 
 <div align="center">
-	<img src=./img/eggonomics_demo/eggonomics_shopping_lists.png width="200px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_shopping_list.png width="200px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_pantry.png width="200px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_shopping_lists.png width="240px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_shopping_list.png width="240px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_pantry.png width="240px" height="auto">
 </div>
 	
 ## Contents
