@@ -1,12 +1,12 @@
 ## Eggonomics
-* [General info](#general-info)
-* [Technologies](#technologies)
-* [Contents](#content)
 
-## General Info
-Eggonomics is a web-based mobile application looking to help users shop smarter, cheaper, and reduce waste. 
-Our team is designing an app to help users track the prices of everyday household goods and aid them in reducing food waste.
-Eggonomics will provide users with a price tracker, shopping list, food pantry list, and data analytics on spending and food waste.
+Eggonomics is a web-based mobile application designed to help users shop smarter, cheaper, and reduce waste. 
+Our team has created an app to help users track the prices of everyday household goods and aid them in reducing food waste. Inflation and the global pandemic has increased the financial burdens of shopping for groceries. We hope that Eggonomics can help users have an easier time shopping for foods.
+Eggonomics provides users with a price tracker, shopping list, food pantry list, and data analytics on spending and food waste.
+
+To access the live-hosted version of Eggonomics, click [here](https://eggonomics-35c2b.web.app/).
+
+Eggonomics was created by Leo Shen, Jimmy Wong, and Fonse Clarito.
 	
 ## Technologies
 Technologies used for this project:
@@ -14,7 +14,7 @@ Technologies used for this project:
 * JavaScript
 * Bootstrap 
 * Firebase
-* Cloud Storage
+* Cloud Storage for Firebase
 	
 ## Content
 Content of the project folder:
@@ -87,39 +87,63 @@ Firebase hosting files:
 
 ```
 
-Tips for file naming files and folders:
-* use lowercase with no spaces
-* use dashes (not underscore) for word separation
-
 ## References
-Images:
+
+### Images:
 Fruits image (https://www.boldsky.com/health/nutrition/fruits-that-are-extremely-beneficial-for-your-health-131531.html)
+
 Pole image (https://kitchensanctuary.tumblr.com/post/169311613351/chicken-noodle-soup-with-turmeric?is_related_post=1)
+
 Chicken wings image (https://costum-case-theatrical-costume-supplier.business.site/)
+
 Burger image (https://www.ubereats.com/za/store/the-burger-shack-panorama/dEad-XZSVRWwdY0hicmd-g)
+
 Apple icon (https://www.harvie.farm/profile/warner-farm)
+
 Banana icon (https://www.getwhatyouwant.ca/thinking-of-selling-your-home-in-2021-the-winter-surge-is-here-and-its-bananas)
+
 kiwi icon (https://www.healthline.com/nutrition/kiwi-fruit-benefits-for-skin)
+
 orange icon (https://healthyfamilyproject.com/recipes/citrus-sage-roasted-turkey/)
 
-Sample API Images:
+
+### Sample API Images:
+
 bigbrain image (https://unsplash.com/photos/A6c4cUoFrHg)
+
 butter image (https://unsplash.com/photos/LcfdOp72zdE)
+
 cereal image (https://unsplash.com/photos/vLHzjRNFbEQ)
+
 chocobar image (https://unsplash.com/photos/IfZ5WNmnSFg)
+
 cola image (https://unsplash.com/photos/X6aY_j6JD_Y)
+
 egg image (https://unsplash.com/photos/a5JMF6XyFYI)
+
 elmo image (https://unsplash.com/photos/pOOX1ER3aiE)
+
 icedtea image (https://unsplash.com/photos/CCowelQ2pLw)
+
 ketchup image (https://unsplash.com/photos/qlBVmQrdfMk)
+
 pizza image (https://unsplash.com/photos/SU1LFoeEUkk)
+
 pwingles image (https://unsplash.com/photos/YYDeTuqUHAs)
+
 python image (https://unsplash.com/photos/U_82hv1mKSo)
+
 sevenc image (https://unsplash.com/photos/296kqnmcgUQ)
+
 slugma image (https://unsplash.com/photos/qaTolf5xgC4)
+
 sql image (https://unsplash.com/photos/NfaZjll9-8g)
+
 waffle image (https://unsplash.com/photos/yxZSAjyToP4)
 
-Code:
+
+### Code:
+
 Drag to scroll (https://htmldom.dev/drag-to-scroll/)
+
 Modal (https://www.w3schools.com/howto/howto_css_modals.asp)
