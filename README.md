@@ -1,16 +1,18 @@
 ## Eggonomics
 
 Eggonomics is a web-based mobile application designed to help users shop smarter, cheaper, and reduce waste. 
-Our team has created an app to help users track the prices of everyday household goods and aid them in reducing food waste. Inflation and the global pandemic has increased the financial burdens of shopping for groceries. We hope that Eggonomics can help users have an easier time shopping for foods.
-Eggonomics provides users with a price tracker, shopping list, food pantry list, and data analytics on spending and food waste.
+Our team has created an app to help users track the prices of everyday household goods and aid them in reducing food waste. Inflation and the global pandemic has increased the financial burdens of shopping for groceries. We hope that Eggonomics can help reduce the financial stress of shopping for foods. Eggonomics provides users with a price tracker, shopping list, food pantry list, and data analytics on spending and food waste.
 
-To access the live-hosted version of Eggonomics, click [here](https://eggonomics-35c2b.web.app/).
+Eggonomics utilizes full CRUD interactions with a NoSQL database for the shopping list and food pantry features. Eggonomics supports data querying and filtering for the grocery price database. User authentication was implemented through Firebase Authentication.
 
-Eggonomics was created by Leo Shen, Jimmy Wong, and Fonse Clarito.
-	
+To access the live-hosted version of Eggonomics, click **[here](https://eggonomics-35c2b.web.app/)**.
+
+Eggonomics was developed and designed by Leo Shen, Jimmy Wong, and Fonse Clarito in an Agile Environment.
+
+
 ## Technologies
 Technologies used for this project:
-* HTML, CSS
+* HTML/CSS
 * JavaScript
 * Bootstrap 
 * Firebase
@@ -18,18 +20,18 @@ Technologies used for this project:
 
 ## App Preview
 <div align="center">
-	<img src=./img/eggonomics_demo/eggonomics_login.png width="300px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_home.png width="300px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_products.png width="300px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_login.png width="200px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_home.png width="200px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_products.png width="200px" height="auto">
 </div>
 
 <div align="center">
-	<img src=./img/eggonomics_demo/eggonomics_shopping_lists.png width="300px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_shopping_list.png width="300px" height="auto">
-	<img src=./img/eggonomics_demo/eggonomics_pantry.png width="300px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_shopping_lists.png width="200px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_shopping_list.png width="200px" height="auto">
+	<img src=./img/eggonomics_demo/eggonomics_pantry.png width="200px" height="auto">
 </div>
 	
-## Content
+## Contents
 Content of the project folder:
 
 ```
